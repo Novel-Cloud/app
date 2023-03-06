@@ -3,7 +3,10 @@ import styled from "styled-components";
 export const EditorWrapper = styled.div`
   display: flex;
   justify-content: center;
+  padding: 20px;
+
   #editor {
+    background-color: white;
     border: 1px solid black;
     padding: 1rem;
     display: inline-block;
@@ -18,5 +21,8 @@ export const EditorWrapper = styled.div`
     font-size: 20px;
     white-space: wrap;
     overflow-y: scroll;
+    &:focus {
+      outline: none;
+    }
   }
 `;

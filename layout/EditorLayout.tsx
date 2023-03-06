@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import * as S from "./EditorLayout.style";
 
 interface EditorLayoutProps {
   toolbar: ReactNode;
@@ -7,10 +8,10 @@ interface EditorLayoutProps {
 
 function Frame({ toolbar, editor }: EditorLayoutProps) {
   return (
-    <section id="editor-view">
+    <S.EditorLayout id="editor-view">
       {toolbar}
       {editor}
-    </section>
+    </S.EditorLayout>
   );
 }
 

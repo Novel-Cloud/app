@@ -18,7 +18,6 @@ export default function EditorView() {
         onChange={handleChange}
         spellCheck="false"
         id="editor"
-        placeholder="당신의 글을 쓰세요"
       />
     </S.EditorWrapper>
   );
