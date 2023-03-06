@@ -1,5 +1,5 @@
 type LocalStorageKey = "ACCESS_TOKEN" | "REFRESH_TOKEN";
-export class Storage {
+class Storage {
   static getItem(key: LocalStorageKey) {
     return typeof window !== "undefined" ? localStorage.getItem(key) : null;
   }
@@ -9,3 +9,5 @@ export class Storage {
     localStorage.setItem(key, value);
   }
 }
+
+export default Storage;
