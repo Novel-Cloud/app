@@ -5,7 +5,6 @@ html {
   box-sizing: border-box;
   font-size: 100%;
   min-width: 320px;
-  line-height: 1.15;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -88,7 +87,6 @@ select,
 textarea {
   font-family: inherit;
   font-size: 100%;
-  line-height: 1.15;
   margin: 0;
 }
 

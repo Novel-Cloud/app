@@ -25,8 +25,8 @@ export default function ToolbarView() {
   ];
   return (
     <S.ToolbarWrapper>
-      {editButtonArgumentList.map((editButtonArgument) => (
-        <EditButton {...editButtonArgument} />
+      {editButtonArgumentList.map((editButtonArgument, idx) => (
+        <EditButton key={idx} {...editButtonArgument} />
       ))}
     </S.ToolbarWrapper>
   );

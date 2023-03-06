@@ -7,8 +7,8 @@ export const DefaultButton = styled.button<{ varient: ButtonVarient }>`
     props.varient === "primary" ? theme.main : theme.secondary};
   color: ${(props) =>
     props.varient === "primary" ? theme.black : theme.white};
-  padding-top: 0.625rem;
-  padding-bottom: 0.625rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
   padding-left: 0.375rem;
   padding-right: 0.375rem;
   border: 0;
