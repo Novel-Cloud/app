@@ -5,7 +5,7 @@ export const EditorWrapper = styled.div`
   justify-content: center;
   #editor {
     border: 1px solid black;
-    padding: 0.5rem;
+    padding: 1rem;
     display: inline-block;
     font-weight: lighter;
     border-bottom: 1px solid #232323;
@@ -17,5 +17,6 @@ export const EditorWrapper = styled.div`
     line-height: 1em;
     font-size: 20px;
     white-space: wrap;
+    overflow-y: scroll;
   }
 `;

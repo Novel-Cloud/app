@@ -16,13 +16,13 @@ export default function Button({
   ...props
 }: ButtonProps) {
   return (
-    <S.Button
+    <S.DefaultButton
       type={type === "button" ? "button" : "submit"}
       onClick={onClick}
       varient={varient}
       {...props}
     >
       {children}
-    </S.Button>
+    </S.DefaultButton>
   );
 }

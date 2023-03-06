@@ -8,8 +8,8 @@ interface EditorLayoutProps {
 function Frame({ toolbar, editor }: EditorLayoutProps) {
   return (
     <section id="editor-view">
-      <div>{toolbar}</div>
-      <div>{editor}</div>
+      {toolbar}
+      {editor}
     </section>
   );
 }

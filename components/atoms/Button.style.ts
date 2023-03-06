@@ -2,7 +2,7 @@ import theme from "@/styles/theme";
 import { ButtonVarient } from "@/types/atoms.interface";
 import styled from "styled-components";
 
-export const Button = styled.button<{ varient: ButtonVarient }>`
+export const DefaultButton = styled.button<{ varient: ButtonVarient }>`
   background-color: ${(props) =>
     props.varient === "primary" ? theme.main : theme.secondary};
   color: ${(props) =>
@@ -14,6 +14,8 @@ export const Button = styled.button<{ varient: ButtonVarient }>`
   border: 0;
   border-radius: 0.25rem;
   font-size: 0.875rem;
+  white-space: nowrap;
+  word-break: keep-all;
 `;
 
 export default {};
