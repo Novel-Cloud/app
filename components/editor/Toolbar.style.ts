@@ -7,6 +7,8 @@ export const ToolbarWrapper = styled.div`
   gap: 10px;
   position: sticky;
   top: 0;
+  background-color: white;
+  border-bottom: 1px solid black;
 `;
 
 export const ToolbarIcon = styled.div`

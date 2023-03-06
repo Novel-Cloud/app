@@ -1,7 +1,7 @@
 import EditButton from "./EditButton";
 import * as S from "./Toolbar.style";
 
-export default function Toolbar() {
+export default function ToolbarView() {
   const editButtonArgumentList = [
     { cmd: "justifyCenter" },
     { cmd: "justifyLeft" },
