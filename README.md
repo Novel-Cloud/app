@@ -3,3 +3,4 @@
 3. Recoil
 4. Jest
 5. Axios
+6. playwright
