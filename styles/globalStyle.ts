@@ -3,7 +3,7 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle` 
 html {
   box-sizing: border-box;
-  font-size: 62.5%;
+  font-size: 100%;
   min-width: 320px;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
