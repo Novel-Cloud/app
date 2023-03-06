@@ -1,4 +1,4 @@
-import EditorView from "@/components/editor/index";
+import EditorView from "@/components/editor/Editor";
 import Toolbar from "@/components/editor/Toolbar";
 import EditorLayout from "@/layout/EditorLayout";
 
