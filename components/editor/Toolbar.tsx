@@ -1,12 +1,11 @@
+import Button from "../atoms/Button";
 import * as S from "./Toolbar.style";
 
 export default function Toolbar() {
   return (
     <S.ToolbarWrapper>
-      <S.ToolbarIcon>이미지</S.ToolbarIcon>
-      <S.ToolbarIcon>단축어</S.ToolbarIcon>
-      <S.ToolbarIcon>단</S.ToolbarIcon>
-      <S.ToolbarIcon>단</S.ToolbarIcon>
+      <Button>이미지</Button>
+      <Button>단축어</Button>
     </S.ToolbarWrapper>
   );
 }

@@ -1,6 +1,7 @@
+import { ButtonVarient } from "@/types/atoms.interface";
 import { ButtonHTMLAttributes, MouseEventHandler, ReactNode } from "react";
+import * as S from "./Button.style";
 
-type ButtonVarient = "primary" | "secondary";
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   varient?: ButtonVarient;
   children?: ReactNode;
@@ -15,12 +16,13 @@ export default function Button({
   ...props
 }: ButtonProps) {
   return (
-    <button
+    <S.Button
       type={type === "button" ? "button" : "submit"}
       onClick={onClick}
+      varient={varient}
       {...props}
     >
       {children}
-    </button>
+    </S.Button>
   );
 }
