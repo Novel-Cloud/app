@@ -8,7 +8,7 @@ export const Input = styled.input<{ varient?: Varient }>`
   color: ${(props) =>
     props.varient === "primary" ? theme.secondary : theme.primary};
   border: 0;
-  border-radius: 9999px;
+  border-radius: 999rem;
   padding: 0.5rem;
   &:focus {
     outline: none;
