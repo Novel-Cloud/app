@@ -1,9 +1,9 @@
-import { ButtonVarient } from "@/types/atoms.interface";
+import { Varient } from "@/types/atoms.interface";
 import { ButtonHTMLAttributes, MouseEventHandler, ReactNode } from "react";
 import * as S from "./Button.style";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  varient?: ButtonVarient;
+  varient?: Varient;
   children?: ReactNode;
   onClick?: MouseEventHandler<HTMLButtonElement>;
 }

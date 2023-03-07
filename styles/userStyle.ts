@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import theme from "./theme";
 
 const UserStyle = createGlobalStyle` 
 @font-face {
@@ -17,6 +18,7 @@ const UserStyle = createGlobalStyle`
 
 html {
   font-family: 'Pretendard-Regular';
+  color: ${theme.primary};
 }
 `;
 

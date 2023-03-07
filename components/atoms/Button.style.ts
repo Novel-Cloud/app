@@ -1,10 +1,10 @@
 import theme from "@/styles/theme";
-import { ButtonVarient } from "@/types/atoms.interface";
+import { Varient } from "@/types/atoms.interface";
 import styled from "styled-components";
 
-export const DefaultButton = styled.button<{ varient: ButtonVarient }>`
+export const DefaultButton = styled.button<{ varient: Varient }>`
   background-color: ${(props) =>
-    props.varient === "primary" ? theme.main : theme.secondary};
+    props.varient === "primary" ? theme.primary : theme.secondary};
   color: ${(props) =>
     props.varient === "primary" ? theme.black : theme.white};
   padding-top: 0.75rem;
