@@ -4,13 +4,13 @@ import * as S from "./TagList.style";
 
 export default function TagList({ tagList }: { tagList: Tag[] }) {
   return (
-    <div>
+    <>
       <S.TagTitle>Popular Tags</S.TagTitle>
       <S.TagWrapper>
         {tagList.map(({ tagName, id }) => (
           <TagView tagName={tagName} url="/artwork/123" key={id} />
         ))}
       </S.TagWrapper>
-    </div>
+    </>
   );
 }
