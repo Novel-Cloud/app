@@ -11,6 +11,7 @@ export const SearchBar = styled(Input)`
   padding-left: 1rem;
   padding-right: 3rem;
   box-sizing: border-box;
+  font-family: "CookieRun-Regular";
 `;
 
 export const SearchIconWrapper = styled.div`

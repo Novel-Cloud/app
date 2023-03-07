@@ -4,7 +4,7 @@ import * as S from "./SearchBar.style";
 export default function SearchBar() {
   return (
     <S.SearchBarWrapper>
-      <S.SearchBar />
+      <S.SearchBar placeholder="ohayo!" />
       <S.SearchIconWrapper>
         <SearchIcon />
       </S.SearchIconWrapper>

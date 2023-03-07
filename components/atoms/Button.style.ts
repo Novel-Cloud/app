@@ -14,6 +14,7 @@ export const Button = styled.button<{ varient: Varient }>`
   font-size: 0.875rem;
   white-space: nowrap;
   word-break: keep-all;
+  cursor: pointer;
 `;
 
 export default {};
