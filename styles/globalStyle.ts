@@ -5,10 +5,10 @@ html {
   box-sizing: border-box;
   font-size: 100%;
   min-width: 320px;
-  -webkit-text-size-adjust: 100%;
 }
 
 body {
+  line-height: 1.3;
   margin: 0;
 }
 
