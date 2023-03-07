@@ -12,16 +12,17 @@ export const EditorWrapper = styled.div`
     display: inline-block;
     font-weight: lighter;
     border-bottom: 1px solid #232323;
-    width: 800px;
-    height: 1100px;
+    width: 50rem;
+    height: 70rem;
     font-family: Pretendard;
     overflow: hidden;
     cursor: text;
     line-height: 1em;
-    font-size: 20px;
+    font-size: 1.25rem;
     white-space: wrap;
     overflow-y: scroll;
     line-height: 1.3;
+
     &:focus {
       outline: none;
     }

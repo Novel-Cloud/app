@@ -4,7 +4,7 @@ export const ToolbarWrapper = styled.div`
   padding: 1rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 0.625rem;
   position: sticky;
   top: 0;
   background-color: white;
