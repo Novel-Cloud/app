@@ -5,7 +5,6 @@ export default function SearchBar() {
   return (
     <S.SearchBarWrapper>
       <S.SearchBar />
-
       <S.SearchIconWrapper>
         <SearchIcon />
       </S.SearchIconWrapper>
