@@ -1,21 +1,12 @@
+import { Artwork } from "@/types/artwork.interface";
 import { Tag } from "@/types/fixture.interface";
 
 const tagList: Tag[] = new Array(20)
   .fill(null)
   .map((_, idx) => ({ tagName: "십덕오타쿠", id: idx }));
 
-interface Artwork {
-  artworkName: string;
-  isLike: boolean;
-  artworkThumbnail: string;
-  writer: {
-    writerName: string;
-    writerProfile: string;
-  };
-  tagList: Tag[];
-}
-
 const artwork: Artwork = {
+  id: 1,
   artworkName: "카와이한 금발녹안쟝",
   isLike: false,
   artworkThumbnail:
@@ -30,6 +21,6 @@ const artwork: Artwork = {
 
 const artworkList = new Array(12)
   .fill(null)
-  .map((_, idx) => ({ artwork, id: idx }));
+  .map((_, idx) => ({ ...artwork, id: idx }));
 
 export default { tagList, artwork, artworkList };

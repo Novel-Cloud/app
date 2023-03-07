@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import Button from "../atoms/Button";
+import Button from "./Button";
 
 interface TagViewProps {
   tagName: string;
