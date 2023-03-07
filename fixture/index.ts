@@ -1,7 +1,7 @@
 import { Tag } from "@/types/fixture.interface";
 
-const tagList: Tag[] = new Array(10)
+const tagList: Tag[] = new Array(20)
   .fill(null)
-  .map((tagData, idx) => ({ tagName: "십덕오타쿠", id: idx }));
+  .map((_, idx) => ({ tagName: "십덕오타쿠", id: idx }));
 
 export default { tagList };
