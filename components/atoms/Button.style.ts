@@ -8,7 +8,7 @@ export const Button = styled.button<{ varient: Varient }>`
   color: ${(props) =>
     props.varient === "primary" ? theme.primary : theme.secondary};
   padding: 0.5rem 1.25rem;
-  font-weight: bold;
+  font-weight: 900;
   border: 0;
   border-radius: 0.25rem;
   font-size: 0.875rem;
