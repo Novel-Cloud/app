@@ -6,7 +6,13 @@ export const ArtworkListWrapper = styled.div`
   flex-wrap: wrap;
   gap: 60px;
   justify-content: center;
-  padding: 0 2rem 5rem 2rem;
+  padding: 2rem 2rem 5rem 2rem;
+`;
+
+export const ArtworkFrameWrapper = styled.div`
+  position: relative;
+  background-color: ${theme.primary};
+  margin-top: 5rem;
 `;
 
 export const ArtworkWrapper = styled.div`

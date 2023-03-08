@@ -1,4 +1,3 @@
-import MainFrame from "@/components/common/frame";
 import { ReactNode } from "react";
 import * as S from "./MainLayout.style";
 

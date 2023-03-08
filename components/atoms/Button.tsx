@@ -2,6 +2,7 @@ import { Varient } from "@/types/atoms.interface";
 import { ButtonHTMLAttributes, MouseEventHandler, ReactNode } from "react";
 import * as S from "./Button.style";
 
+export type ButtonStyle = "main" | "frame";
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   varient?: Varient;
   children?: ReactNode;
