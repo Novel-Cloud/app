@@ -1,5 +1,6 @@
 import Image from "next/image";
 import * as S from "./index.style";
+import { LoginButton } from "./LoginButton.style";
 
 export default function Login() {
   return (
@@ -11,6 +12,8 @@ export default function Login() {
         height={480}
       />
       <S.LoginTitle>Login</S.LoginTitle>
+
+      <LoginButton>Link Start</LoginButton>
     </S.LoginWrapper>
   );
 }
