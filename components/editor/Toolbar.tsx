@@ -20,6 +20,7 @@ import H3Icon from "../icons/editor/H3Icon";
 import H2Icon from "../icons/editor/H2Icon";
 import H1Icon from "../icons/editor/H1Icon";
 import ShortCutButton from "./ShortCutButton";
+import H6Icon from "../icons/editor/H6Icon";
 
 export default function ToolbarView() {
   const editorHotkey = useRecoilValue(editorHotkeyState);
@@ -43,7 +44,8 @@ export default function ToolbarView() {
     { cmd: "fontSize", arg: "6", icon: <H2Icon /> },
     { cmd: "fontSize", arg: "5", icon: <H3Icon /> },
     { cmd: "fontSize", arg: "3", icon: <H4Icon /> },
-    { cmd: "fontSize", arg: "1", icon: <H5Icon /> },
+    { cmd: "fontSize", arg: "2", icon: <H5Icon /> },
+    { cmd: "fontSize", arg: "1", icon: <H6Icon /> },
   ];
   const shortCutList = new Array(9)
     .fill(null)
