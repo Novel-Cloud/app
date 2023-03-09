@@ -2,9 +2,14 @@ import styled from "styled-components";
 
 export const ArtworkDetailWrapper = styled.div`
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+  flex-direction: column;
   margin-top: 30px;
+  padding: 0 250px;
+`;
+export const ArtworkTitleWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 `;
 export const ArtworkTitle = styled.h1`
   margin: 0;

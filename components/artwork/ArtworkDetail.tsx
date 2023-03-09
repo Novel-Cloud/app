@@ -8,8 +8,8 @@ import * as S from "./ArtworkDetail.style";
 
 export default function ArtworkDetail({ artwork }: { artwork: Artwork }) {
   return (
-    <>
-      <S.ArtworkDetailWrapper>
+    <S.ArtworkDetailWrapper>
+      <S.ArtworkTitleWrapper>
         <div>
           <S.ArtworkTitle>{artwork.artworkName}</S.ArtworkTitle>
           <S.ArtworkWriterWrapper>
@@ -43,8 +43,8 @@ export default function ArtworkDetail({ artwork }: { artwork: Artwork }) {
             <ShareIcon />
           </S.ArtworkDate>
         </S.ArtworkDateWrapper>
-      </S.ArtworkDetailWrapper>
+      </S.ArtworkTitleWrapper>
       <S.ArtworkContentWrapper>{artwork.content}</S.ArtworkContentWrapper>
-    </>
+    </S.ArtworkDetailWrapper>
   );
 }
