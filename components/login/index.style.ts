@@ -2,12 +2,14 @@ import styled from "styled-components";
 
 export const LoginWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
-  padding: 100px 160px 0 160px;
+  gap: 160px;
+  justify-content: center;
+  margin-top: 180px;
 `;
 
 export const LoginTitle = styled.h1`
   font-size: 64px;
   font-family: CookieRun-Regular;
-  margin: 0;
+  margin-top: 0;
+  margin-bottom: 90px;
 `;

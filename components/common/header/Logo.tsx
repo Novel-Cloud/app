@@ -8,7 +8,7 @@ export default function Logo() {
 
   return (
     <S.LogoWrapper onClick={() => router.push("/")}>
-      <Image src={HeaderLogo} alt="header logo" width={200} />
+      <Image src={HeaderLogo} alt="header logo" width={180} height={80} />
     </S.LogoWrapper>
   );
 }
