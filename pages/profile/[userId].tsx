@@ -1,4 +1,5 @@
 import Header from "@/components/common/header";
+import ProfileBackground from "@/components/profile/ProfileBackground";
 import UserDetailLayout from "@/layout/UserDetailLayout";
 import { useRouter } from "next/router";
 
@@ -9,7 +10,10 @@ export default function ArtworkDetailPage() {
   return (
     <>
       <Header />
-      <UserDetailLayout app={<span>{userId}</span>} />
+      <UserDetailLayout
+        background={<ProfileBackground />}
+        app={<span>{userId}</span>}
+      />
     </>
   );
 }

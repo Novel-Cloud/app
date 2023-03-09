@@ -3,8 +3,17 @@ import * as S from "./ArtworkDetailLayout.style";
 
 interface UserDetailLayoutProps {
   app: ReactNode;
+  background: ReactNode;
 }
 
-export default function UserDetailLayout({ app }: UserDetailLayoutProps) {
-  return <S.ArtworkDetailLayoutWrapper>{app}</S.ArtworkDetailLayoutWrapper>;
+export default function UserDetailLayout({
+  app,
+  background,
+}: UserDetailLayoutProps) {
+  return (
+    <S.ArtworkDetailLayoutWrapper>
+      {background}
+      {app}
+    </S.ArtworkDetailLayoutWrapper>
+  );
 }
