@@ -1,4 +1,4 @@
-import { Storage } from "@/storage";
+import Storage from "@/storage";
 import { getDateParsedData } from "@/utils/date";
 import { AxiosRequestConfig, AxiosResponse } from "axios";
 
