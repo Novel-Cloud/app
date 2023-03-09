@@ -1,18 +1,23 @@
+import theme from "@/styles/theme";
 import styled from "styled-components";
 
-export const ToolbarWrapper = styled.div`
-  padding: 1rem;
+export const Toolbar = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.625rem;
-  position: sticky;
-  top: 0;
-  background-color: white;
-  border-bottom: 1px solid black;
+  overflow: auto;
+  align-items: center;
 `;
 
-export const ToolbarIcon = styled.div`
-  background-color: black;
-  color: white;
-  padding: 0.3rem;
+export const ToolbarWrapper = styled.div`
+  position: sticky;
+  top: 0;
+  padding: 20px 20px 10px 20px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  background-color: ${theme.primary};
+`;
+
+export const ShortCutIconWrapper = styled.div`
+  svg {
+    width: 40px;
+    height: 40px;
+  }
 `;

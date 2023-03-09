@@ -1,3 +1,4 @@
+import Header from "@/components/common/header";
 import { ReactNode } from "react";
 import * as S from "./MainLayout.style";
 
@@ -16,5 +17,10 @@ function Frame({ tags, app }: MainLayoutProps) {
 }
 
 export default function MainLayout(props: MainLayoutProps) {
-  return <Frame {...props} />;
+  return (
+    <>
+      <Header />
+      <Frame {...props} />
+    </>
+  );
 }

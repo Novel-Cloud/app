@@ -1,4 +1,3 @@
-import MainFrame from "@/components/common/frame";
 import { ReactNode } from "react";
 import * as S from "./EditorLayout.style";
 
@@ -9,12 +8,10 @@ interface EditorLayoutProps {
 
 function Frame({ toolbar, editor }: EditorLayoutProps) {
   return (
-    <MainFrame>
-      <S.EditorLayout id="editor-view">
-        {toolbar}
-        {editor}
-      </S.EditorLayout>
-    </MainFrame>
+    <S.EditorLayout id="editor-view">
+      {toolbar}
+      {editor}
+    </S.EditorLayout>
   );
 }
 

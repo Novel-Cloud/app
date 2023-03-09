@@ -1,16 +1,15 @@
 import { ReactNode } from "react";
-import Button from "../atoms/Button";
+import * as S from "./ToolbarButton.style";
 
 interface EditButtonProps {
   cmd: string;
-  name?: string;
   arg?: string;
   icon: ReactNode;
 }
 
-export default function EditButton({ name, cmd, arg, icon }: EditButtonProps) {
+export default function ToolbarButtonView({ cmd, arg, icon }: EditButtonProps) {
   return (
-    <Button
+    <S.ToolbarButton
       key={cmd}
       onMouseDown={(event) => {
         event.preventDefault();
@@ -18,6 +17,6 @@ export default function EditButton({ name, cmd, arg, icon }: EditButtonProps) {
       }}
     >
       {icon}
-    </Button>
+    </S.ToolbarButton>
   );
 }

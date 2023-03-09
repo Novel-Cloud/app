@@ -1,4 +1,4 @@
-export default function AnignCenterIcon() {
+export default function AlignCenterIcon() {
   return (
     <svg
       width="48"
