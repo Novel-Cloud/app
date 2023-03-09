@@ -5,7 +5,8 @@ export const FileUploaderWrapper = styled.div`
   position: relative;
   object-fit: cover;
   width: 100%;
-
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  background-color: white;
   height: 500px;
   margin-top: 4rem;
   border: 2px solid ${theme.primary};

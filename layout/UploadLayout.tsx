@@ -1,3 +1,4 @@
+import Header from "@/components/common/header";
 import { ReactNode } from "react";
 import * as S from "./UploadLayout.style";
 
@@ -10,5 +11,10 @@ function Frame({ app }: UploadLayoutProps) {
 }
 
 export default function UploadLayout(props: UploadLayoutProps) {
-  return <Frame {...props} />;
+  return (
+    <>
+      <Header />
+      <Frame {...props} />
+    </>
+  );
 }
