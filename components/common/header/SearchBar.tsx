@@ -4,13 +4,15 @@ import * as S from "./SearchBar.style";
 
 export default function SearchBar({
   registerReturn,
+  onSearch,
 }: {
   registerReturn: UseFormRegisterReturn;
+  onSearch: () => void;
 }) {
   return (
     <S.SearchBarWrapper>
       <S.SearchBar placeholder="ohayo!" {...registerReturn} />
-      <S.SearchIconWrapper>
+      <S.SearchIconWrapper onClick={onSearch}>
         <SearchIcon />
       </S.SearchIconWrapper>
     </S.SearchBarWrapper>
