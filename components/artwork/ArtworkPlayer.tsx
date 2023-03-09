@@ -1,14 +1,13 @@
+import { Artwork } from "@/types/artwork.interface";
 import Image from "next/image";
 import * as S from "./ArtworkPlayer.style";
 
-interface ArtworkPlayerProps {
-  src: string;
-}
-
-export default function ArtworkPlayer({ src }: ArtworkPlayerProps) {
+export default function ArtworkPlayer({ artwork }: { artwork: Artwork }) {
   return (
     <S.ArtworkPlayerWrapper>
-      <Image src={src} alt={src} />
+      {artwork.artworkThumbnail && (
+        <Image src={artwork.artworkThumbnail} alt={artwork.artworkName} fill />
+      )}
     </S.ArtworkPlayerWrapper>
   );
 }

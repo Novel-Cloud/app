@@ -18,6 +18,7 @@ const artwork: Artwork = {
       "https://velog.velcdn.com/images/j1min/post/59c03f65-0531-4363-8405-ed93e9a172c1/image.png",
   },
   tagList,
+  commentList: new Array(12).fill("코멘트"),
 };
 
 const artworkList = new Array(12)

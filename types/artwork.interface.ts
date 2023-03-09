@@ -13,6 +13,7 @@ export interface Artwork {
   artworkThumbnail: string;
   writer: Writer;
   tagList: Tag[];
+  commentList: string[];
 }
 
 export interface ArtworkForm {
