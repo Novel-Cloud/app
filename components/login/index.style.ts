@@ -4,7 +4,7 @@ export const LoginWrapper = styled.div`
   display: flex;
   gap: 160px;
   justify-content: center;
-  margin-top: 180px;
+  padding-top: 180px;
 `;
 
 export const LoginTitle = styled.h1`
