@@ -14,6 +14,7 @@ export interface Artwork {
   writer: Writer;
   tagList: Tag[];
   commentList: string[];
+  content: string;
 }
 
 export interface ArtworkForm {
