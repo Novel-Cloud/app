@@ -1,3 +1,6 @@
+import { useRecoilValue } from "recoil";
+import { useHotkeys } from "react-hotkeys-hook";
+import { editorHotkeyState } from "@/context";
 import AlignCenterIcon from "../icons/editor/AlignCenterIcon";
 import AlignLeftIcon from "../icons/editor/AlignLeftIcon";
 import AlignRightIcon from "../icons/editor/AlignRightIcon";
@@ -17,8 +20,11 @@ import H3Icon from "../icons/editor/H3Icon";
 import H2Icon from "../icons/editor/H2Icon";
 import H1Icon from "../icons/editor/H1Icon";
 import ShortCutButton from "./ShortCutButton";
+import H6Icon from "../icons/editor/H6Icon";
 
 export default function ToolbarView() {
+  const editorHotkey = useRecoilValue(editorHotkeyState);
+
   const editButtonArgumentList = [
     { cmd: "justifyCenter", icon: <AlignCenterIcon /> },
     { cmd: "justifyLeft", icon: <AlignLeftIcon /> },
@@ -38,11 +44,36 @@ export default function ToolbarView() {
     { cmd: "fontSize", arg: "6", icon: <H2Icon /> },
     { cmd: "fontSize", arg: "5", icon: <H3Icon /> },
     { cmd: "fontSize", arg: "3", icon: <H4Icon /> },
-    { cmd: "fontSize", arg: "1", icon: <H5Icon /> },
+    { cmd: "fontSize", arg: "2", icon: <H5Icon /> },
+    { cmd: "fontSize", arg: "1", icon: <H6Icon /> },
   ];
-  const shortCutList = new Array(12)
-    .fill({ content: "안녕하세요1111111" })
-    .map((data, idx) => ({ ...data, id: idx }));
+  const shortCutList = new Array(9)
+    .fill(null)
+    .map((data, idx) => ({ content: `${idx + 1}번 클릭`, id: idx }));
+
+  const getCommand = (command: boolean, number: number) => {
+    if (command && number) {
+      document.execCommand(
+        "insertText",
+        false,
+        shortCutList[number - 1].content,
+      );
+      return number - 1;
+    }
+    return false;
+  };
+
+  useHotkeys(
+    "ctrl+1, ctrl+2, ctrl+3, ctrl+4, ctrl+5, ctrl+6, ctrl+7, ctrl+8, ctrl+9",
+    (_, handler) => {
+      const command = handler.ctrl || false;
+      const number = handler.keys?.join("") || 0;
+      getCommand(command, Number(number));
+    },
+    {
+      scopes: editorHotkey,
+    },
+  );
 
   return (
     <S.ToolbarWrapper>

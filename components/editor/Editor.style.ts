@@ -8,7 +8,6 @@ export const EditorWrapper = styled.div`
   background-color: ${theme.primary};
   #editor {
     background-color: white;
-    border: 1px solid black;
     padding: 5rem;
     box-sizing: border-box;
     display: inline-block;
