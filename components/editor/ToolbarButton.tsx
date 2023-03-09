@@ -1,13 +1,11 @@
-import { ReactNode } from "react";
+import { EditButtonArgument } from "@/types/editor.interface";
 import * as S from "./ToolbarButton.style";
 
-interface EditButtonProps {
-  cmd: string;
-  arg?: string;
-  icon: ReactNode;
-}
-
-export default function ToolbarButtonView({ cmd, arg, icon }: EditButtonProps) {
+export default function ToolbarButtonView({
+  cmd,
+  arg,
+  icon,
+}: EditButtonArgument) {
   return (
     <S.ToolbarButton
       key={cmd}

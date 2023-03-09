@@ -10,10 +10,9 @@ export default function ArtworkView({
   isLike,
   tagList,
   writer,
-  id,
 }: Artwork) {
   return (
-    <S.ArtworkWrapper >
+    <S.ArtworkWrapper>
       <S.ArtworkThumbnailWrapper>
         <Image src={artworkThumbnail} alt={artworkName} fill />
         <S.ArtworkLikeIconWrapper>
