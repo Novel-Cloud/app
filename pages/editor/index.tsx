@@ -16,15 +16,13 @@ import ItalicIcon from "@/components/icons/editor/ItalicIcon";
 import OrderedListIcon from "@/components/icons/editor/OrderedListIcon";
 import ParagraphIcon from "@/components/icons/editor/ParagraphIcon";
 import UnOrderedListIcon from "@/components/icons/editor/UnOrderedListIcon";
-import { editorHotkeyState } from "@/context";
+import { editorHotkeyRange } from "@/key/editor.index";
 import EditorLayout from "@/layout/EditorLayout";
 import { EditButtonArgument, ShortCut } from "@/types/editor.interface";
 import { useMemo } from "react";
 import { HotkeysProvider, useHotkeys } from "react-hotkeys-hook";
-import { useRecoilValue } from "recoil";
 
 export default function EditorPage() {
-  const editorHotkey = useRecoilValue(editorHotkeyState);
   const keymapList = useMemo(
     () => [
       "ctrl+1",
@@ -62,7 +60,7 @@ export default function EditorPage() {
       if (command) getCommand(number);
     },
     {
-      scopes: editorHotkey,
+      scopes: editorHotkeyRange,
     },
   );
 
@@ -90,7 +88,7 @@ export default function EditorPage() {
   ];
 
   return (
-    <HotkeysProvider initiallyActiveScopes={editorHotkey}>
+    <HotkeysProvider initiallyActiveScopes={editorHotkeyRange}>
       <EditorLayout
         editor={<EditorView getCommand={getCommand} />}
         toolbar={
