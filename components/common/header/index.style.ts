@@ -1,7 +1,7 @@
 import theme from "@/styles/theme";
 import styled from "styled-components";
 
-export const HeaderWrapper = styled.header`
+export const HeaderWrapper = styled.form`
   background-color: ${theme.primary};
   display: flex;
   align-items: center;

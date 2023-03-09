@@ -13,7 +13,7 @@ export default function ArtworkList({
       <ButtonList />
       <S.ArtworkListWrapper>
         {artworkList.map((artwork) => (
-          <ArtworkView {...artwork} />
+          <ArtworkView {...artwork} key={artwork.id} />
         ))}
       </S.ArtworkListWrapper>
     </S.ArtworkFrameWrapper>

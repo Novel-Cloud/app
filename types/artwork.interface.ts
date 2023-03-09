@@ -11,3 +11,11 @@ export interface Artwork {
   };
   tagList: Tag[];
 }
+
+export interface ArtworkForm {
+  artworkType: string;
+  artworkThumbnail: string;
+  artworkName: string;
+  artworkDescription: string;
+  tagList: Tag[];
+}
