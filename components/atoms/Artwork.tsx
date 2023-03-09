@@ -1,5 +1,6 @@
 import { Artwork } from "@/types/artwork.interface";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import FilledLikeIcon from "../icons/artwork/FilledLikeIcon";
 import LikeIcon from "../icons/artwork/LikeIcon";
 import * as S from "./Artwork.style";
@@ -10,9 +11,11 @@ export default function ArtworkView({
   isLike,
   tagList,
   writer,
+  id,
 }: Artwork) {
+  const router = useRouter();
   return (
-    <S.ArtworkWrapper>
+    <S.ArtworkWrapper onClick={() => router.push(`/artwork/${id}`)}>
       <S.ArtworkThumbnailWrapper>
         <Image src={artworkThumbnail} alt={artworkName} fill />
         <S.ArtworkLikeIconWrapper>
@@ -22,7 +25,9 @@ export default function ArtworkView({
 
       <S.ArtworkTitle>{artworkName}</S.ArtworkTitle>
       <S.ArtworkInfoWrapper>
-        <S.WriterWrapper>
+        <S.WriterWrapper
+          onClick={() => router.push(`/profile/${writer.writerId}`)}
+        >
           <Image
             src={writer.writerProfile}
             alt={writer.writerName}

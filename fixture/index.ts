@@ -12,6 +12,7 @@ const artwork: Artwork = {
   artworkThumbnail:
     "https://velog.velcdn.com/images/j1min/post/7f3aec7a-de2d-4d9d-b436-b874e5eff50c/image.png",
   writer: {
+    writerId: 1,
     writerName: "와따시",
     writerProfile:
       "https://velog.velcdn.com/images/j1min/post/59c03f65-0531-4363-8405-ed93e9a172c1/image.png",

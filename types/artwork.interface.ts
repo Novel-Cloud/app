@@ -1,14 +1,17 @@
 import { Tag } from "./fixture.interface";
 
+export interface Writer {
+  writerName: string;
+  writerProfile: string;
+  writerId: number;
+}
+
 export interface Artwork {
   id: number;
   artworkName: string;
   isLike: boolean;
   artworkThumbnail: string;
-  writer: {
-    writerName: string;
-    writerProfile: string;
-  };
+  writer: Writer;
   tagList: Tag[];
 }
 
