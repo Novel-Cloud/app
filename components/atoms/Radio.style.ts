@@ -9,6 +9,7 @@ export const Radio = styled.input.attrs({ type: "radio" })`
   border-radius: 9999px;
   background-color: white;
   outline: 1px solid ${theme.primary};
+  cursor: pointer;
   &:checked {
     border: 3px solid white;
     background-color: ${theme.primary};

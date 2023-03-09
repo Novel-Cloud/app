@@ -4,7 +4,8 @@ import styled from "styled-components";
 export const FileUploaderWrapper = styled.div`
   position: relative;
   object-fit: cover;
-  width: 900px;
+  width: 100%;
+
   height: 500px;
   margin-top: 4rem;
   border: 2px solid ${theme.primary};

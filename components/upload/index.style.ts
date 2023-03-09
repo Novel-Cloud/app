@@ -10,3 +10,10 @@ export const UploadTitle = styled.h1`
   font-size: 48px;
   margin-bottom: 50px;
 `;
+
+export const ArtworkFormWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 3rem 0;
+  gap: 12px;
+`;
