@@ -15,7 +15,7 @@ export default function Login() {
       <div>
         <S.LoginTitle>Login</S.LoginTitle>
         <LoginButton>
-          <GoogleIcon /> Link Start
+          <GoogleIcon /> Link Start!
         </LoginButton>
       </div>
     </S.LoginWrapper>
