@@ -1,3 +1,4 @@
+import Header from "@/components/common/header";
 import { ReactNode } from "react";
 import * as S from "./ArtworkDetailLayout.style";
 
@@ -6,5 +7,10 @@ interface ArtworkDetailLayoutProps {
 }
 
 export default function ArtworkDetailLayout({ app }: ArtworkDetailLayoutProps) {
-  return <S.ArtworkDetailLayoutWrapper>{app}</S.ArtworkDetailLayoutWrapper>;
+  return (
+    <>
+      <Header />
+      <S.ArtworkDetailLayoutWrapper>{app}</S.ArtworkDetailLayoutWrapper>
+    </>
+  );
 }
