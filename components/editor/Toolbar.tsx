@@ -25,11 +25,6 @@ export default function ToolbarView() {
     { cmd: "insertParagraph", icon: <ParagraphIcon /> },
     { cmd: "insertUnorderedList", icon: <UnOrderedListIcon /> },
     { cmd: "insertOrderedList", icon: <OrderedListIcon /> },
-    {
-      cmd: "insertText",
-      arg: "엄준식",
-      icon: <ShortCutIcon />,
-    },
     { cmd: "insertHorizontalRule", icon: <HrIcon /> },
     { cmd: "italic", arg: "i", icon: <ItalicIcon /> },
     { cmd: "bold", arg: "b", icon: <BoldIcon /> },
@@ -46,9 +41,20 @@ export default function ToolbarView() {
   ];
   return (
     <S.ToolbarWrapper>
-      {editButtonArgumentList.map((editButtonArgument, idx) => (
-        <ToolbarButtonView key={idx} {...editButtonArgument} />
-      ))}
+      <S.Toolbar>
+        {editButtonArgumentList.map((editButtonArgument, idx) => (
+          <ToolbarButtonView key={idx} {...editButtonArgument} />
+        ))}
+      </S.Toolbar>
+      <S.Toolbar>
+        <ToolbarButtonView
+          {...{
+            cmd: "insertText",
+            arg: "엄준식",
+            icon: <ShortCutIcon />,
+          }}
+        />
+      </S.Toolbar>
     </S.ToolbarWrapper>
   );
 }
