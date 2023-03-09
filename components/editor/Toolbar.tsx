@@ -16,7 +16,7 @@ import H4Icon from "../icons/editor/H4Icon";
 import H3Icon from "../icons/editor/H3Icon";
 import H2Icon from "../icons/editor/H2Icon";
 import H1Icon from "../icons/editor/H1Icon";
-import Button from "../atoms/Button";
+import ShortCutButton from "./ShortCutButton";
 
 export default function ToolbarView() {
   const editButtonArgumentList = [
@@ -40,6 +40,10 @@ export default function ToolbarView() {
     { cmd: "fontSize", arg: "3", icon: <H4Icon /> },
     { cmd: "fontSize", arg: "1", icon: <H5Icon /> },
   ];
+  const shortCutList = new Array(12)
+    .fill({ content: "안녕하세요1111111" })
+    .map((data, idx) => ({ ...data, id: idx }));
+
   return (
     <S.ToolbarWrapper>
       <S.Toolbar>
@@ -52,15 +56,16 @@ export default function ToolbarView() {
           <ShortCutIcon />
         </S.ShortCutIconWrapper>
         <S.Toolbar style={{ marginTop: "20px", paddingBottom: "20px" }}>
-          {new Array(12).fill(null).map((_, idx) => (
-            <ToolbarButtonView
-              key={idx}
-              {...{
-                cmd: "insertText",
-                arg: "안녕하세용",
-                icon: <Button>안녕하세용</Button>,
+          {shortCutList.map(({ content, id }) => (
+            <ShortCutButton
+              key={id}
+              onMouseDown={(event) => {
+                event.preventDefault();
+                document.execCommand("insertText", false, content);
               }}
-            />
+            >
+              {content}
+            </ShortCutButton>
           ))}
         </S.Toolbar>
       </S.Toolbar>

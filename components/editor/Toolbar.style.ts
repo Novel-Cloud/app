@@ -5,6 +5,7 @@ export const Toolbar = styled.div`
   display: flex;
   overflow: auto;
   align-items: center;
+  gap: 8px;
 `;
 
 export const ToolbarWrapper = styled.div`
@@ -16,6 +17,7 @@ export const ToolbarWrapper = styled.div`
 `;
 
 export const ShortCutIconWrapper = styled.div`
+  margin-right: 10px;
   svg {
     width: 40px;
     height: 40px;
