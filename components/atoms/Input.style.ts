@@ -12,7 +12,7 @@ export const Input = styled.input<InputProps>`
     props.varient === "primary" ? theme.primary : theme.secondary};
   color: ${(props) =>
     props.varient === "primary" ? theme.secondary : theme.primary};
-  width: ${(props) => (props.isFull ? "100%" : "auto")};
+  width: ${(props) => (props.isFull ? "100%" : "")};
   border: 0;
   box-sizing: border-box;
   border-radius: 6px;

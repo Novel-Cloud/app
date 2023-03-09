@@ -1,20 +1,15 @@
 import { Tag } from "./fixture.interface";
 
-export interface Writer {
-  writerName: string;
-  writerProfile: string;
-  writerId: number;
-}
-
 export interface Artwork {
   id: number;
   artworkName: string;
   isLike: boolean;
   artworkThumbnail: string;
-  writer: Writer;
+  writer: {
+    writerName: string;
+    writerProfile: string;
+  };
   tagList: Tag[];
-  commentList: string[];
-  content: string;
 }
 
 export interface ArtworkForm {

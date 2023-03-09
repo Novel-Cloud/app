@@ -7,7 +7,3 @@ export const useTag = () => {
 export const useArtworkList = () => {
   return { data: fixture.artworkList };
 };
-
-export const useArtwork = (artworkId: number) => {
-  return { data: fixture.artwork };
-};

@@ -4,7 +4,6 @@ import styled from "styled-components";
 
 interface StyledButtonProps {
   varient?: Varient;
-  rounded?: boolean;
 }
 
 export const Button = styled.button<StyledButtonProps>`
@@ -13,7 +12,7 @@ export const Button = styled.button<StyledButtonProps>`
   color: ${(props) =>
     props.varient === "primary" ? theme.primary : theme.secondary};
   padding: 0.5rem 1.25rem;
-  border-radius: ${(props) => (props.rounded ? "9999px" : "0.25rem")};
+  border-radius: 0.25rem;
   font-weight: 900;
   border: 0;
   font-size: 0.875rem;
