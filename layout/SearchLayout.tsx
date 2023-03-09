@@ -4,13 +4,17 @@ import * as S from "./SearchLayout.style";
 
 interface SearchLayoutProps {
   app: ReactNode;
+  result: ReactNode;
 }
 
-export default function SearchLayout({ app }: SearchLayoutProps) {
+export default function SearchLayout({ app, result }: SearchLayoutProps) {
   return (
     <>
       <Header />
-      <S.SearchLayoutWrapper>{app}</S.SearchLayoutWrapper>
+      <S.SearchLayoutWrapper>
+        {result}
+        {app}
+      </S.SearchLayoutWrapper>
     </>
   );
 }
