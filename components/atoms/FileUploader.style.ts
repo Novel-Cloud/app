@@ -6,8 +6,9 @@ export const FileUploaderWrapper = styled.div`
   object-fit: cover;
   width: 900px;
   height: 500px;
-  margin-top: 5rem;
+  margin-top: 4rem;
   img {
+    border: 2px solid ${theme.primary};
     border-radius: 10px;
     opacity: 0.3;
   }
@@ -25,4 +26,5 @@ export const FileUploadButton = styled.label`
   cursor: pointer;
   border-radius: 10px;
   font-size: 14px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 `;
