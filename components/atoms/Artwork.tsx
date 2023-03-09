@@ -15,15 +15,22 @@ export default function ArtworkView({
 }: Artwork) {
   const router = useRouter();
   return (
-    <S.ArtworkWrapper onClick={() => router.push(`/artwork/${id}`)}>
+    <S.ArtworkWrapper>
       <S.ArtworkThumbnailWrapper>
-        <Image src={artworkThumbnail} alt={artworkName} fill />
-        <S.ArtworkLikeIconWrapper>
+        <Image
+          src={artworkThumbnail}
+          alt={artworkName}
+          fill
+          onClick={() => router.push(`/artwork/${id}`)}
+        />
+        <S.ArtworkLikeIconWrapper onClick={() => console.log("조아용")}>
           {isLike ? <FilledLikeIcon /> : <LikeIcon />}
         </S.ArtworkLikeIconWrapper>
       </S.ArtworkThumbnailWrapper>
 
-      <S.ArtworkTitle>{artworkName}</S.ArtworkTitle>
+      <S.ArtworkTitle onClick={() => router.push(`/artwork/${id}`)}>
+        {artworkName}
+      </S.ArtworkTitle>
       <S.ArtworkInfoWrapper>
         <S.WriterWrapper
           onClick={() => router.push(`/profile/${writer.writerId}`)}

@@ -48,7 +48,8 @@ export const ArtworkLikeIconWrapper = styled.div`
   position: absolute;
   bottom: 0;
   right: 0;
-  cursor: pointer;
+  cursor: alias;
+  z-index: 10;
 `;
 
 export const ArtworkInfoWrapper = styled.div`
@@ -63,6 +64,7 @@ export const WriterWrapper = styled.div`
   align-items: center;
   gap: 4px;
   margin-right: 10px;
+  cursor: pointer;
 `;
 
 export const ArtworkTag = styled.span`
