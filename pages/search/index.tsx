@@ -7,10 +7,8 @@ import { useEffect, useState } from "react";
 
 export default function SearchPage() {
   const router = useRouter();
-  const { data: artworkList } = useArtworkList();
-  console.log(router.query.keyword);
-
   const [keyword, setKeyword] = useState<string>("");
+  const { data: artworkList } = useArtworkList();
 
   useEffect(() => {
     setKeyword(router.query.keyword as string);
