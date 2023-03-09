@@ -1,8 +1,16 @@
+import ArtworkList from "@/components/atoms/ArtworkList";
+import TagList from "@/components/atoms/TagList";
+import MainLayout from "@/layout/MainLayout";
+import { useArtworkList, useTag } from "@/model/artwork";
 import React from "react";
-import { useRecoilState } from "recoil";
-import { textState } from "../context";
 
 export default function Main() {
-  const [text] = useRecoilState(textState);
-  return <section id="main">I love {text} 1.2.9</section>;
+  const { data: tagList } = useTag();
+  const { data: artworkList } = useArtworkList();
+  return (
+    <MainLayout
+      tags={<TagList tagList={tagList} />}
+      app={<ArtworkList artworkList={artworkList} />}
+    />
+  );
 }
