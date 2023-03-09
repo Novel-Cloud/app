@@ -1,7 +1,7 @@
 import { Artwork } from "@/types/artwork.interface";
 import Image from "next/image";
 import FilledLikeIcon from "../icons/artwork/FilledLikeIcon";
-import LikeIcon from "../icons/LikeIcon";
+import LikeIcon from "../icons/artwork/LikeIcon";
 import * as S from "./Artwork.style";
 
 export default function ArtworkView({

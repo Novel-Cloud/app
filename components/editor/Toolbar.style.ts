@@ -3,14 +3,21 @@ import styled from "styled-components";
 
 export const Toolbar = styled.div`
   display: flex;
-  gap: 4px;
-  margin-bottom: 4px;
+  overflow: auto;
+  align-items: center;
 `;
 
 export const ToolbarWrapper = styled.div`
   position: sticky;
   top: 0;
-  padding: 20px;
+  padding: 20px 20px 10px 20px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   background-color: ${theme.primary};
+`;
+
+export const ShortCutIconWrapper = styled.div`
+  svg {
+    width: 40px;
+    height: 40px;
+  }
 `;

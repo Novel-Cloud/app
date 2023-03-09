@@ -16,6 +16,7 @@ import H4Icon from "../icons/editor/H4Icon";
 import H3Icon from "../icons/editor/H3Icon";
 import H2Icon from "../icons/editor/H2Icon";
 import H1Icon from "../icons/editor/H1Icon";
+import Button from "../atoms/Button";
 
 export default function ToolbarView() {
   const editButtonArgumentList = [
@@ -47,13 +48,21 @@ export default function ToolbarView() {
         ))}
       </S.Toolbar>
       <S.Toolbar>
-        <ToolbarButtonView
-          {...{
-            cmd: "insertText",
-            arg: "엄준식",
-            icon: <ShortCutIcon />,
-          }}
-        />
+        <S.ShortCutIconWrapper>
+          <ShortCutIcon />
+        </S.ShortCutIconWrapper>
+        <S.Toolbar style={{ marginTop: "20px", paddingBottom: "20px" }}>
+          {new Array(12).fill(null).map((_, idx) => (
+            <ToolbarButtonView
+              key={idx}
+              {...{
+                cmd: "insertText",
+                arg: "안녕하세용",
+                icon: <Button>안녕하세용</Button>,
+              }}
+            />
+          ))}
+        </S.Toolbar>
       </S.Toolbar>
     </S.ToolbarWrapper>
   );
