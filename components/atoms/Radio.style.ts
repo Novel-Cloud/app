@@ -24,3 +24,11 @@ export const RadioTitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
+export const RadioLabel = styled.label`
+  font-size: 20px;
+`;
+
+export const RadioDescription = styled.span`
+  font-size: 14px;
+`;

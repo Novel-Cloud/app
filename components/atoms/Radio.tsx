@@ -30,8 +30,8 @@ export default function Radio({
         {...registerReturn}
       />
       <S.RadioTitleWrapper>
-        <label htmlFor={id}>{label}</label>
-        <span>{description}</span>
+        <S.RadioLabel htmlFor={id}>{label}</S.RadioLabel>
+        <S.RadioDescription>{description}</S.RadioDescription>
       </S.RadioTitleWrapper>
     </S.RadioWrapper>
   );

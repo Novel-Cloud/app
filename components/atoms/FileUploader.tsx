@@ -17,7 +17,7 @@ export default function FileUploader({
 }: FileUploaderProps) {
   return (
     <S.FileUploaderWrapper>
-      <Image src={src} alt={src} fill />
+      {src !== "" && <Image src={src} alt={src} fill />}
       <S.FileUploadButton htmlFor={id}>{label}</S.FileUploadButton>
       <input type="file" id={id} hidden onChange={onChange} />
     </S.FileUploaderWrapper>

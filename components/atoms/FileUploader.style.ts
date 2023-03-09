@@ -7,10 +7,11 @@ export const FileUploaderWrapper = styled.div`
   width: 900px;
   height: 500px;
   margin-top: 4rem;
+  border: 2px solid ${theme.primary};
+  border-radius: 10px;
   img {
-    border: 2px solid ${theme.primary};
-    border-radius: 10px;
     opacity: 0.3;
+    object-fit: cover;
   }
 `;
 
