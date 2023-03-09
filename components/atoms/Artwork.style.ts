@@ -5,8 +5,7 @@ export const ArtworkListWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 60px;
-  justify-content: center;
-  padding: 2rem 2rem 5rem 2rem;
+  padding: 3rem 2rem 5rem 7rem;
 `;
 
 export const ArtworkFrameWrapper = styled.div`

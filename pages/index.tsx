@@ -9,8 +9,8 @@ export default function Main() {
   const { data: artworkList } = useArtworkList();
   return (
     <MainLayout
-      app={<ArtworkList artworkList={artworkList} />}
       tags={<TagList tagList={tagList} />}
+      app={<ArtworkList artworkList={artworkList} />}
     />
   );
 }
