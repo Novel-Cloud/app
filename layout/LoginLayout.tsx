@@ -1,3 +1,4 @@
+import Header from "@/components/common/header";
 import { ReactNode } from "react";
 import * as S from "./LoginLayout.style";
 
@@ -10,5 +11,10 @@ function Frame({ app }: LoginLayoutProps) {
 }
 
 export default function LoginLayout(props: LoginLayoutProps) {
-  return <Frame {...props} />;
+  return (
+    <>
+      <Header />
+      <Frame {...props} />
+    </>
+  );
 }
