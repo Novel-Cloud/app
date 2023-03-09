@@ -34,11 +34,11 @@ export default function ToolbarView() {
       arg: "https://placekitten.com/200/300",
       icon: <ImageIcon />,
     },
-    { cmd: "fontSize", arg: "1", icon: <H5Icon /> },
-    { cmd: "fontSize", arg: "3", icon: <H4Icon /> },
-    { cmd: "fontSize", arg: "5", icon: <H3Icon /> },
-    { cmd: "fontSize", arg: "6", icon: <H2Icon /> },
     { cmd: "fontSize", arg: "7", icon: <H1Icon /> },
+    { cmd: "fontSize", arg: "6", icon: <H2Icon /> },
+    { cmd: "fontSize", arg: "5", icon: <H3Icon /> },
+    { cmd: "fontSize", arg: "3", icon: <H4Icon /> },
+    { cmd: "fontSize", arg: "1", icon: <H5Icon /> },
   ];
   return (
     <S.ToolbarWrapper>
