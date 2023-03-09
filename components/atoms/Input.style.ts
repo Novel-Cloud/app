@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 interface InputProps {
   varient?: Varient;
-  isFull: boolean;
+  isFull?: boolean;
 }
 
 export const Input = styled.input<InputProps>`
