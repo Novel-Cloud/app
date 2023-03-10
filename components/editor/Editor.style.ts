@@ -4,30 +4,36 @@ import styled from "styled-components";
 export const EditorWrapper = styled.div`
   display: flex;
   justify-content: center;
-  padding: 1.5rem;
+  padding: 2rem;
   background-color: ${theme.primary};
+
   #editor {
-    background-color: white;
-    padding: 5rem;
+    overflow-y: auto !important;
+    padding: 5rem calc(5rem - 18px) 5rem 5rem;
     box-sizing: border-box;
-    display: inline-block;
-    font-weight: lighter;
     width: 50rem;
     height: 70rem;
     font-family: Pretendard;
     background-color: ${theme.secondary};
     color: ${theme.primary};
-    overflow: hidden;
     cursor: text;
-    line-height: 1em;
     font-size: 1.25rem;
-    white-space: wrap;
     overflow-y: scroll;
     font-weight: 600;
     line-height: 1.3;
-
     &:focus {
       outline: none;
+    }
+    &::-webkit-scrollbar {
+      width: 12px; /* 스크롤바의 너비 */
+    }
+    &::-webkit-scrollbar-thumb {
+      background: ${theme.primary}; /* 스크롤바의 색상 */
+      border-radius: 9999px;
+      border: 3px solid ${theme.secondary};
+    }
+    &::-webkit-scrollbar-track {
+      background: ${theme.secondary}; /*스크롤바 뒷 배경 색상*/
     }
   }
 `;
