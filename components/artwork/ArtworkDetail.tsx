@@ -13,14 +13,12 @@ export default function ArtworkDetail({ artwork }: { artwork: Artwork }) {
         <div>
           <S.ArtworkTitle>{artwork.artworkName}</S.ArtworkTitle>
           <S.ArtworkWriterWrapper>
-            <S.ArtworkWriterProfileWrapper>
-              <Image
-                src={artwork.writer.writerProfile}
-                alt={artwork.writer.writerName}
-                width={48}
-                height={48}
-              />
-            </S.ArtworkWriterProfileWrapper>
+            <Image
+              src={artwork.writer.writerProfile}
+              alt={artwork.writer.writerName}
+              width={48}
+              height={48}
+            />
             <S.ArtworkWriterName>
               {artwork.writer.writerName}
             </S.ArtworkWriterName>

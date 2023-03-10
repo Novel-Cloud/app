@@ -16,12 +16,18 @@ export const ArtworkTitle = styled.h1`
 `;
 export const ArtworkWriterName = styled.h3`
   font-size: 20px;
+  margin: 0;
 `;
+
 export const ArtworkWriterProfileWrapper = styled.div``;
 export const ArtworkWriterWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-top: 16px;
+  button {
+    padding: 5px 10px;
+  }
 `;
 
 export const ArtworkContentWrapper = styled.div`
