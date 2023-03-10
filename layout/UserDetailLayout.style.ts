@@ -1,3 +1,6 @@
+import theme from "@/styles/theme";
 import styled from "styled-components";
 
-export const ArtworkDetailLayoutWrapper = styled.div``;
+export const UserDetailLayoutWrapper = styled.div`
+  background-color: ${theme.primary};
+`;

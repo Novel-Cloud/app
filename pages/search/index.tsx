@@ -16,7 +16,7 @@ export default function SearchPage() {
 
   return (
     <SearchLayout
-      app={<ArtworkList artworkList={artworkList} />}
+      app={<ArtworkList artworkList={artworkList} isButtonList />}
       result={<SearchResult keyword={keyword} />}
     />
   );

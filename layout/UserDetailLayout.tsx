@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import * as S from "./ArtworkDetailLayout.style";
+import * as S from "./UserDetailLayout.style";
 
 interface UserDetailLayoutProps {
   app: ReactNode;
@@ -11,9 +11,9 @@ export default function UserDetailLayout({
   background,
 }: UserDetailLayoutProps) {
   return (
-    <S.ArtworkDetailLayoutWrapper>
+    <S.UserDetailLayoutWrapper>
       {background}
       {app}
-    </S.ArtworkDetailLayoutWrapper>
+    </S.UserDetailLayoutWrapper>
   );
 }

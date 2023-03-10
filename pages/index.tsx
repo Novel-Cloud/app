@@ -10,7 +10,7 @@ export default function Main() {
   return (
     <MainLayout
       tags={<TagList tagList={tagList} />}
-      app={<ArtworkList artworkList={artworkList} />}
+      app={<ArtworkList artworkList={artworkList} isButtonList />}
     />
   );
 }

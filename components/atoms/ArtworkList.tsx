@@ -5,12 +5,14 @@ import * as S from "./Artwork.style";
 
 export default function ArtworkList({
   artworkList,
+  isButtonList = false,
 }: {
   artworkList: Artwork[];
+  isButtonList?: boolean;
 }) {
   return (
     <S.ArtworkFrameWrapper>
-      <ButtonList />
+      {isButtonList && <ButtonList />}
       <S.ArtworkListWrapper>
         {artworkList.map((artwork) => (
           <ArtworkView {...artwork} key={artwork.id} />

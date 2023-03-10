@@ -21,6 +21,7 @@ export const ArtworkWrapper = styled.div`
   padding: 16px;
   box-sizing: border-box;
   background-color: ${theme.secondary};
+  color: ${theme.primary} !important;
   border-radius: 10px;
 `;
 
