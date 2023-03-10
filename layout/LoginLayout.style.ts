@@ -1,5 +1,5 @@
 import styled from "styled-components";
 
 export const LoginLayout = styled.section`
-  min-height: calc(100vh - 85px);
+  min-height: calc(100vh - 86px);
 `;

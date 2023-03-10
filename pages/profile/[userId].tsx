@@ -1,7 +1,7 @@
 import Header from "@/components/common/header";
 import ProfileBackground from "@/components/profile/ProfileBackground";
 import ProfileInfo from "@/components/profile/ProfileInfo";
-import UserDetailLayout from "@/layout/UserDetailLayout";
+import ProfileLayout from "@/layout/ProfileLayout";
 import { useRouter } from "next/router";
 
 export default function ArtworkDetailPage() {
@@ -12,10 +12,7 @@ export default function ArtworkDetailPage() {
   return (
     <>
       <Header />
-      <UserDetailLayout
-        background={<ProfileBackground />}
-        app={<ProfileInfo />}
-      />
+      <ProfileLayout background={<ProfileBackground />} app={<ProfileInfo />} />
     </>
   );
 }
