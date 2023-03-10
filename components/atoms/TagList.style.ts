@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const TagTitle = styled.h2`
   font-size: 2rem;
   font-weight: 900;
-  margin: 4rem 0 0 7rem;
+  padding: 4rem 0 0 7rem;
 `;
 
 export const TagWrapper = styled.article`
@@ -11,11 +11,14 @@ export const TagWrapper = styled.article`
   gap: 10px;
   align-items: center;
   overflow: auto;
-  padding-bottom: 20px;
+  padding-bottom: 12px;
 `;
 
 export const TagListWrapper = styled.div`
-  margin: 3rem 0 0 7rem;
+  padding: 3rem 0 0 7rem;
 `;
 
-export const TagListTitle = styled.h1``;
+export const TagListTitle = styled.h1`
+  margin: 0;
+  padding-bottom: 20px;
+`;
