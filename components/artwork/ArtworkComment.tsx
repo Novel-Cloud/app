@@ -13,8 +13,8 @@ export default function ArtworkComment({ artwork }: { artwork: Artwork }) {
         <Image
           src={artwork.writer.writerProfile}
           alt={artwork.writer.writerName}
-          width={48}
-          height={48}
+          width={52}
+          height={52}
         />
         <Input varient="secondary" isFull />
         <Button rounded>전송</Button>

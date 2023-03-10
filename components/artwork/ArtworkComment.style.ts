@@ -29,6 +29,7 @@ export const CommentTitle = styled.h2`
 
 export const CommentInputWrapper = styled.div`
   display: flex;
+  align-items: center;
   gap: 24px;
   margin-bottom: 30px;
 `;

@@ -17,6 +17,7 @@ export const Input = styled.input<InputProps>`
   box-sizing: border-box;
   border-radius: 6px;
   padding: 0.5rem 1rem;
+  filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.25));
   &:focus {
     outline: none;
   }

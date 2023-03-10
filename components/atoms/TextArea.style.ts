@@ -11,6 +11,7 @@ export const TextArea = styled.textarea`
   border: 0;
   border-radius: 6px;
   color: ${theme.primary};
+  filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.25));
   &:focus {
     outline: none;
   }
