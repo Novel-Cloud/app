@@ -24,7 +24,7 @@ export default function ToolbarView({
         <S.ShortCutIconWrapper>
           <ShortCutIcon />
         </S.ShortCutIconWrapper>
-        <S.Toolbar style={{ marginTop: "20px", paddingBottom: "20px" }}>
+        <S.Toolbar style={{ marginTop: "1.25rem", paddingBottom: "1.25rem" }}>
           {shortCutList.map(({ content, id }) => (
             <ShortCutButton
               key={id}

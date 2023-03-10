@@ -9,7 +9,7 @@ export const EditorWrapper = styled.div`
 
   #editor {
     overflow-y: auto !important;
-    padding: 5rem calc(5rem - 18px) 5rem 5rem;
+    padding: 5rem calc(5rem - 1.125rem) 5rem 5rem;
     box-sizing: border-box;
     width: 50rem;
     height: 70rem;
@@ -25,7 +25,7 @@ export const EditorWrapper = styled.div`
       outline: none;
     }
     &::-webkit-scrollbar {
-      width: 12px; /* 스크롤바의 너비 */
+      width: 0.75rem; /* 스크롤바의 너비 */
     }
     &::-webkit-scrollbar-thumb {
       background: ${theme.primary}; /* 스크롤바의 색상 */

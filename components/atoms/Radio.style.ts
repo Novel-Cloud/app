@@ -3,9 +3,9 @@ import styled from "styled-components";
 
 export const Radio = styled.input.attrs({ type: "radio" })`
   appearance: none;
-  width: 24px;
-  height: 24px;
-  margin-right: 8px;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-right: 0.5rem;
   border-radius: 9999px;
   background-color: white;
   outline: 1px solid ${theme.primary};
@@ -27,9 +27,9 @@ export const RadioTitleWrapper = styled.div`
 `;
 
 export const RadioLabel = styled.label`
-  font-size: 20px;
+  font-size: 1.25rem;
 `;
 
 export const RadioDescription = styled.span`
-  font-size: 14px;
+  font-size: 0.875rem;
 `;

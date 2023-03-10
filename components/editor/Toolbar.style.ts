@@ -5,22 +5,22 @@ export const Toolbar = styled.div`
   display: flex;
   overflow: auto;
   align-items: center;
-  gap: 8px;
-  padding-bottom: 20px;
+  gap: 0.5rem;
+  padding-bottom: 1.25rem;
 `;
 
 export const ToolbarWrapper = styled.div`
   position: sticky;
   top: 0;
-  padding: 20px 20px 0 20px;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  padding: 1.25rem 1.25rem 0 1.25rem;
+  filter: drop-shadow(0px 0.25rem 0.25rem rgba(0, 0, 0, 0.25));
   background-color: ${theme.primary};
 `;
 
 export const ShortCutIconWrapper = styled.div`
-  margin-right: 10px;
+  margin-right: 0.625rem;
   svg {
-    width: 40px;
-    height: 40px;
+    width: 2.5rem;
+    height: 2.5rem;
   }
 `;

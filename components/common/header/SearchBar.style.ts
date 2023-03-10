@@ -16,8 +16,8 @@ export const SearchBar = styled(Input)`
 
 export const SearchIconWrapper = styled.div`
   position: absolute;
-  top: 8px;
-  right: 20px;
+  top: 0.5rem;
+  right: 1.25rem;
   cursor: pointer;
   & > svg {
     width: 1.25rem;

@@ -5,12 +5,12 @@ export const FileUploaderWrapper = styled.div`
   position: relative;
   object-fit: cover;
   width: 100%;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  filter: drop-shadow(0px 0.25rem 0.25rem rgba(0, 0, 0, 0.25));
   background-color: white;
-  height: 500px;
+  height: 31.25rem;
   margin-top: 4rem;
   border: 2px solid ${theme.primary};
-  border-radius: 10px;
+  border-radius: 0.625rem;
   img {
     opacity: 0.3;
     object-fit: cover;
@@ -25,9 +25,9 @@ export const FileUploadButton = styled.label`
   z-index: 10;
   background-color: ${theme.secondary};
   color: ${theme.primary};
-  padding: 10px 20px;
+  padding: 0.625rem 1.25rem;
   cursor: pointer;
-  border-radius: 10px;
-  font-size: 14px;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  border-radius: 0.625rem;
+  font-size: 0.875rem;
+  filter: drop-shadow(0px 0.25rem 0.25rem rgba(0, 0, 0, 0.25));
 `;

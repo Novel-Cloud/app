@@ -8,7 +8,7 @@ export const ToolbarButton = styled.button`
     opacity: 0.7;
   }
   svg {
-    width: 32px;
-    height: 32px;
+    width: 2rem;
+    height: 2rem;
   }
 `;

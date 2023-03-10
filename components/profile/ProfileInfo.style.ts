@@ -11,28 +11,28 @@ export const ProfileInfoWrapper = styled.div`
 `;
 
 export const ProfileInfoTitle = styled.h2`
-  padding-top: 150px;
-  padding-left: 100px;
+  padding-top: 9.375rem;
+  padding-left: 6.25rem;
   margin: 0;
-  font-size: 30px;
+  font-size: 1.875rem;
 `;
 
 export const ProfileAvatarWrapper = styled.div`
   position: absolute;
   display: flex;
   flex-direction: column;
-  width: 220px;
-  height: 220px;
-  top: -150px;
+  width: 13.75rem;
+  height: 13.75rem;
+  top: -9.375rem;
   left: 7rem;
   text-align: center;
   color: ${theme.primary};
   span {
-    font-size: 30px;
+    font-size: 1.875rem;
     font-weight: 900;
   }
   img {
-    margin-top: 40px;
+    margin-top: 2.5rem;
   }
 `;
 
@@ -41,7 +41,7 @@ export const ProfileButtonWrapper = styled.div`
   right: 8rem;
   top: 2rem;
   button {
-    font-size: 18px;
-    padding: 14px 44px;
+    font-size: 1.125rem;
+    padding: 0.875rem 2.75rem;
   }
 `;

@@ -8,10 +8,10 @@ export const TagTitle = styled.h2`
 
 export const TagWrapper = styled.article`
   display: flex;
-  gap: 10px;
+  gap: 0.625rem;
   align-items: center;
   overflow: auto;
-  padding-bottom: 12px;
+  padding-bottom: 0.75rem;
 `;
 
 export const TagListWrapper = styled.div`
@@ -20,5 +20,5 @@ export const TagListWrapper = styled.div`
 
 export const TagListTitle = styled.h1`
   margin: 0;
-  padding-bottom: 20px;
+  padding-bottom: 1.25rem;
 `;

@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const ArtworkDetailWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 30px;
-  padding: 0 250px;
+  margin-top: 1.875rem;
+  padding: 0 15.625rem;
 `;
 export const ArtworkTitleWrapper = styled.div`
   display: flex;
@@ -15,7 +15,7 @@ export const ArtworkTitle = styled.h1`
   margin: 0;
 `;
 export const ArtworkWriterName = styled.h3`
-  font-size: 20px;
+  font-size: 1.25rem;
   margin: 0;
 `;
 
@@ -23,27 +23,27 @@ export const ArtworkWriterProfileWrapper = styled.div``;
 export const ArtworkWriterWrapper = styled.div`
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-top: 16px;
+  gap: 0.625rem;
+  margin-top: 1rem;
   button {
-    padding: 5px 10px;
+    padding: 0.375rem 0.625rem;
   }
 `;
 
 export const ArtworkContentWrapper = styled.div`
-  margin-top: 20px;
+  margin-top: 1.25rem;
 `;
 export const ArtworkDateWrapper = styled.div`
   display: flex;
-  gap: 24px;
+  gap: 1.25rem;
 `;
 export const ArtworkDate = styled.div`
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 0.25rem;
 
   svg {
-    width: 28px;
-    height: 28px;
+    width: 1.75rem;
+    height: 1.75rem;
   }
 `;

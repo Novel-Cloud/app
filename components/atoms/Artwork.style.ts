@@ -4,30 +4,30 @@ import styled from "styled-components";
 export const ArtworkListWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 60px;
+  gap: 3.75rem;
   padding: 3rem 7rem 5rem 7rem;
 `;
 
 export const ArtworkFrameWrapper = styled.div`
   position: relative;
   background-color: ${theme.primary};
-  margin-top: 90px;
+  margin-top: 5.625rem;
 `;
 
 export const ArtworkWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 250px;
-  padding: 16px;
+  width: 15.625rem;
+  padding: 1rem;
   box-sizing: border-box;
   background-color: ${theme.secondary};
   color: ${theme.primary} !important;
-  border-radius: 10px;
+  border-radius: 0.625rem;
 `;
 
 export const ArtworkTitle = styled.h2`
-  font-size: 18px;
-  width: 220px;
+  font-size: 1.125rem;
+  width: 13.75rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -39,9 +39,9 @@ export const ArtworkTitle = styled.h2`
 
 export const ArtworkThumbnailWrapper = styled.div`
   position: relative;
-  width: 220px;
-  height: 220px;
-  border-radius: 8px;
+  width: 13.75rem;
+  height: 13.75rem;
+  border-radius: 0.5rem;
   cursor: pointer;
 `;
 
@@ -59,23 +59,23 @@ export const ArtworkInfoWrapper = styled.div`
 `;
 
 export const WriterWrapper = styled.div`
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 900;
   display: flex;
   align-items: center;
-  gap: 4px;
-  margin-right: 10px;
+  gap: 0.25rem;
+  margin-right: 0.625rem;
   cursor: pointer;
 `;
 
 export const ArtworkTag = styled.span`
-  font-size: 12px;
-  margin-right: 4px;
+  font-size: 0.75rem;
+  margin-right: 0.25rem;
   font-weight: 900;
 `;
 
 export const ArtworkTagWrapper = styled.div`
-  width: 130px;
+  width: 8.125rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

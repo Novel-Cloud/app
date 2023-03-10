@@ -15,7 +15,7 @@ export const Input = styled.input<InputProps>`
   width: ${(props) => (props.isFull ? "100%" : "auto")};
   border: 0;
   box-sizing: border-box;
-  border-radius: 6px;
+  border-radius: 0.375rem;
   padding: 0.5rem 1rem;
   filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.25));
   &:focus {

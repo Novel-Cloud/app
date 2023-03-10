@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const BackgroundWrapper = styled.div`
-  padding-right: 100px;
-  padding-bottom: 30px;
-  height: 250px;
+  padding-right: 6.25rem;
+  padding-bottom: 1.875rem;
+  height: 15.625rem;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
@@ -12,12 +12,12 @@ export const BackgroundWrapper = styled.div`
 
 export const BackgroundInfoWrapper = styled.div`
   display: flex;
-  gap: 50px;
+  gap: 3.125rem;
   font-weight: 900;
-  font-size: 20px;
+  font-size: 1.25rem;
 `;
 export const BackgroundInfo = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 0.75rem;
 `;
