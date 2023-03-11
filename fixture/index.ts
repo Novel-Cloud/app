@@ -1,5 +1,4 @@
-import { Artwork } from "@/types/artwork.interface";
-import { Tag } from "@/types/fixture.interface";
+import { Artwork, Tag } from "@/types/artwork.interface";
 
 const tagList: Tag[] = new Array(20)
   .fill(null)

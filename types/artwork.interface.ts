@@ -1,5 +1,3 @@
-import { Tag } from "./fixture.interface";
-
 export interface Writer {
   writerName: string;
   writerProfile: string;
@@ -23,4 +21,9 @@ export interface ArtworkForm {
   artworkName: string;
   artworkDescription: string;
   tagList: Tag[];
+}
+
+export interface Tag {
+  tagName: string;
+  id: number;
 }

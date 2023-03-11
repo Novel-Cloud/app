@@ -1,4 +1,4 @@
-import { Tag } from "@/types/fixture.interface";
+import { Tag } from "@/types/artwork.interface";
 import TagView from "./Tag";
 import * as S from "./TagList.style";
 
