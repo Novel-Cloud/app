@@ -20,6 +20,7 @@ html {
   font-family: 'Pretendard-Regular';
   color: ${theme.primary};
 }
+
 `;
 
 export default UserStyle;

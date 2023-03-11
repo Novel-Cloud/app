@@ -1,3 +1,4 @@
+import theme from "@/styles/theme";
 import styled from "styled-components";
 
 export const TagTitle = styled.h2`
@@ -12,6 +13,17 @@ export const TagWrapper = styled.article`
   align-items: center;
   overflow: auto;
   padding-bottom: 0.75rem;
+  &::-webkit-scrollbar {
+    width: 0.75rem;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: ${theme.primary};
+    border-radius: 9999px;
+    border: 3px solid white;
+  }
+  &::-webkit-scrollbar-track {
+    background: white;
+  }
 `;
 
 export const TagListWrapper = styled.div`
