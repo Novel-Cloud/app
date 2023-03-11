@@ -8,6 +8,7 @@ export const FrameButton = styled(Button)`
   background-color: ${theme.primary};
   color: ${theme.secondary};
   border: 1px solid ${theme.primary};
+  filter: none;
   &:hover {
     background-color: transparent;
     color: ${theme.primary};
