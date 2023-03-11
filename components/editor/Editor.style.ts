@@ -25,15 +25,15 @@ export const EditorWrapper = styled.div`
       outline: none;
     }
     &::-webkit-scrollbar {
-      width: 0.75rem; /* 스크롤바의 너비 */
+      width: 0.75rem;
     }
     &::-webkit-scrollbar-thumb {
-      background: ${theme.primary}; /* 스크롤바의 색상 */
+      background: ${theme.primary};
       border-radius: 9999px;
       border: 3px solid ${theme.secondary};
     }
     &::-webkit-scrollbar-track {
-      background: ${theme.secondary}; /*스크롤바 뒷 배경 색상*/
+      background: ${theme.secondary};
     }
   }
 `;
