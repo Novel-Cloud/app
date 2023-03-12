@@ -24,7 +24,7 @@ export const HeaderWrapper = styled.form<{ isOpen: boolean }>`
   #toggle_button {
     display: none;
   }
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 1100px) {
     flex-direction: column;
     gap: 1rem;
     ${HeaderMenuWrapper} {
