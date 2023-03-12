@@ -43,6 +43,9 @@ export const ArtworkThumbnailWrapper = styled.div`
   height: 13.75rem;
   border-radius: 0.5rem;
   cursor: pointer;
+  img {
+    object-fit: cover;
+  }
 `;
 
 export const ArtworkLikeIconWrapper = styled.div`

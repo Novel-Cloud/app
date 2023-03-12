@@ -10,14 +10,12 @@ import Logo from "./Logo";
 export default function Header() {
   const router = useRouter();
   const [isOpen, toggle] = useReducer((state) => !state, false);
-
   const { register, handleSubmit } = useForm<{ keyword: string }>();
-  const onVaild = (keyword: string) => {
+  const onVaild = (keyword: string) =>
     router.push({
       pathname: "/search",
       query: { keyword },
     });
-  };
 
   return (
     <S.HeaderWrapper
