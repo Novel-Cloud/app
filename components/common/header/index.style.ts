@@ -33,7 +33,7 @@ export const HeaderWrapper = styled.form<{ isOpen: boolean }>`
     #toggle_button {
       display: block;
       position: absolute;
-      top: 14px;
+      top: 18px;
       right: 20px;
     }
   }
