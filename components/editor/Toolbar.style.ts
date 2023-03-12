@@ -7,6 +7,18 @@ export const Toolbar = styled.div`
   align-items: center;
   gap: 0.5rem;
   padding-bottom: 1.25rem;
+  &::-webkit-scrollbar {
+    width: 0.75rem;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: ${theme.primary};
+    border-radius: 9999px;
+    border: 3px solid ${theme.secondary};
+  }
+  &::-webkit-scrollbar-track {
+    background: ${theme.secondary};
+    border-radius: 9999px;
+  }
 `;
 
 export const ToolbarWrapper = styled.div`
