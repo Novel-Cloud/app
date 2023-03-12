@@ -45,6 +45,7 @@ export const ArtworkThumbnailWrapper = styled.div`
   cursor: pointer;
   img {
     object-fit: cover;
+    border-radius: 6px;
   }
 `;
 
