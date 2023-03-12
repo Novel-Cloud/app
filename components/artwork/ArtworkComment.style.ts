@@ -2,14 +2,21 @@ import theme from "@/styles/theme";
 import styled from "styled-components";
 
 export const CommentWrapper = styled.div`
-  padding: 1.25rem 15.625rem;
   margin-top: 1.875rem;
   background-color: ${theme.primary};
   color: ${theme.secondary};
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  padding: 1.25rem 100px;
+  @media screen and (max-width: 1024px) {
+    padding: 1.25rem 60px;
+  }
+  @media screen and (max-width: 768px) {
+    padding: 1.25rem 20px;
+  }
 `;
+
 export const Comment = styled.div`
   display: flex;
   gap: 0.875rem;
