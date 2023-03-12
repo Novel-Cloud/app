@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const BackgroundWrapper = styled.div`
   padding-right: 6.25rem;
-  padding-bottom: 1.875rem;
+  padding-bottom: 1.2rem;
   height: 15.625rem;
   display: flex;
   justify-content: flex-end;
@@ -15,6 +15,9 @@ export const BackgroundInfoWrapper = styled.div`
   gap: 3.125rem;
   font-weight: 900;
   font-size: 1.25rem;
+  @media screen and (max-width: 900px) {
+    display: none;
+  }
 `;
 export const BackgroundInfo = styled.div`
   display: flex;
