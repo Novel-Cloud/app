@@ -5,6 +5,10 @@ export const LoginWrapper = styled.div`
   gap: 10rem;
   justify-content: center;
   padding-top: 11.25rem;
+  @media screen and (max-width: 1200px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const LoginTitle = styled.h1`
