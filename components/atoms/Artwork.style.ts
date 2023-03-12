@@ -6,6 +6,15 @@ export const ArtworkListWrapper = styled.div`
   flex-wrap: wrap;
   gap: 3.75rem;
   padding: 3rem 7rem 5rem 7rem;
+  @media screen and (max-width: 1024px) {
+    padding: 3rem 5rem 5rem 5rem;
+  }
+  @media screen and (max-width: 768px) {
+    padding: 3rem 2rem 5rem 2rem;
+    justify-content: center;
+  }
+  @media screen and (max-width: 520px) {
+  }
 `;
 
 export const ArtworkFrameWrapper = styled.div`

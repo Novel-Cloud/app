@@ -7,4 +7,11 @@ export const ButtonListWrapper = styled.div`
   button {
     margin-right: 1.25rem;
   }
+  @media screen and (max-width: 1024px) {
+    margin-left: 5rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    margin-left: 2rem;
+  }
 `;

@@ -28,6 +28,12 @@ export const TagWrapper = styled.article`
 
 export const TagListWrapper = styled.div`
   padding: 3rem 0 0 7rem;
+  @media screen and (max-width: 1024px) {
+    padding: 3rem 0 0 5rem;
+  }
+  @media screen and (max-width: 768px) {
+    padding: 3rem 0 0 2rem;
+  }
 `;
 
 export const TagListTitle = styled.h1`
