@@ -19,6 +19,7 @@ export const Radio = styled.input.attrs({ type: "radio" })`
 export const RadioWrapper = styled.div`
   display: flex;
   margin-bottom: 1rem;
+  flex-wrap: wrap;
 `;
 
 export const RadioTitleWrapper = styled.div`
