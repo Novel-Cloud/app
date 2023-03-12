@@ -10,6 +10,7 @@ export const ArtworkPlayerWrapper = styled.div`
     border-radius: 0.375rem;
     padding: 0 100px;
     box-sizing: border-box;
+    object-fit: cover;
     @media screen and (max-width: 1024px) {
       padding: 0 60px;
     }

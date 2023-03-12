@@ -2,6 +2,7 @@ import theme from "@/styles/theme";
 import styled from "styled-components";
 
 export const HeaderWrapper = styled.form`
+  position: relative;
   background-color: ${theme.primary};
   display: flex;
   align-items: center;

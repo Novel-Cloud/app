@@ -7,7 +7,8 @@ export const SearchBarWrapper = styled.div`
 `;
 
 export const SearchBar = styled(Input)`
-  width: 31.25rem;
+  width: 90vw;
+  max-width: 31.25rem;
   padding-left: 1rem;
   padding-right: 3rem;
   box-sizing: border-box;
