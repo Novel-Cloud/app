@@ -8,12 +8,12 @@ export const CommentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  padding: 1.25rem 100px;
+  padding: 1.25rem 6.25rem;
   @media screen and (max-width: 1024px) {
-    padding: 1.25rem 60px;
+    padding: 1.25rem 3.75rem;
   }
   @media screen and (max-width: 768px) {
-    padding: 1.25rem 20px;
+    padding: 1.25rem 1.25rem;
   }
 `;
 

@@ -37,7 +37,7 @@ export const ProfileAvatarWrapper = styled.div`
   font-weight: 900;
   button {
     @media screen and (max-width: 768px) {
-      padding-top: 80px;
+      padding-top: 5rem;
     }
   }
 `;
@@ -45,7 +45,7 @@ export const ProfileAvatarWrapper = styled.div`
 export const ProfileButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 30px;
+  margin-top: 2rem;
   #small {
     display: none;
   }

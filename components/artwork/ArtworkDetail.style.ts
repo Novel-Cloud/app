@@ -4,12 +4,12 @@ export const ArtworkDetailWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 1.875rem;
-  padding: 0 100px;
+  padding: 0 6.25rem;
   @media screen and (max-width: 1024px) {
-    padding: 0 60px;
+    padding: 0 3.75rem;
   }
   @media screen and (max-width: 768px) {
-    padding: 0 20px;
+    padding: 0 1.25rem;
   }
 `;
 
@@ -19,7 +19,7 @@ export const ArtworkTitleWrapper = styled.div`
   align-items: flex-start;
   @media screen and (max-width: 768px) {
     flex-direction: column;
-    gap: 12px;
+    gap: 0.75rem;
   }
 `;
 

@@ -3,10 +3,10 @@ import styled from "styled-components";
 export const UploadWrapper = styled.div`
   padding: 3rem 15.625rem;
   @media screen and (max-width: 1024px) {
-    padding: 3rem 60px;
+    padding: 3rem 3.75rem;
   }
   @media screen and (max-width: 768px) {
-    padding: 3rem 40px;
+    padding: 3rem 2.5rem;
   }
 `;
 

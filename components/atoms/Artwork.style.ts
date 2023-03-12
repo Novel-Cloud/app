@@ -13,7 +13,7 @@ export const ArtworkListWrapper = styled.div`
     padding: 3rem 2rem 5rem 2rem;
     justify-content: center;
   }
-  @media screen and (max-width: 520px) {
+  @media screen and (max-width: 51.25rem) {
   }
 `;
 
