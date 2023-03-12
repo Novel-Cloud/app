@@ -9,7 +9,7 @@ const artwork: Artwork = {
   artworkName: "카와이한 금발녹안쟝",
   isLike: false,
   artworkThumbnail:
-    "https://velog.velcdn.com/images/j1min/post/7f3aec7a-de2d-4d9d-b436-b874e5eff50c/image.png",
+    "https://velog.velcdn.com/images/j1min/post/86ad283a-daa7-4849-a450-6de9d57e51d8/image.png",
   writer: {
     writerId: 1,
     writerName: "와따시",
