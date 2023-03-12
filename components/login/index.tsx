@@ -9,8 +9,8 @@ export default function Login() {
       <Image
         src="/assets/LoginGirl.png"
         alt="yokoso"
-        width={400}
-        height={480}
+        width={300}
+        height={360}
       />
       <div>
         <S.LoginTitle>Login</S.LoginTitle>

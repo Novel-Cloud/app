@@ -33,6 +33,11 @@ export const ArtworkWriterName = styled.h3`
 `;
 
 export const ArtworkWriterProfileWrapper = styled.div``;
+export const ArtworkOnClickWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`;
 export const ArtworkWriterWrapper = styled.div`
   display: flex;
   align-items: center;
