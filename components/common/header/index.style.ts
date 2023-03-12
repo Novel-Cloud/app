@@ -6,10 +6,12 @@ export const HeaderMenuWrapper = styled.div`
   width: 100%;
   justify-content: space-between;
   padding: 0 5rem 0 10rem;
+
   align-items: center;
   gap: 1rem;
   @media screen and (max-width: 1024px) {
     flex-direction: column;
+    padding: 0 1rem;
   }
 `;
 
@@ -26,6 +28,7 @@ export const HeaderWrapper = styled.form<{ isOpen: boolean }>`
   }
   @media screen and (max-width: 1100px) {
     flex-direction: column;
+    padding: 0 2rem;
     gap: 1rem;
     ${HeaderMenuWrapper} {
       display: ${(props) => (props.isOpen ? "flex" : "none")};
