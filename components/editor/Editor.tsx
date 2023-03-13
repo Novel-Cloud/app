@@ -9,7 +9,6 @@ interface EditorViewProps {
 
 export default function EditorView({ getCommand }: EditorViewProps) {
   const content = useRef<string>("");
-  const imageExportComponent = useRef(null);
 
   const handleChange = (event: ContentEditableEvent) => {
     content.current = event.target.value;
@@ -23,7 +22,6 @@ export default function EditorView({ getCommand }: EditorViewProps) {
     <PDFService>
       <S.EditorWrapper>
         <ContentEditable
-          ref={imageExportComponent}
           id="editor"
           tagName="span"
           spellCheck="false"
