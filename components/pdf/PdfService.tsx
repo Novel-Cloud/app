@@ -4,7 +4,13 @@ import { PDFExport } from "@progress/kendo-react-pdf";
 import Button from "../atoms/Button";
 
 const PDFServiceWrapper = styled.div`
-  font-family: Pretendard-Regular;
+  * {
+    font-family: "Pretendard-Variable" !important;
+  }
+  @font-face {
+    font-family: "Pretendard-Variable";
+    src: url("/assets/font/PretendardVariable.ttf") format("truetype");
+  }
 `;
 
 export default function PDFService({ children }: { children: ReactNode }) {
@@ -21,13 +27,12 @@ export default function PDFService({ children }: { children: ReactNode }) {
       <PDFExport
         ref={pdfExportComponent}
         paperSize="a4"
-        fileName={`Report for ${new Date().getFullYear()}`}
-        author="KendoReact Team"
+        fileName={`엄준식 Report for ${new Date().getFullYear()}`}
+        author="엄준식"
+        date={new Date()}
+        title="엄준식의 모험"
       >
-        <div id="show_math_loader" style={{ display: "none" }}>
-          Parsing Mathjax
-        </div>
-        <div id="print_page">{children}</div>
+        <div id="pdf">{children}</div>
       </PDFExport>
     </PDFServiceWrapper>
   );

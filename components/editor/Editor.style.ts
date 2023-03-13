@@ -2,10 +2,10 @@ import theme from "@/styles/theme";
 import styled from "styled-components";
 
 export const EditorWrapper = styled.div`
+  background-color: ${theme.primary};
   display: flex;
   justify-content: center;
   padding: 2rem;
-  background-color: ${theme.primary};
 
   #editor {
     overflow-y: auto !important;
