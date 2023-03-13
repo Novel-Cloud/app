@@ -1,4 +1,12 @@
 import { Artwork, Tag } from "@/types/artwork.interface";
+import { ShortCut } from "@/types/editor.interface";
+
+const shortCutList: ShortCut[] = [
+  { id: 0, content: "우라와" },
+  { id: 1, content: "하나코" },
+  { id: 2, content: "선생님" },
+  { id: 2, content: "「」" },
+];
 
 const tagList: Tag[] = new Array(20)
   .fill(null)
@@ -26,4 +34,4 @@ const artworkList = new Array(12)
   .fill(null)
   .map((_, idx) => ({ ...artwork, id: idx }));
 
-export default { tagList, artwork, artworkList };
+export default { tagList, artwork, artworkList, shortCutList };

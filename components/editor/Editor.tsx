@@ -1,13 +1,12 @@
 import { useRef } from "react";
 import ContentEditable, { ContentEditableEvent } from "react-contenteditable";
-
 import * as S from "./Editor.style";
 
-export default function EditorView({
-  getCommand,
-}: {
+interface EditorViewProps {
   getCommand: (number: number) => void;
-}) {
+}
+
+export default function EditorView({ getCommand }: EditorViewProps) {
   const content = useRef<string>("");
 
   const handleChange = (event: ContentEditableEvent) => {

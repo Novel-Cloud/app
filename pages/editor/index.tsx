@@ -18,11 +18,13 @@ import ParagraphIcon from "@/components/icons/editor/ParagraphIcon";
 import UnOrderedListIcon from "@/components/icons/editor/UnOrderedListIcon";
 import { editorHotkeyRange } from "@/key/editor.index";
 import EditorLayout from "@/layout/EditorLayout";
-import { EditButtonArgument, ShortCut } from "@/types/editor.interface";
+import { useShortCutList } from "@/model/editor";
+import { EditButtonArgument } from "@/types/editor.interface";
 import { useMemo } from "react";
 import { HotkeysProvider, useHotkeys } from "react-hotkeys-hook";
 
 export default function EditorPage() {
+  const { data: shortCutList } = useShortCutList();
   const keymapList = useMemo(
     () => [
       "ctrl+1",
@@ -34,13 +36,10 @@ export default function EditorPage() {
       "ctrl+7",
       "ctrl+8",
       "ctrl+9",
+      "ctrl+0",
     ],
     [],
   );
-
-  const shortCutList: ShortCut[] = new Array(9)
-    .fill(null)
-    .map((_, idx) => ({ content: `${idx + 1}번 클릭`, id: idx }));
 
   const getCommand = (number: number) => {
     if (number !== -1) {
