@@ -1,10 +1,14 @@
 import { Artwork } from "@/types/artwork.interface";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import Button from "../atoms/Button";
 import Input from "../atoms/Input";
 import * as S from "./ArtworkComment.style";
 
 export default function ArtworkComment({ artwork }: { artwork: Artwork }) {
+  const router = useRouter();
+  const moveToProfile = () =>
+    router.push(`/profile/${artwork.writer.writerId}`);
   return (
     <S.CommentWrapper>
       <S.CommentTitle>댓글</S.CommentTitle>
@@ -27,9 +31,12 @@ export default function ArtworkComment({ artwork }: { artwork: Artwork }) {
             alt={artwork.writer.writerName}
             width={48}
             height={48}
+            onClick={moveToProfile}
           />
           <div>
-            <S.CommentWriter>{artwork.writer.writerName}</S.CommentWriter>
+            <S.CommentWriter onClick={moveToProfile}>
+              {artwork.writer.writerName}
+            </S.CommentWriter>
             <S.CommentContent>{comment}</S.CommentContent>
             <S.CommentDate>2022. 2. 3.</S.CommentDate>
           </div>

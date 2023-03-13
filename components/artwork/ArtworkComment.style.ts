@@ -20,10 +20,14 @@ export const CommentWrapper = styled.div`
 export const Comment = styled.div`
   display: flex;
   gap: 0.875rem;
+  img {
+    cursor: pointer;
+  }
 `;
 export const CommentWriter = styled.div`
   font-weight: 900;
   color: white;
+  cursor: pointer;
 `;
 export const CommentContent = styled.div`
   margin: 2px 0;
