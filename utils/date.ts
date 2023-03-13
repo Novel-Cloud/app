@@ -49,13 +49,12 @@ export const getDateParsedData = (data: unknown): any => {
   }, {});
 };
 
-const getHours = async () => {
+const getHours = () => {
   return new Date().getHours();
 };
 
-export const getGreeting = async () => {
-  const nowHour = await getHours();
-  console.log(nowHour);
+export const getGreeting = () => {
+  const nowHour = getHours();
   if (nowHour < 6) return "Oyasuminasai~";
   if (nowHour < 12) return "Ohayogozaimasu!";
   if (nowHour < 18) return "Konnichiwa~";
