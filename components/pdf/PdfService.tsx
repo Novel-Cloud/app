@@ -11,7 +11,6 @@ const PDFServiceWrapper = styled.div`
   @font-face {
     font-family: "Pretendard-Variable";
     src: url("/assets/font/PretendardVariable.ttf") format("truetype");
-    font-weight: 700;
   }
 `;
 
