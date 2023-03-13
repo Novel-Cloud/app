@@ -2,10 +2,10 @@ import { Artwork, Tag } from "@/types/artwork.interface";
 import { ShortCut } from "@/types/editor.interface";
 
 const shortCutList: ShortCut[] = [
-  { id: 0, content: "우라와" },
-  { id: 1, content: "하나코" },
-  { id: 2, content: "선생님" },
-  { id: 2, content: "「」" },
+  { id: 0, content: "미카모" },
+  { id: 1, content: "네루" },
+  { id: 2, content: "선생" },
+  { id: 3, content: "「」" },
 ];
 
 const tagList: Tag[] = new Array(20)

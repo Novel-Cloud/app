@@ -26,19 +26,9 @@ import { HotkeysProvider, useHotkeys } from "react-hotkeys-hook";
 export default function EditorPage() {
   const { data: shortCutList } = useShortCutList();
   const keymapList = useMemo(
-    () => [
-      "ctrl+1",
-      "ctrl+2",
-      "ctrl+3",
-      "ctrl+4",
-      "ctrl+5",
-      "ctrl+6",
-      "ctrl+7",
-      "ctrl+8",
-      "ctrl+9",
-      "ctrl+0",
-    ],
-    [],
+    () =>
+      new Array(shortCutList.length).fill(null).map((_, idx) => `ctrl+${idx}`),
+    [shortCutList],
   );
 
   const getCommand = (number: number) => {
@@ -46,7 +36,7 @@ export default function EditorPage() {
       document.execCommand(
         "insertText",
         false,
-        shortCutList[number - 1].content,
+        shortCutList[number - 1]?.content || "",
       );
     }
   };
