@@ -23,29 +23,21 @@ export default function PDFService({ children }: { children: ReactNode }) {
     }
   };
 
-  const exportImage = async () => {
-    const { exportComponentAsPNG } = await import(
-      "react-component-export-image"
-    );
-    return exportComponentAsPNG(pdfExportComponent, { fileName: "소설" });
-  };
-
   return (
     <PDFServiceWrapper>
       <PDFExport
         ref={pdfExportComponent}
         paperSize="a4"
-        fileName="이현준을 향한 나의 사랑"
-        author="엄준식"
+        fileName="소설"
+        author="소설 작가"
         date={new Date()}
-        title="엄준식의 모험"
+        title="소설"
       >
-        <div>{children}</div>
+        {children}
       </PDFExport>
       <Button onClick={exportPDF} style={{ marginRight: "0.5rem" }}>
         Export to pdf
       </Button>
-      <Button onClick={exportImage}>Export to Image</Button>
     </PDFServiceWrapper>
   );
 }
