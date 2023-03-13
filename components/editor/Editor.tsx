@@ -1,6 +1,7 @@
-import { useRef } from "react";
 import ContentEditable, { ContentEditableEvent } from "react-contenteditable";
+import React, { useRef } from "react";
 import * as S from "./Editor.style";
+import PDFService from "../pdf/PdfService";
 
 interface EditorViewProps {
   getCommand: (number: number) => void;
@@ -14,17 +15,19 @@ export default function EditorView({ getCommand }: EditorViewProps) {
   };
 
   return (
-    <S.EditorWrapper>
-      <ContentEditable
-        id="editor"
-        tagName="span"
-        spellCheck="false"
-        html={content.current}
-        onChange={handleChange}
-        onKeyDown={(event) => {
-          if (event.ctrlKey) getCommand(Number(event.key) || -1);
-        }}
-      />
-    </S.EditorWrapper>
+    <PDFService>
+      <S.EditorWrapper>
+        <ContentEditable
+          id="editor"
+          tagName="span"
+          spellCheck="false"
+          html={content.current}
+          onChange={handleChange}
+          onKeyDown={(event) => {
+            if (event.ctrlKey) getCommand(Number(event.key) || -1);
+          }}
+        />
+      </S.EditorWrapper>
+    </PDFService>
   );
 }
