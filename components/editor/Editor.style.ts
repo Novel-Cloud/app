@@ -12,7 +12,7 @@ export const EditorWrapper = styled.div`
     padding: 5rem calc(5rem - 1.125rem) 5rem 5rem;
     box-sizing: border-box;
     width: 50rem;
-    height: 70rem;
+    height: 49rem;
     font-family: Pretendard;
     background-color: ${theme.secondary};
     color: ${theme.primary};

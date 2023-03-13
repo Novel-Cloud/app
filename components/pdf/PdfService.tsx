@@ -27,7 +27,7 @@ export default function PDFService({ children }: { children: ReactNode }) {
     const { exportComponentAsPNG } = await import(
       "react-component-export-image"
     );
-    return exportComponentAsPNG(pdfExportComponent);
+    return exportComponentAsPNG(pdfExportComponent, { fileName: "소설" });
   };
 
   return (
