@@ -9,6 +9,7 @@ export default function ArtworkComment({ artwork }: { artwork: Artwork }) {
   const router = useRouter();
   const moveToProfile = () =>
     router.push(`/profile/${artwork.writer.writerId}`);
+
   return (
     <S.CommentWrapper>
       <S.CommentTitle>댓글</S.CommentTitle>
