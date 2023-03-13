@@ -49,8 +49,8 @@ export const getDateParsedData = (data: unknown): any => {
   }, {});
 };
 
-export const getGreeting = (hour?: number) => {
-  const nowHour = hour ?? new Date().getHours();
+export const getGreeting = () => {
+  const nowHour = new Date().getHours();
   if (nowHour < 6) return "Oyasuminasai~";
   if (nowHour < 12) return "Ohayogozaimasu!";
   if (nowHour < 18) return "Konnichiwa~";
