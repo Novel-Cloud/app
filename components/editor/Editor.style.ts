@@ -13,12 +13,10 @@ export const EditorWrapper = styled.div`
     box-sizing: border-box;
     width: 50rem;
     height: 49rem;
-    font-family: Pretendard;
     background-color: ${theme.secondary};
     color: ${theme.primary};
     cursor: text;
     font-size: 1.25rem;
-    overflow-y: scroll;
     font-weight: 600;
     line-height: 1.3;
     &:focus {
