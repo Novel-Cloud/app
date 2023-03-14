@@ -50,8 +50,8 @@ export const getDateParsedData = (data: unknown): any => {
 };
 
 export const getGreeting = () => {
-  const curr = new Date();
-  const utc = curr.getTime() + curr.getTimezoneOffset() * 60 * 1000;
+  const today = new Date();
+  const utc = today.getTime() + today.getTimezoneOffset() * 60 * 1000;
   const KR_TIME_DIFF = 9 * 60 * 60 * 1000;
   const nowHour = new Date(utc + KR_TIME_DIFF).getHours();
 
