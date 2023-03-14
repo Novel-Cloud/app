@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 export default function Google() {
   const router = useRouter();
   const [authCode, setAuthCode] = useState("");
-  const { token } = useOauth("google", authCode);
+  const { token } = useOauth(authCode);
 
   useEffect(() => {
     setAuthCode(router.query.code as string);
