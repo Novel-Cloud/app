@@ -83,5 +83,5 @@ const axiosConfig: HttpClientConfig = {
 };
 
 export default {
-  portfolio: new HttpClient("/api/portfolio", axiosConfig),
+  oauth: new HttpClient("/api/oauth", axiosConfig),
 };
