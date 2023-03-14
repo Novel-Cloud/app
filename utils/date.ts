@@ -5,7 +5,7 @@ TimeAgo.setDefaultLocale(ko.locale);
 TimeAgo.addLocale(ko);
 const timeAgo = new TimeAgo("ko-KR");
 
-export const getKoreanDate = (
+export const getKoreanDateString = (
   date: Date,
   options = {
     year: "numeric",
@@ -14,6 +14,14 @@ export const getKoreanDate = (
   } as Intl.DateTimeFormatOptions,
 ) => {
   return new Intl.DateTimeFormat("ko-KR", options).format(date);
+};
+
+export const getKoreanDate = () => {
+  return new Date(
+    new Date().toLocaleString("ko-KR", {
+      timeZone: "UTC",
+    }),
+  );
 };
 
 export const getTimeAgo = (date: Date) => {
@@ -50,11 +58,7 @@ export const getDateParsedData = (data: unknown): any => {
 };
 
 export const getGreeting = () => {
-  const today = new Date();
-  const utc = today.getTime() + today.getTimezoneOffset() * 60 * 1000;
-  const KR_TIME_DIFF = 9 * 60 * 60 * 1000;
-  const nowHour = new Date(utc + KR_TIME_DIFF).getHours();
-
+  const nowHour = getKoreanDate().getTime();
   if (nowHour < 6) return "Oyasuminasai~";
   if (nowHour < 12) return "Ohayogozaimasu!";
   if (nowHour < 18) return "Konnichiwa~";
