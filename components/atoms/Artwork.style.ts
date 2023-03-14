@@ -32,6 +32,7 @@ export const ArtworkWrapper = styled.div`
   background-color: ${theme.secondary};
   color: ${theme.primary} !important;
   border-radius: 0.625rem;
+  filter: drop-shadow(0px 0.25rem 0.25rem rgba(0, 0, 0, 0.25));
 `;
 
 export const ArtworkTitle = styled.h2`
@@ -52,6 +53,7 @@ export const ArtworkThumbnailWrapper = styled.div`
   height: 13.75rem;
   border-radius: 0.5rem;
   cursor: pointer;
+  filter: drop-shadow(0px 0.15rem 0.15rem rgba(0, 0, 0, 0.25));
   img {
     object-fit: cover;
     border-radius: 6px;
