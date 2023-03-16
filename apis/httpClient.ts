@@ -55,6 +55,13 @@ export class HttpClient {
     });
   }
 
+  self(requestConfig?: AxiosRequestConfig) {
+    return this.api.get("/self", {
+      ...HttpClient.clientConfig,
+      ...requestConfig,
+    });
+  }
+
   private setting() {
     HttpClient.setCommonInterceptors(this.api);
   }
@@ -84,4 +91,5 @@ const axiosConfig: HttpClientConfig = {
 
 export default {
   oauth: new HttpClient("/api/oauth", axiosConfig),
+  member: new HttpClient("/api/member", axiosConfig),
 };

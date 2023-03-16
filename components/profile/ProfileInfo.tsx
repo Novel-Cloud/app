@@ -1,19 +1,23 @@
 import { useArtworkList } from "@/model/artwork";
+import { Member } from "@/types/user.interface";
 import ArtworkList from "../atoms/ArtworkList";
 import Avatar from "../atoms/Avatar";
 import Button from "../atoms/Button";
 import * as S from "./ProfileInfo.style";
 
-export default function ProfileInfo() {
+interface ProfileInfoProps {
+  userInfo: Member;
+}
+export default function ProfileInfo({ userInfo }: ProfileInfoProps) {
   const { data: artworkList } = useArtworkList();
 
   return (
     <S.ProfileInfoWrapper>
       <S.ProfileAvatarWrapper>
         <S.ProfileWrapper>
-          <span>min050410</span>
+          <span>{userInfo.nickname}</span>
           <Avatar
-            src="https://velog.velcdn.com/images/j1min/post/59c03f65-0531-4363-8405-ed93e9a172c1/image.png"
+            src={userInfo.picture}
             alt="프로필사진"
             width={220}
             height={220}

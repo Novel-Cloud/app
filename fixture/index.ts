@@ -1,5 +1,6 @@
 import { Artwork, Tag } from "@/types/artwork.interface";
 import { ShortCut } from "@/types/editor.interface";
+import { Member } from "@/types/user.interface";
 
 const shortCutList: ShortCut[] = [
   { id: 0, content: "미카모" },
@@ -34,4 +35,11 @@ const artworkList = new Array(12)
   .fill(null)
   .map((_, idx) => ({ ...artwork, id: idx }));
 
-export default { tagList, artwork, artworkList, shortCutList };
+const userInfo: Member = {
+  email: "",
+  memberId: 0,
+  nickname: "",
+  picture: "",
+};
+
+export default { tagList, artwork, artworkList, shortCutList, userInfo };
