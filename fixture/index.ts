@@ -15,7 +15,7 @@ const tagList: Tag[] = new Array(20)
 
 const artwork: Artwork = {
   id: 1,
-  artworkName: "카와이한 금발녹안쟝",
+  artworkName: "제목입니다",
   isLike: false,
   artworkThumbnail:
     "https://velog.velcdn.com/images/j1min/post/86ad283a-daa7-4849-a450-6de9d57e51d8/image.png",

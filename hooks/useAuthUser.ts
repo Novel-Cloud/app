@@ -11,17 +11,17 @@ interface UseAuthUserOptions {
 }
 
 const useAuthUser = (options?: UseAuthUserOptions) => {
-  const { data } = useQuery<Member>([KEY.USER], () =>
+  const { data, refetch } = useQuery<Member>([KEY.USER], () =>
     httpClient.member
       .self()
       .then((r) => r.data)
       .catch((error) => {
-        console.log(error);
-
-        httpClient.oauth.token().then((r) => {
-          console.log(r.data);
-          Storage.setItem("ACCESS_TOKEN", r.data.token);
-        });
+        if (error.response.data.status === 401) {
+          httpClient.oauth.token().then((r) => {
+            Storage.setItem("ACCESS_TOKEN", r.data.token);
+          });
+          refetch();
+        }
       }),
   );
   return { data: data || fixture.userInfo };
