@@ -5,4 +5,5 @@ export const MainLayout = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-color: white;
 `;
