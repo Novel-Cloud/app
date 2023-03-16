@@ -2,6 +2,7 @@ import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 import config from "@/config";
 import { requestInterceptors, responseInterceptors } from "@/utils/api";
 import Storage from "@/storage";
+import { Token } from "@/types/user.interface";
 
 export interface HttpClientConfig {
   baseURL?: string;
@@ -60,6 +61,17 @@ export class HttpClient {
       ...HttpClient.clientConfig,
       ...requestConfig,
     });
+  }
+
+  token(requestConfig?: AxiosRequestConfig) {
+    return this.api.post(
+      "/self",
+      {},
+      {
+        ...HttpClient.clientConfig,
+        ...requestConfig,
+      },
+    );
   }
 
   private setting() {
