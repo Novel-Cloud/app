@@ -62,6 +62,17 @@ export class HttpClient {
     });
   }
 
+  token(requestConfig?: AxiosRequestConfig) {
+    return this.api.post(
+      "/token",
+      {},
+      {
+        ...HttpClient.clientConfig,
+        ...requestConfig,
+      },
+    );
+  }
+
   private setting() {
     HttpClient.setCommonInterceptors(this.api);
   }
