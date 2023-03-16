@@ -1,3 +1,4 @@
+import config from "@/config";
 import { useArtworkList } from "@/model/artwork";
 import { Member } from "@/types/user.interface";
 import ArtworkList from "../atoms/ArtworkList";
@@ -8,6 +9,7 @@ import * as S from "./ProfileInfo.style";
 interface ProfileInfoProps {
   userInfo: Member;
 }
+
 export default function ProfileInfo({ userInfo }: ProfileInfoProps) {
   const { data: artworkList } = useArtworkList();
 
@@ -17,10 +19,10 @@ export default function ProfileInfo({ userInfo }: ProfileInfoProps) {
         <S.ProfileWrapper>
           <span>{userInfo.nickname}</span>
           <Avatar
-            src={userInfo.picture}
+            src={userInfo.picture || config.defaultProfile}
             alt="프로필사진"
-            width={220}
-            height={220}
+            width={192}
+            height={192}
           />
 
           <S.ProfileButtonWrapper>
