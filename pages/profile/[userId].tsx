@@ -10,12 +10,14 @@ export default function ArtworkDetailPage() {
   const { userId } = router.query;
   const { user: userInfo } = useAuthUser();
 
+  const isMypage = Number(userId) === userInfo.memberId;
+
   return (
     <>
       <Header />
       <ProfileLayout
         background={<ProfileBackground />}
-        app={<ProfileInfo userInfo={userInfo} />}
+        app={<ProfileInfo userInfo={userInfo} isMypage={isMypage} />}
       />
     </>
   );

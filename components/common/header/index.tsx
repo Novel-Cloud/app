@@ -12,14 +12,12 @@ export default function Header() {
   const router = useRouter();
   const [isOpen, toggle] = useReducer((state) => !state, false);
   const { register, handleSubmit } = useForm<{ keyword: string }>();
+  const { user: userInfo, isLogined } = useAuthUser();
   const onVaild = (keyword: string) =>
     router.push({
       pathname: "/search",
       query: { keyword },
     });
-
-  const { user: userInfo, isLogined } = useAuthUser();
-  console.log(isLogined);
 
   return (
     <S.HeaderWrapper

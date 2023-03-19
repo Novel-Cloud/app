@@ -8,9 +8,10 @@ import * as S from "./ProfileInfo.style";
 
 interface ProfileInfoProps {
   userInfo: Member;
+  isMypage: boolean;
 }
 
-export default function ProfileInfo({ userInfo }: ProfileInfoProps) {
+export default function ProfileInfo({ userInfo, isMypage }: ProfileInfoProps) {
   const { data: artworkList } = useArtworkList();
 
   return (
@@ -24,19 +25,21 @@ export default function ProfileInfo({ userInfo }: ProfileInfoProps) {
             width={192}
             height={192}
           />
+        </S.ProfileWrapper>
 
+        {isMypage ? (
           <S.ProfileButtonWrapper>
-            <Button id="small" rounded>
+            <Button id="large" rounded>
+              나임
+            </Button>
+          </S.ProfileButtonWrapper>
+        ) : (
+          <S.ProfileButtonWrapper>
+            <Button id="large" rounded>
               팔로우
             </Button>
           </S.ProfileButtonWrapper>
-        </S.ProfileWrapper>
-
-        <S.ProfileButtonWrapper>
-          <Button id="large" rounded>
-            팔로우
-          </Button>
-        </S.ProfileButtonWrapper>
+        )}
       </S.ProfileAvatarWrapper>
 
       <S.ProfileInfoTitle>Recent Artwork</S.ProfileInfoTitle>
