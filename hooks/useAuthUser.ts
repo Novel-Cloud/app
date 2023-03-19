@@ -11,13 +11,11 @@ interface UseAuthUserOptions {
 }
 
 const useAuthUser = (options?: UseAuthUserOptions) => {
-  const { data, remove } = useQuery<Member>(
+  const { data, remove, isLoading } = useQuery<Member>(
     [KEY.USER],
     () => httpClient.member.self().then((r) => r.data),
     { enabled: !!Storage.getItem("ACCESS_TOKEN") },
   );
-
-  const isLogined = !!data;
 
   const logout = () => {
     HttpClient.removeAccessToken();
@@ -25,12 +23,12 @@ const useAuthUser = (options?: UseAuthUserOptions) => {
   };
 
   useEffect(() => {
-    if (options?.authorizedPage && isLogined) {
+    if (options?.authorizedPage && !data && !isLoading) {
       alert("로그인좀 해라");
     }
-  }, [options?.authorizedPage, isLogined]);
+  }, [options?.authorizedPage, data, isLoading]);
 
-  return { user: data || fixture.userInfo, isLogined, logout };
+  return { user: data || fixture.userInfo, isLogined: !!data, logout };
 };
 
 export default useAuthUser;
