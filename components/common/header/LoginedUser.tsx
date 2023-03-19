@@ -15,7 +15,9 @@ export default function Avatar({ userInfo, isLogined }: AvatarProps) {
   return (
     <S.AvatarWrapper>
       {isLogined ? (
-        <S.UserInfoWrapper>
+        <S.UserInfoWrapper
+          onClick={() => router.push(`/profile/${userInfo.memberId}`)}
+        >
           <Image
             src={userInfo.picture}
             alt={userInfo.nickname}
