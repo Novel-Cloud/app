@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 export default function ArtworkDetailPage() {
   const router = useRouter();
   const { userId } = router.query;
-  const { data: userInfo } = useAuthUser();
+  const { user: userInfo } = useAuthUser();
 
   return (
     <>

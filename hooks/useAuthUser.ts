@@ -12,7 +12,7 @@ const useAuthUser = (options?: UseAuthUserOptions) => {
   const { data } = useQuery<Member>([KEY.USER], () =>
     httpClient.member.self().then((r) => r.data),
   );
-  return { data: data || fixture.userInfo };
+  return { user: data || fixture.userInfo, isLogined: !!data };
 };
 
 export default useAuthUser;

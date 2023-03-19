@@ -2,9 +2,10 @@ import { useReducer } from "react";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import AlignCenterIcon from "@/components/icons/editor/AlignCenterIcon";
+import useAuthUser from "@/hooks/useAuthUser";
 import * as S from "./index.style";
 import SearchBar from "./SearchBar";
-import Avartar from "./Avatar";
+import Avartar from "./LoginedUser";
 import Logo from "./Logo";
 
 export default function Header() {
@@ -17,6 +18,9 @@ export default function Header() {
       query: { keyword },
     });
 
+  const { user: userInfo, isLogined } = useAuthUser();
+  console.log(isLogined);
+
   return (
     <S.HeaderWrapper
       isOpen={isOpen}
@@ -28,7 +32,7 @@ export default function Header() {
           registerReturn={register("keyword")}
           onSearch={handleSubmit(({ keyword }) => onVaild(keyword))}
         />
-        <Avartar />
+        <Avartar userInfo={userInfo} isLogined={isLogined} />
       </S.HeaderMenuWrapper>
       <AlignCenterIcon id="toggle_button" onClick={() => toggle()} />
     </S.HeaderWrapper>

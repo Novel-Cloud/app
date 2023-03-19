@@ -1,3 +1,4 @@
+import config from "@/config";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import GoogleIcon from "../icons/editor/GoogleIcon";
@@ -19,7 +20,7 @@ export default function Login() {
         <S.LoginTitle>Login</S.LoginTitle>
         <LoginButton
           onClick={() =>
-            router.push("http://10.150.149.2:8080/oauth2/authorization/google")
+            router.push(`${config.baseURL}/oauth2/authorization/google`)
           }
         >
           <GoogleIcon /> Link Start!
