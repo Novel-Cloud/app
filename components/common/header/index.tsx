@@ -12,7 +12,7 @@ export default function Header() {
   const router = useRouter();
   const [isOpen, toggle] = useReducer((state) => !state, false);
   const { register, handleSubmit } = useForm<{ keyword: string }>();
-  const { user: userInfo, isLogined } = useAuthUser({ authorizedPage: true });
+  const { user: userInfo, isLogined } = useAuthUser();
   const onVaild = (keyword: string) =>
     router.push({
       pathname: "/search",
