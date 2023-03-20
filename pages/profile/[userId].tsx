@@ -9,7 +9,6 @@ export default function ArtworkDetailPage() {
   const router = useRouter();
   const { userId } = router.query;
   const { user: userInfo } = useAuthUser();
-
   const isMypage = Number(userId) === userInfo.memberId;
 
   return (
