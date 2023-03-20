@@ -58,11 +58,11 @@ export default function ToolbarView({
                 ref={droppableProvided.innerRef}
                 {...droppableProvided.droppableProps}
               >
-                {shortCutList.map(({ content, id }) => (
+                {shortCutList.map(({ content, id }, idx) => (
                   <ShortCutButton
-                    key={id}
-                    idx={id}
-                    id={content}
+                    key={idx}
+                    idx={idx}
+                    id={id.toString()}
                     onMouseDown={(event) => {
                       event.preventDefault();
                       document.execCommand("insertText", false, content);

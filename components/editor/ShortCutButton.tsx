@@ -22,7 +22,7 @@ export default function ShortCutButton({
           {...draggableProvided.draggableProps}
           {...draggableProvided.dragHandleProps}
         >
-          <span>{children}</span>
+          {children}
         </div>
       )}
     </Draggable>
