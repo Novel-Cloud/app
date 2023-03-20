@@ -1,13 +1,28 @@
-import { ButtonHTMLAttributes, ReactNode } from "react";
-import Button from "../atoms/Button";
+import { HTMLProps, ReactNode } from "react";
+import { Draggable } from "react-beautiful-dnd";
 
-interface ShortCutButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ShortCutButtonProps extends HTMLProps<HTMLDivElement> {
   children: ReactNode;
+  idx: number;
 }
 
 export default function ShortCutButton({
   children,
+  idx,
   ...props
 }: ShortCutButtonProps) {
-  return <Button {...props}>{children}</Button>;
+  return (
+    <Draggable key={idx.toString()} draggableId={idx.toString()} index={idx}>
+      {(draggableProvided) => (
+        <div
+          ref={draggableProvided.innerRef}
+          {...props}
+          {...draggableProvided.draggableProps}
+          {...draggableProvided.dragHandleProps}
+        >
+          {children}
+        </div>
+      )}
+    </Draggable>
+  );
 }

@@ -4,7 +4,6 @@ export interface EditButtonArgument {
   cmd: string;
   arg?: string;
   icon: ReactNode;
-  idx?: number;
   id: number;
 }
 
