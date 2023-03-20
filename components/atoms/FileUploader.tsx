@@ -22,11 +22,13 @@ export default function FileUploader({
   isDragActive,
 }: FileUploaderProps) {
   return (
-    <S.FileUploaderWrapper isDragActive={isDragActive}>
+    <S.FileUploaderWrapper
+      ref={labelRef}
+      htmlFor={id}
+      isDragActive={isDragActive}
+    >
       {src !== "" && <Image src={src} alt={src} fill />}
-      <S.FileUploadButton ref={labelRef} htmlFor={id}>
-        {label}
-      </S.FileUploadButton>
+      {/* <S.FileUploadButton>{label}</S.FileUploadButton> */}
       <input ref={inputRef} type="file" id={id} hidden onChange={onChange} />
     </S.FileUploaderWrapper>
   );

@@ -1,8 +1,9 @@
 import theme from "@/styles/theme";
 import styled from "styled-components";
 
-export const FileUploaderWrapper = styled.div<{ isDragActive: boolean }>`
+export const FileUploaderWrapper = styled.label<{ isDragActive: boolean }>`
   position: relative;
+  display: block;
   object-fit: cover;
   width: 100%;
   filter: drop-shadow(0px 0.25rem 0.25rem rgba(0, 0, 0, 0.25));
@@ -30,4 +31,5 @@ export const FileUploadButton = styled.label`
   border-radius: 0.625rem;
   font-size: 0.875rem;
   filter: drop-shadow(0px 0.25rem 0.25rem rgba(0, 0, 0, 0.25));
+  z-index: -10;
 `;
