@@ -1,6 +1,7 @@
 import { EditButtonArgument, ShortCut } from "@/types/editor.interface";
 import { DragDropContext, Droppable, DropResult } from "react-beautiful-dnd";
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { deepcopy, reorder } from "@/utils/array";
 import ToolbarButtonView from "./ToolbarButton";
 import * as S from "./Toolbar.style";
 import ShortCutButton from "./ShortCutButton";
@@ -9,17 +10,22 @@ import ShortCutIcon from "../icons/editor/ShortCutIcon";
 interface ToolbarViewProps {
   editButtonArgumentList: EditButtonArgument[];
   shortCutList: ShortCut[];
+  setShortCutList: Dispatch<SetStateAction<ShortCut[]>>;
 }
 
 export default function ToolbarView({
   editButtonArgumentList,
   shortCutList,
+  setShortCutList,
 }: ToolbarViewProps) {
   const [isEnabled, setIsEnabled] = useState(false);
 
   const onDragEnd = ({ source, destination }: DropResult) => {
     if (!destination) return;
-    console.log("end");
+    const dataGridList = deepcopy<ShortCut[]>(shortCutList);
+    setShortCutList(
+      reorder<ShortCut>(dataGridList, source.index, destination.index),
+    );
   };
 
   useEffect(() => {
@@ -64,6 +70,7 @@ export default function ToolbarView({
                     {content}
                   </ShortCutButton>
                 ))}
+                {droppableProvided.placeholder}
               </S.Toolbar>
             )}
           </Droppable>
