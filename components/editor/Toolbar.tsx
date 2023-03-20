@@ -22,9 +22,11 @@ export default function ToolbarView({
 
   const onDragEnd = ({ source, destination }: DropResult) => {
     if (!destination) return;
-    const dataGridList = deepcopy<ShortCut[]>(shortCutList);
+    const copyedShortCutList = deepcopy<ShortCut[]>(shortCutList);
+    console.log();
+
     setShortCutList(
-      reorder<ShortCut>(dataGridList, source.index, destination.index),
+      reorder<ShortCut>(copyedShortCutList, source.index, destination.index),
     );
   };
 

@@ -10,7 +10,12 @@ import { HotkeysProvider, useHotkeys } from "react-hotkeys-hook";
 
 export default function EditorPage() {
   const { data: shortCutList } = useShortCutList();
-  const [myShortCutList, setMyShortCutList] = useState<ShortCut[]>([]);
+  const [myShortCutList, setMyShortCutList] =
+    useState<ShortCut[]>(shortCutList);
+
+  useEffect(() => {
+    setMyShortCutList(shortCutList);
+  }, [shortCutList]);
 
   const keymapList = useMemo(
     () =>
@@ -23,7 +28,7 @@ export default function EditorPage() {
       document.execCommand(
         "insertText",
         false,
-        shortCutList[number - 1]?.content || "",
+        myShortCutList[number - 1]?.content || "",
       );
     }
   };
@@ -33,16 +38,14 @@ export default function EditorPage() {
     (_, handler) => {
       const command = handler.ctrl || false;
       const number = Number(handler.keys?.join("")) || -1;
-      if (command) getCommand(number);
+      if (command) {
+        getCommand(number);
+      }
     },
     {
       scopes: editorHotkeyRange,
     },
   );
-
-  useEffect(() => {
-    setMyShortCutList(shortCutList);
-  }, [shortCutList]);
 
   return (
     <HotkeysProvider initiallyActiveScopes={editorHotkeyRange}>
