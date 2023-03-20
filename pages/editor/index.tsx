@@ -54,26 +54,27 @@ export default function EditorPage() {
   );
 
   const editButtonArgumentList: EditButtonArgument[] = [
-    { cmd: "justifyCenter", icon: <AlignCenterIcon /> },
-    { cmd: "justifyLeft", icon: <AlignLeftIcon /> },
-    { cmd: "justifyRight", icon: <AlignRightIcon /> },
-    { cmd: "insertParagraph", icon: <ParagraphIcon /> },
-    { cmd: "insertUnorderedList", icon: <UnOrderedListIcon /> },
-    { cmd: "insertOrderedList", icon: <OrderedListIcon /> },
-    { cmd: "insertHorizontalRule", icon: <HrIcon /> },
-    { cmd: "italic", arg: "i", icon: <ItalicIcon /> },
-    { cmd: "bold", arg: "b", icon: <BoldIcon /> },
+    { id: 0, cmd: "justifyCenter", icon: <AlignCenterIcon /> },
+    { id: 1, cmd: "justifyLeft", icon: <AlignLeftIcon /> },
+    { id: 2, cmd: "justifyRight", icon: <AlignRightIcon /> },
+    { id: 3, cmd: "insertParagraph", icon: <ParagraphIcon /> },
+    { id: 4, cmd: "insertUnorderedList", icon: <UnOrderedListIcon /> },
+    { id: 5, cmd: "insertOrderedList", icon: <OrderedListIcon /> },
+    { id: 6, cmd: "insertHorizontalRule", icon: <HrIcon /> },
+    { id: 7, cmd: "italic", arg: "i", icon: <ItalicIcon /> },
+    { id: 8, cmd: "bold", arg: "b", icon: <BoldIcon /> },
     {
+      id: 9,
       cmd: "insertImage",
       arg: "https://placekitten.com/200/300",
       icon: <ImageIcon />,
     },
-    { cmd: "fontSize", arg: "7", icon: <H1Icon /> },
-    { cmd: "fontSize", arg: "6", icon: <H2Icon /> },
-    { cmd: "fontSize", arg: "5", icon: <H3Icon /> },
-    { cmd: "fontSize", arg: "3", icon: <H4Icon /> },
-    { cmd: "fontSize", arg: "2", icon: <H5Icon /> },
-    { cmd: "fontSize", arg: "1", icon: <H6Icon /> },
+    { id: 10, cmd: "fontSize", arg: "7", icon: <H1Icon /> },
+    { id: 11, cmd: "fontSize", arg: "6", icon: <H2Icon /> },
+    { id: 12, cmd: "fontSize", arg: "5", icon: <H3Icon /> },
+    { id: 13, cmd: "fontSize", arg: "3", icon: <H4Icon /> },
+    { id: 14, cmd: "fontSize", arg: "2", icon: <H5Icon /> },
+    { id: 15, cmd: "fontSize", arg: "1", icon: <H6Icon /> },
   ];
 
   return (
