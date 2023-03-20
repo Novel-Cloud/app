@@ -4,15 +4,17 @@ import { Draggable } from "react-beautiful-dnd";
 interface ShortCutButtonProps extends HTMLProps<HTMLDivElement> {
   children: ReactNode;
   idx: number;
+  id: string;
 }
 
 export default function ShortCutButton({
   children,
   idx,
+  id,
   ...props
 }: ShortCutButtonProps) {
   return (
-    <Draggable key={idx.toString()} draggableId={idx.toString()} index={idx}>
+    <Draggable key={id} draggableId={id} index={idx}>
       {(draggableProvided) => (
         <div
           ref={draggableProvided.innerRef}
@@ -20,7 +22,7 @@ export default function ShortCutButton({
           {...draggableProvided.draggableProps}
           {...draggableProvided.dragHandleProps}
         >
-          {children}
+          <span>{children}</span>
         </div>
       )}
     </Draggable>

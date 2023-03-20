@@ -52,7 +52,7 @@ export default function ToolbarView({
           <ShortCutIcon />
         </S.ShortCutIconWrapper>
         <DragDropContext onDragEnd={onDragEnd}>
-          <Droppable droppableId="contents" direction="horizontal">
+          <Droppable droppableId="shortcut" direction="horizontal">
             {(droppableProvided) => (
               <S.Toolbar
                 ref={droppableProvided.innerRef}
@@ -62,6 +62,7 @@ export default function ToolbarView({
                   <ShortCutButton
                     key={id}
                     idx={id}
+                    id={content}
                     onMouseDown={(event) => {
                       event.preventDefault();
                       document.execCommand("insertText", false, content);
