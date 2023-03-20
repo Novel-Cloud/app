@@ -23,8 +23,6 @@ export default function ToolbarView({
   const onDragEnd = ({ source, destination }: DropResult) => {
     if (!destination) return;
     const copyedShortCutList = deepcopy<ShortCut[]>(shortCutList);
-    console.log();
-
     setShortCutList(
       reorder<ShortCut>(copyedShortCutList, source.index, destination.index),
     );

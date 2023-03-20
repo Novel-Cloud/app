@@ -9,13 +9,13 @@ import { useEffect, useMemo, useState } from "react";
 import { HotkeysProvider, useHotkeys } from "react-hotkeys-hook";
 
 export default function EditorPage() {
-  const { data: shortCutList } = useShortCutList();
+  const { data: shortCutList, isError } = useShortCutList();
   const [myShortCutList, setMyShortCutList] =
     useState<ShortCut[]>(shortCutList);
 
   useEffect(() => {
-    setMyShortCutList(shortCutList);
-  }, [shortCutList]);
+    if (!isError) setMyShortCutList(shortCutList);
+  }, [shortCutList, isError]);
 
   const keymapList = useMemo(
     () =>
