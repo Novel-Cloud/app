@@ -11,7 +11,10 @@ import { LoginButton } from "../login/LoginButton.style";
 export default function Upload() {
   const { register } = useForm<ArtworkForm>();
   const [imageSrc, setImageSrc] = useState<string>("");
-  const { files, inputRef, labelRef, isDragActive } = useFileDrop();
+  const { files, inputRef, labelRef, isDragActive } = useFileDrop({
+    accept: "image/*",
+    singleFile: true,
+  });
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files)
