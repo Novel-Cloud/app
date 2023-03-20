@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ChangeEventHandler, InputHTMLAttributes } from "react";
+import { ChangeEventHandler, InputHTMLAttributes, RefObject } from "react";
 import * as S from "./FileUploader.style";
 
 interface FileUploaderProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -7,6 +7,9 @@ interface FileUploaderProps extends InputHTMLAttributes<HTMLInputElement> {
   id?: string;
   label?: string;
   onChange?: ChangeEventHandler<HTMLInputElement>;
+  labelRef: RefObject<HTMLLabelElement>;
+  inputRef: RefObject<HTMLInputElement>;
+  isDragActive: boolean;
 }
 
 export default function FileUploader({
@@ -14,12 +17,20 @@ export default function FileUploader({
   id = "file-uploader",
   label = "Upload",
   onChange,
+  labelRef,
+  inputRef,
+  isDragActive,
 }: FileUploaderProps) {
   return (
-    <S.FileUploaderWrapper>
+    <S.FileUploaderWrapper
+      ref={labelRef}
+      htmlFor={id}
+      isDragActive={isDragActive}
+    >
       {src !== "" && <Image src={src} alt={src} fill />}
-      <S.FileUploadButton htmlFor={id}>{label}</S.FileUploadButton>
-      <input type="file" id={id} hidden onChange={onChange} />
+
+      <S.FileUploadButton>{label}</S.FileUploadButton>
+      <input ref={inputRef} type="file" id={id} hidden onChange={onChange} />
     </S.FileUploaderWrapper>
   );
 }
