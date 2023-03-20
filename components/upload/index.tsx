@@ -13,7 +13,7 @@ export default function Upload() {
   const [imageSrc, setImageSrc] = useState<string>("");
   const { files, inputRef, labelRef, isDragActive } = useFileDrop({
     accept: "image/*",
-    singleFile: true,
+    isSingleFile: true,
   });
 
   const handleImageSrc = (fileList: FileList | File[]) => {
@@ -38,6 +38,7 @@ export default function Upload() {
         inputRef={inputRef}
         labelRef={labelRef}
         isDragActive={isDragActive}
+        label="드래그해서 업로드"
       />
       <ArtworkFormView />
       <LoginButton isFull>제출</LoginButton>

@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
-interface IOptions {
+interface Options {
   accept?: string;
-  multiple?: boolean;
-  singleFile?: boolean;
+  isMultiple?: boolean;
+  isSingleFile?: boolean;
 }
 
-function useFileDrop(options?: IOptions) {
+function useFileDrop(options?: Options) {
   const inputRef = useRef<HTMLInputElement>(null);
   const labelRef = useRef<HTMLLabelElement>(null);
   const [isDragActive, setIsDragActive] = useState(false);
@@ -18,13 +18,13 @@ function useFileDrop(options?: IOptions) {
       const selectFiles = event.dataTransfer.files;
       const uploadFiles = Array.from(selectFiles);
 
-      if (options?.singleFile) {
+      if (options?.isSingleFile) {
         setFiles(uploadFiles);
         return;
       }
       setFiles((prevFiles) => [...prevFiles, ...uploadFiles]);
     },
-    [options?.singleFile],
+    [options?.isSingleFile],
   );
 
   const onDragEnter = useCallback((e: DragEvent) => {
@@ -76,7 +76,8 @@ function useFileDrop(options?: IOptions) {
   useEffect(() => {
     if (!inputRef.current || !options) return;
     if (options.accept) inputRef.current.setAttribute("accept", options.accept);
-    if (options.multiple) inputRef.current.setAttribute("multiple", "multiple");
+    if (options.isMultiple)
+      inputRef.current.setAttribute("multiple", "multiple");
   }, [inputRef, options]);
 
   return {
