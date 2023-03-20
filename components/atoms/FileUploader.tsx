@@ -28,7 +28,8 @@ export default function FileUploader({
       isDragActive={isDragActive}
     >
       {src !== "" && <Image src={src} alt={src} fill />}
-      {/* <S.FileUploadButton>{label}</S.FileUploadButton> */}
+
+      <S.FileUploadButton>{label}</S.FileUploadButton>
       <input ref={inputRef} type="file" id={id} hidden onChange={onChange} />
     </S.FileUploaderWrapper>
   );
