@@ -6,7 +6,9 @@ export const Toolbar = styled.div`
   overflow: auto;
   align-items: center;
   gap: 0.5rem;
+  align-items: center;
   padding-bottom: 1.25rem;
+  width: 100%;
   &::-webkit-scrollbar {
     width: 0.75rem;
   }
@@ -18,6 +20,15 @@ export const Toolbar = styled.div`
   &::-webkit-scrollbar-track {
     background: ${theme.secondary};
     border-radius: 9999px;
+  }
+  & > div {
+    padding-bottom: 0;
+    & > div {
+      color: ${theme.primary};
+      background-color: ${theme.secondary};
+      padding: 0.25rem 0.5rem;
+      border-radius: 6px;
+    }
   }
 `;
 
