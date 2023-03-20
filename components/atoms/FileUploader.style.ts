@@ -1,12 +1,12 @@
 import theme from "@/styles/theme";
 import styled from "styled-components";
 
-export const FileUploaderWrapper = styled.div`
+export const FileUploaderWrapper = styled.div<{ isDragActive: boolean }>`
   position: relative;
   object-fit: cover;
   width: 100%;
   filter: drop-shadow(0px 0.25rem 0.25rem rgba(0, 0, 0, 0.25));
-  background-color: white;
+  background-color: ${(props) => (props.isDragActive ? "black" : "white")};
   height: 31.25rem;
   margin-top: 4rem;
   border: 2px solid ${theme.primary};
