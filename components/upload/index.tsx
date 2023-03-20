@@ -16,13 +16,16 @@ export default function Upload() {
     singleFile: true,
   });
 
+  const handleImageSrc = (fileList: FileList | File[]) => {
+    if (fileList.length) setImageSrc(URL.createObjectURL(fileList[0]));
+  };
+
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    if (event.target.files)
-      setImageSrc(URL.createObjectURL(event.target.files[0]));
+    handleImageSrc(event.target.files ?? []);
   };
 
   useEffect(() => {
-    console.log(files);
+    handleImageSrc(files);
   }, [files]);
 
   return (
