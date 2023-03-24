@@ -1,4 +1,4 @@
-import ArtworkComment from "@/components/artwork/ArtworkComment";
+import ArtworkComment from "@/components/artwork/ArtworkCommentList";
 import ArtworkDetail from "@/components/artwork/ArtworkDetail";
 import ArtworkPlayer from "@/components/artwork/ArtworkPlayer";
 import ArtworkDetailLayout from "@/layout/ArtworkDetailLayout";
