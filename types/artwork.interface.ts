@@ -1,4 +1,3 @@
-
 export interface Writer {
   writerName: string;
   writerProfile: string;
