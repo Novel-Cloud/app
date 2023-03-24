@@ -12,17 +12,6 @@ import { LoginButton } from "../login/LoginButton.style";
 export default function Upload() {
   const { register, handleSubmit } = useForm<ArtworkForm>();
   const [artworkImageSrc, setArtworkImageSrc] = useState<string>("");
-  const [thumbnailImageSrc, setThumbnailImageSrc] = useState<string>("");
-
-  const {
-    files: thumbnailFiles,
-    inputRef: thumbnailInputRef,
-    labelRef: thumbnailLabelRef,
-    isDragActive: thumbnailiIsDragActive,
-  } = useFileDrop({
-    accept: "image/*",
-    isSingleFile: true,
-  });
 
   const {
     files: artworkFiles,
@@ -45,20 +34,32 @@ export default function Upload() {
       setArtworkImageSrc(URL.createObjectURL(artworkFiles[0]));
   }, [artworkFiles]);
 
-  useEffect(() => {
-    if (thumbnailFiles.length)
-      setThumbnailImageSrc(URL.createObjectURL(thumbnailFiles[0]));
-  }, [thumbnailFiles]);
-
   const onValid: SubmitHandler<ArtworkForm> = (validData) => {
     const artworkFormData = new FormData();
-    artworkFormData.append("title", validData.artworkName);
-    artworkFormData.append("content", validData.artworkDescription);
-    artworkFormData.append("artworkType", validData.artworkType);
-    validData.tagList.split(",").forEach((tag) => {
-      artworkFormData.append("tags", tag);
+    const rq = {
+      title: validData.artworkName,
+      content: validData.artworkDescription,
+      artworkType: validData.artworkType,
+      tags: validData.tagList.split(","),
+    };
+
+    artworkFormData.append(
+      "rq",
+      new Blob([JSON.stringify(rq)], {
+        type: "application/json",
+      }),
+    );
+
+    artworkFormData.append("thumbnail", artworkFiles[0]);
+    artworkFiles.forEach((artworkFile) =>
+      artworkFormData.append("files", artworkFile),
+    );
+
+    httpClient.artwork.post(artworkFormData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
     });
-    httpClient.artwork.post(artworkFormData);
   };
 
   const onInValid: SubmitErrorHandler<ArtworkForm> = (inValidData) => {
@@ -69,16 +70,6 @@ export default function Upload() {
     <S.UploadWrapper onSubmit={handleSubmit(onValid, onInValid)}>
       <S.UploadTitle>Upload</S.UploadTitle>
       <ArtworkTypeRadio register={register} />
-      <FileUploader
-        onChange={(event) =>
-          handleImageSrc(event.target.files || [], setThumbnailImageSrc)
-        }
-        src={thumbnailImageSrc}
-        inputRef={thumbnailInputRef}
-        labelRef={thumbnailLabelRef}
-        isDragActive={thumbnailiIsDragActive}
-        label="드래그해서 썸네일 업로드"
-      />
 
       <FileUploader
         onChange={(event) =>
