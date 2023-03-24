@@ -20,7 +20,7 @@ export interface ArtworkForm {
   artworkThumbnail: string;
   artworkName: string;
   artworkDescription: string;
-  tagList: Tag[];
+  tagList: string;
 }
 
 export interface Tag {
