@@ -1,3 +1,4 @@
+
 export interface Writer {
   writerName: string;
   writerProfile: string;
@@ -11,7 +12,7 @@ export interface Artwork {
   artworkThumbnail: string;
   writer: Writer;
   tagList: Tag[];
-  commentList: string[];
+  commentList: Comment[];
   content: string;
 }
 
@@ -26,4 +27,23 @@ export interface ArtworkForm {
 export interface Tag {
   tagName: string;
   id: number;
+}
+
+export interface CommentWriter {
+  memberId: number;
+  name: string;
+  profileImageUrl: string;
+  email: string;
+}
+
+export interface Comment {
+  writer: CommentWriter;
+  commentId: number;
+  content: string;
+  createdDate: Date;
+  editable: boolean;
+  deletable: boolean;
+  bookmarks: number;
+  bookmarkYn: boolean;
+  replyList: Comment[];
 }
