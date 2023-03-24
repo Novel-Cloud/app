@@ -103,4 +103,5 @@ const axiosConfig: HttpClientConfig = {
 export default {
   oauth: new HttpClient("/api/oauth", axiosConfig),
   member: new HttpClient("/api/member", axiosConfig),
+  artwork: new HttpClient("/api/artwork", axiosConfig),
 };
