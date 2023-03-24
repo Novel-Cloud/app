@@ -1,7 +1,7 @@
 import theme from "@/styles/theme";
 import styled from "styled-components";
 
-export const Radio = styled.input.attrs({ type: "radio" })`
+export const Radio = styled.input`
   appearance: none;
   width: 1.25rem;
   height: 1.25rem;

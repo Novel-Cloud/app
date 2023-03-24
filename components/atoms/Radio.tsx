@@ -1,12 +1,12 @@
+import { InputHTMLAttributes } from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
 import * as S from "./Radio.style";
 
-interface RadioProps {
+interface RadioProps extends InputHTMLAttributes<HTMLInputElement> {
   id: string;
   label: string;
   description?: string;
-  name?: string;
-  checked?: boolean;
+  defaultChecked?: boolean;
   value?: string;
   registerReturn?: UseFormRegisterReturn;
 }
@@ -15,17 +15,18 @@ export default function Radio({
   id,
   label,
   description = "",
-  name,
-  checked,
+  defaultChecked,
+  value,
   registerReturn,
   ...props
 }: RadioProps) {
   return (
     <S.RadioWrapper>
       <S.Radio
-        name={name}
-        defaultChecked={checked}
+        type="radio"
+        defaultChecked={defaultChecked}
         id={id}
+        value={value}
         {...props}
         {...registerReturn}
       />
