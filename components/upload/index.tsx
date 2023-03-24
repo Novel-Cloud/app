@@ -1,6 +1,6 @@
 import { ArtworkForm } from "@/types/artwork.interface";
 import { ChangeEvent, useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+import { SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
 import useFileDrop from "@/hooks/useFileDrop";
 import FileUploader from "../atoms/FileUploader";
 import * as S from "./index.style";
@@ -9,7 +9,7 @@ import ArtworkTypeRadio from "./ArtworkTypeRadio";
 import { LoginButton } from "../login/LoginButton.style";
 
 export default function Upload() {
-  const { register } = useForm<ArtworkForm>();
+  const { register, handleSubmit } = useForm<ArtworkForm>();
   const [imageSrc, setImageSrc] = useState<string>("");
   const { files, inputRef, labelRef, isDragActive } = useFileDrop({
     accept: "image/*",
@@ -28,8 +28,16 @@ export default function Upload() {
     handleImageSrc(files);
   }, [files]);
 
+  const onValid: SubmitHandler<ArtworkForm> = (validData) => {
+    console.log(validData);
+  };
+
+  const onInValid: SubmitErrorHandler<ArtworkForm> = (inValidData) => {
+    console.error(inValidData);
+  };
+
   return (
-    <S.UploadWrapper>
+    <S.UploadWrapper onSubmit={handleSubmit(onValid, onInValid)}>
       <S.UploadTitle>Upload</S.UploadTitle>
       <ArtworkTypeRadio register={register} />
       <FileUploader
@@ -40,8 +48,10 @@ export default function Upload() {
         isDragActive={isDragActive}
         label="드래그해서 업로드"
       />
-      <ArtworkFormView />
-      <LoginButton isFull>제출</LoginButton>
+      <ArtworkFormView register={register} />
+      <LoginButton type="submit" isFull>
+        제출
+      </LoginButton>
     </S.UploadWrapper>
   );
 }
