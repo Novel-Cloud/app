@@ -1,6 +1,7 @@
 import { ArtworkForm } from "@/types/artwork.interface";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
+import FormData from "form-data";
 import useFileDrop from "@/hooks/useFileDrop";
 import httpClient from "@/apis";
 import FileUploader from "../atoms/FileUploader";
@@ -36,6 +37,7 @@ export default function Upload() {
 
   const onValid: SubmitHandler<ArtworkForm> = (validData) => {
     const artworkFormData = new FormData();
+
     const rq = {
       title: validData.artworkName,
       content: validData.artworkDescription,
@@ -45,7 +47,7 @@ export default function Upload() {
 
     artworkFormData.append(
       "rq",
-      new Blob([JSON.stringify(rq)], {
+      new Blob([`title: ${validData.artworkName}`], {
         type: "application/json",
       }),
     );
@@ -55,14 +57,11 @@ export default function Upload() {
       artworkFormData.append("files", artworkFile),
     );
 
-    httpClient.artwork.post(artworkFormData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    });
+    httpClient.artwork.post(artworkFormData);
   };
 
   const onInValid: SubmitErrorHandler<ArtworkForm> = (inValidData) => {
+    // eslint-disable-next-line no-console
     console.error(inValidData);
   };
 
