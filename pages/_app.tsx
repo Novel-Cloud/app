@@ -9,6 +9,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import config from "@/config";
+import Modal from "@/components/common/Modal";
 
 const client = new QueryClient({
   defaultOptions: {
@@ -26,6 +27,7 @@ export default function App({ Component, pageProps }: AppProps) {
           {config.nodeEnv === "development" && <ReactQueryDevtools />}
           <GlobalStyle />
           <UserStyle />
+          <Modal />
           <Component {...pageProps} />
         </QueryClientProvider>
       </ThemeProvider>
