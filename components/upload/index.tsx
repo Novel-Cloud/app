@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import { ArtworkForm } from "@/types/artwork.interface";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
-import FormData from "form-data";
 import useFileDrop from "@/hooks/useFileDrop";
+import FormData from "form-data";
 import httpClient from "@/apis";
 import FileUploader from "../atoms/FileUploader";
 import * as S from "./index.style";
@@ -47,17 +48,23 @@ export default function Upload() {
 
     artworkFormData.append(
       "rq",
-      new Blob([`title: ${validData.artworkName}`], {
+      new Blob([JSON.stringify(rq)], {
         type: "application/json",
       }),
+      { contentType: "application/json" },
     );
 
     artworkFormData.append("thumbnail", artworkFiles[0]);
+
     artworkFiles.forEach((artworkFile) =>
       artworkFormData.append("files", artworkFile),
     );
 
-    httpClient.artwork.post(artworkFormData);
+    httpClient.artwork.post(artworkFormData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
   };
 
   const onInValid: SubmitErrorHandler<ArtworkForm> = (inValidData) => {

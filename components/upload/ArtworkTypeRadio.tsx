@@ -12,14 +12,14 @@ export default function ArtworkTypeRadio({
       <Radio
         id="novel"
         label="Novel"
-        value="Novel"
+        value="NOVEL"
         registerReturn={register("artworkType")}
         description="Light Novel, Fanfiction, Delusion or Everythings"
       />
       <Radio
         id="artwork"
         label="Artwork"
-        value="Artwork"
+        value="ARTWORK"
         registerReturn={register("artworkType")}
         description="A picture you drew [not ai picture]"
       />
