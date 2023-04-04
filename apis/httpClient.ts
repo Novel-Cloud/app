@@ -62,17 +62,6 @@ export class HttpClient {
     });
   }
 
-  token(requestConfig?: AxiosRequestConfig) {
-    return this.api.post(
-      "/token",
-      {},
-      {
-        ...HttpClient.clientConfig,
-        ...requestConfig,
-      },
-    );
-  }
-
   sequence(data: unknown, requestConfig?: AxiosRequestConfig) {
     return this.api.put("/sequence", data, {
       ...HttpClient.clientConfig,
@@ -112,4 +101,5 @@ export default {
   member: new HttpClient("/api/member", axiosConfig),
   shortcut: new HttpClient("/api/shortcut", axiosConfig),
   artwork: new HttpClient("/api/artwork", axiosConfig),
+  artworkSave: new HttpClient("/api/artwork/save", axiosConfig),
 };
