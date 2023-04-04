@@ -8,11 +8,13 @@ import * as S from "../Toolbar.style";
 interface ToolbarViewProps {
   shortCutList: ShortCut[];
   setShortCutList: Dispatch<SetStateAction<ShortCut[]>>;
+  setIsChanged: Dispatch<SetStateAction<boolean>>;
 }
 
 export default function DragDropView({
   shortCutList,
   setShortCutList,
+  setIsChanged,
 }: ToolbarViewProps) {
   const [isEnabled, setIsEnabled] = useState(false);
 
@@ -22,6 +24,7 @@ export default function DragDropView({
     setShortCutList(
       reorder<ShortCut>(copyedShortCutList, source.index, destination.index),
     );
+    setIsChanged(true);
   };
 
   useEffect(() => {
