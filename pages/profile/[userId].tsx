@@ -1,4 +1,4 @@
-import Header from "@/components/common/header";
+import Header from "@/components/common/Header";
 import ProfileBackground from "@/components/profile/ProfileBackground";
 import ProfileInfo from "@/components/profile/ProfileInfo";
 import useAuthUser from "@/hooks/useAuthUser";

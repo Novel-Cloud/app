@@ -1,7 +1,9 @@
 import { EditButtonArgument, ShortCut } from "@/types/editor.interface";
 import { DragDropContext, Droppable, DropResult } from "react-beautiful-dnd";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import useModal from "@/hooks/useModal";
 import { deepcopy, reorder } from "@/utils/array";
+import httpClient from "@/apis";
 import ToolbarButtonView from "./ToolbarButton";
 import * as S from "./Toolbar.style";
 import ShortCutButton from "./ShortCutButton";
@@ -19,6 +21,7 @@ export default function ToolbarView({
   setShortCutList,
 }: ToolbarViewProps) {
   const [isEnabled, setIsEnabled] = useState(false);
+  const { openModal } = useModal();
 
   const onDragEnd = ({ source, destination }: DropResult) => {
     if (!destination) return;
@@ -36,6 +39,11 @@ export default function ToolbarView({
     };
   }, []);
 
+  // useEffect(() => {
+  //   const shortcutIdList = shortCutList.map((shortCut) => shortCut.id);
+  //   httpClient.shortcut.sequence(shortcutIdList);
+  // }, [shortCutList]);
+
   if (!isEnabled) {
     return null;
   }
@@ -48,7 +56,11 @@ export default function ToolbarView({
         ))}
       </S.Toolbar>
       <S.Toolbar>
-        <S.ShortCutIconWrapper>
+        <S.ShortCutIconWrapper
+          onClick={() =>
+            openModal({ title: "엄준식", content: <span>엄</span> })
+          }
+        >
           <ShortCutIcon />
         </S.ShortCutIconWrapper>
         <DragDropContext onDragEnd={onDragEnd}>
