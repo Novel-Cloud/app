@@ -1,4 +1,4 @@
-import Header from "@/components/common/header";
+import Header from "@/components/common/Header";
 import { ReactNode } from "react";
 import * as S from "./LoginLayout.style";
 

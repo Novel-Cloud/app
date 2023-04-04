@@ -25,5 +25,5 @@ export const FileUploadButton = styled.span`
   left: 50%;
   transform: translate(-50%, -50%);
   color: ${theme.primary};
-  z-index: -10;
+  z-index: -100;
 `;

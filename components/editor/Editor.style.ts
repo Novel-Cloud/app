@@ -15,10 +15,10 @@ export const EditorWrapper = styled.div`
     height: 49rem;
     background-color: ${theme.secondary};
     color: ${theme.primary};
-    cursor: text;
     font-size: 1.25rem;
     font-weight: 600;
     line-height: 1.3;
+    cursor: text;
     &:focus {
       outline: none;
     }

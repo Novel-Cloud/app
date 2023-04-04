@@ -1,10 +1,8 @@
 import { EditButtonArgument, ShortCut } from "@/types/editor.interface";
-import { DragDropContext, Droppable, DropResult } from "react-beautiful-dnd";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import { deepcopy, reorder } from "@/utils/array";
+import useModal from "@/hooks/useModal";
 import ToolbarButtonView from "./ToolbarButton";
 import * as S from "./Toolbar.style";
-import ShortCutButton from "./ShortCutButton";
 import ShortCutIcon from "../icons/editor/ShortCutIcon";
 
 interface ToolbarViewProps {
@@ -16,17 +14,9 @@ interface ToolbarViewProps {
 export default function ToolbarView({
   editButtonArgumentList,
   shortCutList,
-  setShortCutList,
 }: ToolbarViewProps) {
   const [isEnabled, setIsEnabled] = useState(false);
-
-  const onDragEnd = ({ source, destination }: DropResult) => {
-    if (!destination) return;
-    const copyedShortCutList = deepcopy<ShortCut[]>(shortCutList);
-    setShortCutList(
-      reorder<ShortCut>(copyedShortCutList, source.index, destination.index),
-    );
-  };
+  const { openModal } = useModal();
 
   useEffect(() => {
     const animation = requestAnimationFrame(() => setIsEnabled(true));
@@ -47,35 +37,27 @@ export default function ToolbarView({
           <ToolbarButtonView key={idx} {...editButtonArgument} />
         ))}
       </S.Toolbar>
-      <S.Toolbar>
-        <S.ShortCutIconWrapper>
+      <S.Toolbar style={{ marginTop: "1.25rem" }}>
+        <S.ShortCutIconWrapper
+          onClick={() =>
+            openModal({ title: "엄준식", content: <span>엄</span> })
+          }
+        >
           <ShortCutIcon />
         </S.ShortCutIconWrapper>
-        <DragDropContext onDragEnd={onDragEnd}>
-          <Droppable droppableId="shortcut" direction="horizontal">
-            {(droppableProvided) => (
-              <S.Toolbar
-                ref={droppableProvided.innerRef}
-                {...droppableProvided.droppableProps}
-              >
-                {shortCutList.map(({ content, id }, idx) => (
-                  <ShortCutButton
-                    key={idx}
-                    idx={idx}
-                    id={id.toString()}
-                    onMouseDown={(event) => {
-                      event.preventDefault();
-                      document.execCommand("insertText", false, content);
-                    }}
-                  >
-                    {content}
-                  </ShortCutButton>
-                ))}
-                {droppableProvided.placeholder}
-              </S.Toolbar>
-            )}
-          </Droppable>
-        </DragDropContext>
+        <S.Toolbar>
+          {shortCutList.map(({ content }, idx) => (
+            <div
+              key={idx}
+              onMouseDown={(event) => {
+                event.preventDefault();
+                document.execCommand("insertText", false, content);
+              }}
+            >
+              {content}
+            </div>
+          ))}
+        </S.Toolbar>
       </S.Toolbar>
     </S.ToolbarWrapper>
   );

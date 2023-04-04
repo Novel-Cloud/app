@@ -73,6 +73,13 @@ export class HttpClient {
     );
   }
 
+  sequence(data: unknown, requestConfig?: AxiosRequestConfig) {
+    return this.api.put("/sequence", data, {
+      ...HttpClient.clientConfig,
+      ...requestConfig,
+    });
+  }
+
   private setting() {
     HttpClient.setCommonInterceptors(this.api);
   }
@@ -103,4 +110,6 @@ const axiosConfig: HttpClientConfig = {
 export default {
   oauth: new HttpClient("/api/oauth", axiosConfig),
   member: new HttpClient("/api/member", axiosConfig),
+  shortcut: new HttpClient("/api/shortcut", axiosConfig),
+  artwork: new HttpClient("/api/artwork", axiosConfig),
 };

@@ -48,4 +48,10 @@ export const ShortCutIconWrapper = styled.div`
     width: 2.5rem;
     height: 2.5rem;
   }
+  display: flex;
+`;
+
+export const DragDropViewWrapper = styled.div`
+  display: flex;
+  gap: 10px;
 `;

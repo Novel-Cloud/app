@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const UploadWrapper = styled.div`
+export const UploadWrapper = styled.form`
   padding: 3rem 15.625rem;
   @media screen and (max-width: 1024px) {
     padding: 3rem 3.75rem;

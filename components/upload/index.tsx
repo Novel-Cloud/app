@@ -1,7 +1,10 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import { ArtworkForm } from "@/types/artwork.interface";
-import { ChangeEvent, useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
 import useFileDrop from "@/hooks/useFileDrop";
+import FormData from "form-data";
+import httpClient from "@/apis";
 import FileUploader from "../atoms/FileUploader";
 import * as S from "./index.style";
 import ArtworkFormView from "./ArtworkForm";
@@ -9,39 +12,90 @@ import ArtworkTypeRadio from "./ArtworkTypeRadio";
 import { LoginButton } from "../login/LoginButton.style";
 
 export default function Upload() {
-  const { register } = useForm<ArtworkForm>();
-  const [imageSrc, setImageSrc] = useState<string>("");
-  const { files, inputRef, labelRef, isDragActive } = useFileDrop({
+  const { register, handleSubmit } = useForm<ArtworkForm>();
+  const [artworkImageSrc, setArtworkImageSrc] = useState<string>("");
+
+  const {
+    files: artworkFiles,
+    inputRef: artworkInputRef,
+    labelRef: artworkLabelRef,
+    isDragActive: artworkIsDragActive,
+  } = useFileDrop({
     accept: "image/*",
-    isSingleFile: true,
   });
 
-  const handleImageSrc = (fileList: FileList | File[]) => {
-    if (fileList.length) setImageSrc(URL.createObjectURL(fileList[0]));
-  };
-
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    handleImageSrc(event.target.files ?? []);
+  const handleImageSrc = (
+    fileList: FileList | File[],
+    setState: Dispatch<SetStateAction<string>>,
+  ) => {
+    if (fileList.length) setState(URL.createObjectURL(fileList[0]));
   };
 
   useEffect(() => {
-    handleImageSrc(files);
-  }, [files]);
+    if (artworkFiles.length)
+      setArtworkImageSrc(URL.createObjectURL(artworkFiles[0]));
+  }, [artworkFiles]);
+
+  const onValid: SubmitHandler<ArtworkForm> = (validData) => {
+    const artworkFormData = new FormData();
+
+    const rq = {
+      title: validData.artworkName,
+      content: validData.artworkDescription,
+      artworkType: validData.artworkType,
+      tags: validData.tagList.split(","),
+    };
+
+    artworkFormData.append(
+      "rq",
+      new Blob([JSON.stringify(rq)], {
+        type: "application/json",
+      }),
+      { contentType: "application/json" },
+    );
+
+    artworkFormData.append("thumbnail", artworkFiles[0]);
+
+    artworkFiles.forEach((artworkFile) =>
+      artworkFormData.append("files", artworkFile),
+    );
+
+    httpClient.artwork.post(artworkFormData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+  };
+
+  const onInValid: SubmitErrorHandler<ArtworkForm> = (inValidData) => {
+    // eslint-disable-next-line no-console
+    console.error(inValidData);
+  };
 
   return (
-    <S.UploadWrapper>
+    <S.UploadWrapper onSubmit={handleSubmit(onValid, onInValid)}>
       <S.UploadTitle>Upload</S.UploadTitle>
       <ArtworkTypeRadio register={register} />
+
       <FileUploader
-        onChange={handleChange}
-        src={imageSrc}
-        inputRef={inputRef}
-        labelRef={labelRef}
-        isDragActive={isDragActive}
-        label="드래그해서 업로드"
+        onChange={(event) =>
+          handleImageSrc(event.target.files || [], setArtworkImageSrc)
+        }
+        src={artworkImageSrc}
+        inputRef={artworkInputRef}
+        labelRef={artworkLabelRef}
+        isDragActive={artworkIsDragActive}
+        label="드래그해서 작품 업로드"
       />
-      <ArtworkFormView />
-      <LoginButton isFull>제출</LoginButton>
+
+      {artworkFiles.map((artworkFile) => (
+        <div>{artworkFile.name}</div>
+      ))}
+
+      <ArtworkFormView register={register} />
+      <LoginButton type="submit" isFull>
+        제출
+      </LoginButton>
     </S.UploadWrapper>
   );
 }
