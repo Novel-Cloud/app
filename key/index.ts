@@ -1,6 +1,6 @@
 const OAUTH = "useOauth";
 const USER = "useAuthUser";
 const SHORTCUTLIST = "useShortCutList";
-
-const KEY = { OAUTH, USER, SHORTCUTLIST };
+const CONTENT = "useContent";
+const KEY = { OAUTH, USER, SHORTCUTLIST, CONTENT };
 export default KEY;

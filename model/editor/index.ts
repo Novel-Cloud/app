@@ -8,5 +8,5 @@ export const useShortCutList = () => {
     httpClient.shortcut.get().then((r) => r.data),
   );
   console.log(data);
-  return { data: data || [], isError };
+  return { data: [], isError };
 };
