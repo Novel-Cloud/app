@@ -37,7 +37,7 @@ export default function ToolbarView({
           <ToolbarButtonView key={idx} {...editButtonArgument} />
         ))}
       </S.Toolbar>
-      <S.Toolbar>
+      <S.Toolbar style={{ marginTop: "1.25rem" }}>
         <S.ShortCutIconWrapper
           onClick={() =>
             openModal({ title: "엄준식", content: <span>엄</span> })
