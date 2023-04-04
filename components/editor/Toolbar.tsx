@@ -3,7 +3,6 @@ import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import useModal from "@/hooks/useModal";
 import ToolbarButtonView from "./ToolbarButton";
 import * as S from "./Toolbar.style";
-import ShortCutButton from "./ShortCutButton";
 import ShortCutIcon from "../icons/editor/ShortCutIcon";
 
 interface ToolbarViewProps {
@@ -47,18 +46,16 @@ export default function ToolbarView({
           <ShortCutIcon />
         </S.ShortCutIconWrapper>
         <S.Toolbar>
-          {shortCutList.map(({ content, id }, idx) => (
-            <ShortCutButton
+          {shortCutList.map(({ content }, idx) => (
+            <div
               key={idx}
-              idx={idx}
-              id={id.toString()}
               onMouseDown={(event) => {
                 event.preventDefault();
                 document.execCommand("insertText", false, content);
               }}
             >
               {content}
-            </ShortCutButton>
+            </div>
           ))}
         </S.Toolbar>
       </S.Toolbar>

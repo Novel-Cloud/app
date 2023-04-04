@@ -1,5 +1,6 @@
 import { HTMLProps, ReactNode } from "react";
 import { Draggable } from "react-beautiful-dnd";
+import styled from "styled-components";
 
 interface ShortCutButtonProps extends HTMLProps<HTMLDivElement> {
   children: ReactNode;
@@ -28,3 +29,5 @@ export default function ShortCutButton({
     </Draggable>
   );
 }
+
+const DraggableButton = styled.div``;
