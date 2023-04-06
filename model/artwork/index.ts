@@ -15,10 +15,15 @@ export const useArtwork = (artworkId: number) => {
   return { data: fixture.artwork };
 };
 
+interface SavedContent {
+  temporaryArtworkId: null;
+  createdDate: null;
+  content: null;
+}
+
 export const useContent = () => {
-  const { data } = useQuery([KEY.CONTENT], () =>
+  const { data } = useQuery<SavedContent>([KEY.CONTENT], () =>
     httpClient.artworkSave.get().then((r) => r.data),
   );
-  console.log(data);
-  return data;
+  return { data: data?.content || "" };
 };

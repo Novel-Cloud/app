@@ -1,6 +1,6 @@
 import ContentEditable, { ContentEditableEvent } from "react-contenteditable";
 import useDebounce from "@/hooks/useDebounce";
-import React, { KeyboardEventHandler, useEffect, useRef } from "react";
+import React, { KeyboardEventHandler, useEffect, useState } from "react";
 import httpClient from "@/apis";
 import { useContent } from "@/model/artwork";
 import * as S from "./Editor.style";
@@ -12,11 +12,11 @@ interface EditorViewProps {
 
 export default function EditorView({ getCommand }: EditorViewProps) {
   const { data: savedContent } = useContent();
-  const content = useRef<string>("");
-  const debouncedContent = useDebounce({ value: content, delay: 3000 });
+  const [content, setContent] = useState("");
+  const debouncedContent = useDebounce({ value: content, delay: 4000 });
 
   const handleChange = (event: ContentEditableEvent) => {
-    content.current = event.target.value;
+    setContent(event.target.value);
   };
 
   const handleKeyDown: KeyboardEventHandler<HTMLDivElement> = (event) => {
@@ -24,13 +24,14 @@ export default function EditorView({ getCommand }: EditorViewProps) {
   };
 
   useEffect(() => {
-    httpClient.artworkSave
-      .post({ content: debouncedContent })
-      .then((r) => r.data);
+    if (debouncedContent !== "")
+      httpClient.artworkSave
+        .post({ content: debouncedContent })
+        .then((r) => r.data);
   }, [debouncedContent]);
 
   useEffect(() => {
-    content.current = savedContent;
+    setContent(savedContent);
   }, [savedContent]);
 
   return (
@@ -40,7 +41,7 @@ export default function EditorView({ getCommand }: EditorViewProps) {
           id="editor"
           tagName="span"
           spellCheck="false"
-          html={content.current}
+          html={content}
           onChange={handleChange}
           onKeyDown={handleKeyDown}
         />
