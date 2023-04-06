@@ -1,5 +1,8 @@
 import ContentEditable, { ContentEditableEvent } from "react-contenteditable";
-import React, { KeyboardEventHandler, useRef } from "react";
+import useDebounce from "@/hooks/useDebounce";
+import React, { KeyboardEventHandler, useEffect, useState } from "react";
+import httpClient from "@/apis";
+import { useContent } from "@/model/artwork";
 import * as S from "./Editor.style";
 import PDFService from "../pdf/PdfService";
 
@@ -8,15 +11,28 @@ interface EditorViewProps {
 }
 
 export default function EditorView({ getCommand }: EditorViewProps) {
-  const content = useRef<string>("");
+  const { data: savedContent } = useContent();
+  const [content, setContent] = useState("");
+  const debouncedContent = useDebounce({ value: content, delay: 4000 });
 
   const handleChange = (event: ContentEditableEvent) => {
-    content.current = event.target.value;
+    setContent(event.target.value);
   };
 
   const handleKeyDown: KeyboardEventHandler<HTMLDivElement> = (event) => {
     if (event.ctrlKey) getCommand(Number(event.key) || -1);
   };
+
+  useEffect(() => {
+    if (debouncedContent !== "")
+      httpClient.artworkSave
+        .post({ content: debouncedContent })
+        .then((r) => r.data);
+  }, [debouncedContent]);
+
+  useEffect(() => {
+    setContent(savedContent);
+  }, [savedContent]);
 
   return (
     <PDFService>
@@ -25,7 +41,7 @@ export default function EditorView({ getCommand }: EditorViewProps) {
           id="editor"
           tagName="span"
           spellCheck="false"
-          html={content.current}
+          html={content}
           onChange={handleChange}
           onKeyDown={handleKeyDown}
         />
