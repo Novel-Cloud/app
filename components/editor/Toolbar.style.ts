@@ -3,11 +3,9 @@ import styled from "styled-components";
 
 export const Toolbar = styled.div`
   display: flex;
+  align-items: center;
   overflow: auto;
-  align-items: center;
   gap: 0.5rem;
-  align-items: center;
-  padding-bottom: 1.25rem;
   width: 100%;
   &::-webkit-scrollbar {
     width: 0.75rem;
@@ -20,14 +18,6 @@ export const Toolbar = styled.div`
   &::-webkit-scrollbar-track {
     background: ${theme.secondary};
     border-radius: 9999px;
-  }
-  & > div {
-    user-select: none;
-    font-weight: 900;
-    color: ${theme.primary};
-    background-color: ${theme.secondary};
-    padding: 0.25rem 0.5rem;
-    border-radius: 6px;
   }
 `;
 

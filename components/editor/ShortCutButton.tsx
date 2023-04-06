@@ -1,5 +1,7 @@
+import theme from "@/styles/theme";
 import { HTMLProps, ReactNode } from "react";
 import { Draggable } from "react-beautiful-dnd";
+import styled from "styled-components";
 
 interface ShortCutButtonProps extends HTMLProps<HTMLDivElement> {
   children: ReactNode;
@@ -16,15 +18,25 @@ export default function ShortCutButton({
   return (
     <Draggable key={id} draggableId={idx.toString()} index={idx}>
       {(draggableProvided) => (
-        <div
-          ref={draggableProvided.innerRef}
-          {...props}
-          {...draggableProvided.draggableProps}
-          {...draggableProvided.dragHandleProps}
-        >
-          {children}
-        </div>
+        <ToolbarButton>
+          <div
+            ref={draggableProvided.innerRef}
+            {...props}
+            {...draggableProvided.draggableProps}
+            {...draggableProvided.dragHandleProps}
+          >
+            {children}
+          </div>
+        </ToolbarButton>
       )}
     </Draggable>
   );
 }
+
+const ToolbarButton = styled.div`
+  & > div {
+    background-color: ${theme.secondary};
+    padding: 6px 12px;
+    border-radius: 10px;
+  }
+`;
