@@ -102,4 +102,5 @@ export default {
   shortcut: new HttpClient("/api/shortcut", axiosConfig),
   artwork: new HttpClient("/api/artwork", axiosConfig),
   artworkSave: new HttpClient("/api/artwork/save", axiosConfig),
+  artworkDetail: new HttpClient("/api/artwork/detail", axiosConfig),
 };
