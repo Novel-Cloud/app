@@ -14,7 +14,7 @@ export default function ShortCutButton({
   ...props
 }: ShortCutButtonProps) {
   return (
-    <Draggable key={id} draggableId={id} index={idx}>
+    <Draggable key={id} draggableId={idx.toString()} index={idx}>
       {(draggableProvided) => (
         <div
           ref={draggableProvided.innerRef}

@@ -22,15 +22,12 @@ export const Toolbar = styled.div`
     border-radius: 9999px;
   }
   & > div {
-    padding-bottom: 0;
-    & > div {
-      user-select: none;
-      font-weight: 900;
-      color: ${theme.primary};
-      background-color: ${theme.secondary};
-      padding: 0.25rem 0.5rem;
-      border-radius: 6px;
-    }
+    user-select: none;
+    font-weight: 900;
+    color: ${theme.primary};
+    background-color: ${theme.secondary};
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
   }
 `;
 

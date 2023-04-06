@@ -4,9 +4,9 @@ import { ShortCut } from "@/types/editor.interface";
 import { useQuery } from "@tanstack/react-query";
 
 export const useShortCutList = () => {
-  const { data, isError } = useQuery<ShortCut[]>([KEY.SHORTCUTLIST], () =>
-    httpClient.shortcut.get().then((r) => r.data),
+  const { data, isError } = useQuery<{ list: ShortCut[] }>(
+    [KEY.SHORTCUTLIST],
+    () => httpClient.shortcut.get().then((r) => r.data),
   );
-  console.log(data);
-  return { data: [], isError };
+  return { data: data?.list || [], isError };
 };

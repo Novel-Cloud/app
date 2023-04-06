@@ -9,5 +9,5 @@ export interface EditButtonArgument {
 
 export interface ShortCut {
   content: string;
-  id: number;
+  shortcutId: number;
 }

@@ -3,10 +3,10 @@ import { ShortCut } from "@/types/editor.interface";
 import { Member } from "@/types/user.interface";
 
 const shortCutList: ShortCut[] = [
-  { id: 0, content: "미카모" },
-  { id: 1, content: "네루" },
-  { id: 2, content: "선생" },
-  { id: 3, content: "「」" },
+  { shortcutId: 0, content: "미카모" },
+  { shortcutId: 1, content: "네루" },
+  { shortcutId: 2, content: "선생" },
+  { shortcutId: 3, content: "「」" },
 ];
 
 const tagList: Tag[] = new Array(20)

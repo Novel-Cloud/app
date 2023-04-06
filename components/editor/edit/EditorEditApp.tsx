@@ -15,7 +15,9 @@ export default function EditorEditApp() {
 
   useEffect(() => {
     if (isChanged) {
-      const shortcutIdList = myShortCutList.map((myShortCut) => myShortCut.id);
+      const shortcutIdList = myShortCutList.map(
+        (myShortCut) => myShortCut.shortcutId,
+      );
       httpClient.shortcut.sequence({ shortcutIdList });
     }
   }, [isChanged, myShortCutList]);

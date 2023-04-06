@@ -47,11 +47,11 @@ export default function DragDropView({
             ref={droppableProvided.innerRef}
             {...droppableProvided.droppableProps}
           >
-            {shortCutList.map(({ content, id }, idx) => (
+            {shortCutList.map(({ content, shortcutId }, idx) => (
               <ShortCutButton
                 key={idx}
                 idx={idx}
-                id={id.toString()}
+                id={shortcutId?.toString() || ""}
                 onMouseDown={(event) => {
                   event.preventDefault();
                   document.execCommand("insertText", false, content);
