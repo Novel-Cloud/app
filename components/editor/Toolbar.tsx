@@ -1,6 +1,8 @@
 import { EditButtonArgument, ShortCut } from "@/types/editor.interface";
+import { useRouter } from "next/router";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import useModal from "@/hooks/useModal";
+import styled from "styled-components";
+import theme from "@/styles/theme";
 import ToolbarButtonView from "./ToolbarButton";
 import * as S from "./Toolbar.style";
 import ShortCutIcon from "../icons/editor/ShortCutIcon";
@@ -15,9 +17,8 @@ export default function ToolbarView({
   editButtonArgumentList,
   shortCutList,
 }: ToolbarViewProps) {
+  const router = useRouter();
   const [isEnabled, setIsEnabled] = useState(false);
-  const { openModal } = useModal();
-
   useEffect(() => {
     const animation = requestAnimationFrame(() => setIsEnabled(true));
     return () => {
@@ -37,17 +38,13 @@ export default function ToolbarView({
           <ToolbarButtonView key={idx} {...editButtonArgument} />
         ))}
       </S.Toolbar>
-      <S.Toolbar style={{ marginTop: "1.25rem" }}>
-        <S.ShortCutIconWrapper
-          onClick={() =>
-            openModal({ title: "엄준식", content: <span>엄</span> })
-          }
-        >
+      <S.Toolbar style={{ padding: "1.25rem 0" }}>
+        <S.ShortCutIconWrapper onClick={() => router.push("/editor/edit")}>
           <ShortCutIcon />
         </S.ShortCutIconWrapper>
         <S.Toolbar>
           {shortCutList.map(({ content }, idx) => (
-            <div
+            <ToolbarButton
               key={idx}
               onMouseDown={(event) => {
                 event.preventDefault();
@@ -55,10 +52,16 @@ export default function ToolbarView({
               }}
             >
               {content}
-            </div>
+            </ToolbarButton>
           ))}
         </S.Toolbar>
       </S.Toolbar>
     </S.ToolbarWrapper>
   );
 }
+
+const ToolbarButton = styled.div`
+  background-color: ${theme.secondary};
+  padding: 6px 12px;
+  border-radius: 10px;
+`;

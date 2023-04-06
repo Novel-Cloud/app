@@ -15,7 +15,7 @@ export default function EditorPage() {
 
   useEffect(() => {
     if (!isError) setMyShortCutList(shortCutList);
-  }, [isError]);
+  }, [isError, shortCutList]);
 
   const keymapList = useMemo(
     () =>
