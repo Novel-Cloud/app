@@ -6,47 +6,45 @@ import LikeIcon from "../icons/artwork/LikeIcon";
 import * as S from "./Artwork.style";
 
 export default function ArtworkView({
-  artworkName,
-  artworkThumbnail,
-  isLike,
-  tagList,
+  thumbnail,
+  title,
+  artworkId,
+  likeYn,
   writer,
-  id,
+  tags,
 }: Artwork) {
   const router = useRouter();
   return (
     <S.ArtworkWrapper>
       <S.ArtworkThumbnailWrapper>
         <Image
-          src={artworkThumbnail}
-          alt={artworkName}
+          src={thumbnail}
+          alt={title}
           fill
-          onClick={() => router.push(`/artwork/${id}`)}
+          onClick={() => router.push(`/artwork/${artworkId}`)}
         />
         <S.ArtworkLikeIconWrapper onClick={() => console.log("조아용")}>
-          {isLike ? <FilledLikeIcon /> : <LikeIcon />}
+          {likeYn ? <FilledLikeIcon /> : <LikeIcon />}
         </S.ArtworkLikeIconWrapper>
       </S.ArtworkThumbnailWrapper>
 
-      <S.ArtworkTitle onClick={() => router.push(`/artwork/${id}`)}>
-        {artworkName}
+      <S.ArtworkTitle onClick={() => router.push(`/artwork/${artworkId}`)}>
+        {title}
       </S.ArtworkTitle>
       <S.ArtworkInfoWrapper>
-        <S.WriterWrapper
-          onClick={() => router.push(`/profile/${writer.writerId}`)}
-        >
+        <S.WriterWrapper onClick={() => router.push(`/profile/${writer}`)}>
           <Image
-            src={writer.writerProfile}
-            alt={writer.writerName}
+            src={writer.picture}
+            alt={writer.nickname}
             width={32}
             height={32}
           />
-          {writer.writerName}
+          {writer.nickname}
         </S.WriterWrapper>
 
         <S.ArtworkTagWrapper>
-          {tagList.map((tag) => (
-            <S.ArtworkTag key={tag.id}>#{tag.tagName}</S.ArtworkTag>
+          {tags.map((tag, idx) => (
+            <S.ArtworkTag key={idx}>#{tag.value}</S.ArtworkTag>
           ))}
         </S.ArtworkTagWrapper>
       </S.ArtworkInfoWrapper>
