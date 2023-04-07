@@ -17,7 +17,7 @@ export interface Artwork {
   artworkId: number;
   title: string;
   content: string;
-  view: string;
+  view: number;
   artworkType: ArtworkType;
   writer: Writer;
   likes: number;
