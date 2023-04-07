@@ -11,171 +11,28 @@ const shortCutList: ShortCut[] = [
 
 const tagList: Tag[] = new Array(20)
   .fill(null)
-  .map((_, idx) => ({ tagName: "십덕오타쿠", id: idx }));
+  .map((_, idx) => ({ value: "십덕오타쿠", tagId: idx }));
 
 const artwork: Artwork = {
-  id: 1,
-  artworkName: "제목입니다",
-  isLike: false,
-  artworkThumbnail:
+  artworkId: 1,
+  title: "제목입니다",
+  likeYn: false,
+  thumbnail:
     "https://velog.velcdn.com/images/j1min/post/86ad283a-daa7-4849-a450-6de9d57e51d8/image.png",
   writer: {
-    writerId: 1,
-    writerName: "와따시",
-    writerProfile:
+    memberId: 1,
+    nickname: "와따시",
+    picture:
       "https://velog.velcdn.com/images/j1min/post/59c03f65-0531-4363-8405-ed93e9a172c1/image.png",
   },
-  tagList,
-  commentList: [
-    {
-      writer: {
-        memberId: 0,
-        name: "string",
-        profileImageUrl: "string",
-        email: "string",
-      },
-      commentId: 0,
-      content: "string",
-      createdDate: new Date(),
-      editable: true,
-      deletable: true,
-      bookmarks: 0,
-      bookmarkYn: true,
-      replyList: [
-        {
-          writer: {
-            memberId: 0,
-            name: "string",
-            profileImageUrl: "string",
-            email: "string",
-          },
-          commentId: 0,
-          content: "string",
-          createdDate: new Date(),
-          editable: true,
-          deletable: true,
-          bookmarks: 0,
-          bookmarkYn: true,
-          replyList: [],
-        },
-        {
-          writer: {
-            memberId: 0,
-            name: "string",
-            profileImageUrl: "string",
-            email: "string",
-          },
-          commentId: 0,
-          content: "string",
-          createdDate: new Date(),
-          editable: true,
-          deletable: true,
-          bookmarks: 0,
-          bookmarkYn: true,
-          replyList: [],
-        },
-        {
-          writer: {
-            memberId: 0,
-            name: "string",
-            profileImageUrl: "string",
-            email: "string",
-          },
-          commentId: 0,
-          content: "string",
-          createdDate: new Date(),
-          editable: true,
-          deletable: true,
-          bookmarks: 0,
-          bookmarkYn: true,
-          replyList: [],
-        },
-        {
-          writer: {
-            memberId: 0,
-            name: "string",
-            profileImageUrl: "string",
-            email: "string",
-          },
-          commentId: 0,
-          content: "string",
-          createdDate: new Date(),
-          editable: true,
-          deletable: true,
-          bookmarks: 0,
-          bookmarkYn: true,
-          replyList: [],
-        },
-        {
-          writer: {
-            memberId: 0,
-            name: "string",
-            profileImageUrl: "string",
-            email: "string",
-          },
-          commentId: 0,
-          content: "string",
-          createdDate: new Date(),
-          editable: true,
-          deletable: true,
-          bookmarks: 0,
-          bookmarkYn: true,
-          replyList: [],
-        },
-        {
-          writer: {
-            memberId: 0,
-            name: "string",
-            profileImageUrl: "string",
-            email: "string",
-          },
-          commentId: 0,
-          content: "string",
-          createdDate: new Date(),
-          editable: true,
-          deletable: true,
-          bookmarks: 0,
-          bookmarkYn: true,
-          replyList: [
-            {
-              writer: {
-                memberId: 0,
-                name: "string",
-                profileImageUrl: "string",
-                email: "string",
-              },
-              commentId: 0,
-              content: "string",
-              createdDate: new Date(),
-              editable: true,
-              deletable: true,
-              bookmarks: 0,
-              bookmarkYn: true,
-              replyList: [],
-            },
-          ],
-        },
-      ],
-    },
-    {
-      writer: {
-        memberId: 0,
-        name: "string",
-        profileImageUrl: "string",
-        email: "string",
-      },
-      commentId: 0,
-      content: "string",
-      createdDate: new Date(),
-      editable: true,
-      deletable: true,
-      bookmarks: 0,
-      bookmarkYn: true,
-      replyList: [],
-    },
-  ],
+  tags: [],
   content:
     "소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ소설연재내용입니다ㅏㅏ",
+  artworkType: "ARTWORK",
+  attachFiles: [],
+  createDate: "",
+  likes: 0,
+  view: 0,
 };
 
 const artworkList = new Array(12)
