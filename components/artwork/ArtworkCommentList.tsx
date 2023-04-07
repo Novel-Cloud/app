@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import Button from "../atoms/Button";
 import Input from "../atoms/Input";
 import * as S from "./ArtworkCommentList.style";
-import Comment from "./Comment";
 
 export default function ArtworkCommentList({ artwork }: { artwork: Artwork }) {
   const router = useRouter();
