@@ -1,22 +1,35 @@
 export interface Writer {
-  writerName: string;
-  writerProfile: string;
-  writerId: number;
+  memberId: number;
+  nickname: string;
+  picture: string;
 }
 
+export interface S3File {
+  attachFileId: number;
+  fileName: string;
+  fileUidName: string;
+  fileSize: number;
+}
+
+export type ArtworkType = "NOVEL" | "ARTWORK";
+
 export interface Artwork {
-  id: number;
-  artworkName: string;
-  isLike: boolean;
-  artworkThumbnail: string;
-  writer: Writer;
-  tagList: Tag[];
-  commentList: Comment[];
+  artworkId: number;
+  title: string;
   content: string;
+  view: string;
+  artworkType: ArtworkType;
+  writer: Writer;
+  likes: number;
+  likeYn: boolean;
+  tags: Tag[];
+  thumbnail: string;
+  attachFiles: S3File[];
+  createDate: string;
 }
 
 export interface ArtworkForm {
-  artworkType: string;
+  artworkType: ArtworkType;
   artworkThumbnail: string;
   artworkName: string;
   artworkDescription: string;
@@ -24,8 +37,8 @@ export interface ArtworkForm {
 }
 
 export interface Tag {
-  tagName: string;
-  id: number;
+  value: string;
+  tagId: number;
 }
 
 export interface CommentWriter {

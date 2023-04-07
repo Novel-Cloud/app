@@ -9,28 +9,28 @@ import Comment from "./Comment";
 export default function ArtworkCommentList({ artwork }: { artwork: Artwork }) {
   const router = useRouter();
   const moveToProfile = () =>
-    router.push(`/profile/${artwork.writer.writerId}`);
+    router.push(`/profile/${artwork.writer.memberId}`);
 
   return (
     <S.CommentWrapper>
       <S.CommentTitle>댓글</S.CommentTitle>
       <S.CommentInputWrapper>
         <Image
-          src={artwork.writer.writerProfile}
-          alt={artwork.writer.writerName}
+          src={artwork.writer.picture}
+          alt={artwork.writer.nickname}
           width={52}
           height={52}
         />
         <Input varient="secondary" isFull />
         <Button rounded>전송</Button>
       </S.CommentInputWrapper>
-      {artwork.commentList.map((comment) => (
+      {/* {artwork.commentList.map((comment) => (
         <Comment
           artwork={artwork}
           comment={comment}
           moveToProfile={moveToProfile}
         />
-      ))}
+      ))} */}
     </S.CommentWrapper>
   );
 }

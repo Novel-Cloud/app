@@ -13,19 +13,19 @@ export default function ArtworkDetail({ artwork }: { artwork: Artwork }) {
     <S.ArtworkDetailWrapper>
       <S.ArtworkTitleWrapper>
         <div>
-          <S.ArtworkTitle>{artwork.artworkName}</S.ArtworkTitle>
+          <S.ArtworkTitle>{artwork.title}</S.ArtworkTitle>
           <S.ArtworkWriterWrapper>
             <S.ArtworkOnClickWrapper
-              onClick={() => router.push(`/profile/${artwork.writer.writerId}`)}
+              onClick={() => router.push(`/profile/${artwork.writer.memberId}`)}
             >
               <Image
-                src={artwork.writer.writerProfile}
-                alt={artwork.writer.writerName}
+                src={artwork.writer.picture}
+                alt={artwork.writer.nickname}
                 width={48}
                 height={48}
               />
               <S.ArtworkWriterName>
-                {artwork.writer.writerName}
+                {artwork.writer.nickname}
               </S.ArtworkWriterName>
             </S.ArtworkOnClickWrapper>
             <Button varient="secondary" rounded>

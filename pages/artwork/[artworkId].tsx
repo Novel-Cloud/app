@@ -10,21 +10,22 @@ import { useRouter } from "next/router";
 
 interface ArtworkDetailPageProps {
   artwork: Artwork;
+  is404: boolean;
 }
 
-export default function ArtworkDetailPage({ artwork }: ArtworkDetailPageProps) {
-  const router = useRouter();
-  console.log(artwork);
-
-  // const { data: artwork } = useArtwork(Number(artworkId));
-
+export default function ArtworkDetailPage({
+  artwork,
+  is404,
+}: ArtworkDetailPageProps) {
+  if (is404) {
+    return <div>404 ㅋㅋ</div>;
+  }
   return (
-    <>d</>
-    // <ArtworkDetailLayout
-    //   app={<ArtworkPlayer artwork={artwork} />}
-    //   detail={<ArtworkDetail artwork={artwork} />}
-    //   comment={<ArtworkComment artwork={artwork} />}
-    // />
+    <ArtworkDetailLayout
+      app={<ArtworkPlayer artwork={artwork} />}
+      detail={<ArtworkDetail artwork={artwork} />}
+      comment={<ArtworkComment artwork={artwork} />}
+    />
   );
 }
 
@@ -37,20 +38,17 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const artworkId = context.params?.artworkId || 0;
-  const { data: artwork } = await httpClient.artworkDetail
+  const { data: artwork, is404 } = await httpClient.artworkDetail
     .getById({
       params: { id: artworkId },
     })
-    .then((r) => ({ data: deepcopy(r.data) }))
-    .catch((e) => {
-      console.log(e);
-
-      return { data: {} };
-    });
+    .then((r) => ({ data: deepcopy(r.data), is404: false }))
+    .catch(() => ({ data: {}, is404: true }));
 
   return {
     props: {
       artwork,
+      is404,
     },
     revalidate: 6000,
   };
