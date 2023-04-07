@@ -7,8 +7,8 @@ export default function TagList({ tagList }: { tagList: Tag[] }) {
     <S.TagListWrapper>
       <S.TagListTitle>Popular Tags</S.TagListTitle>
       <S.TagWrapper>
-        {tagList.map(({ tagName, id }) => (
-          <TagView tagName={tagName} url="/artwork/123" key={id} />
+        {tagList.map(({ value }, idx) => (
+          <TagView tagName={value} url="/artwork/123" key={idx} />
         ))}
       </S.TagWrapper>
     </S.TagListWrapper>

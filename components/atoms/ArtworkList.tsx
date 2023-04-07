@@ -17,7 +17,7 @@ export default function ArtworkList({
       {isButtonList && <ButtonList />}
       <S.ArtworkListWrapper>
         {artworkList.map((artwork) => (
-          <ArtworkView {...artwork} key={artwork.id} />
+          <ArtworkView {...artwork} key={artwork.artworkId} />
         ))}
       </S.ArtworkListWrapper>
     </S.ArtworkFrameWrapper>

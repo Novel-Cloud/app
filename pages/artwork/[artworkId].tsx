@@ -6,7 +6,6 @@ import ArtworkDetailLayout from "@/layout/ArtworkDetailLayout";
 import { Artwork } from "@/types/artwork.interface";
 import { deepcopy } from "@/utils/array";
 import { GetStaticProps } from "next";
-import { useRouter } from "next/router";
 
 interface ArtworkDetailPageProps {
   artwork: Artwork;
