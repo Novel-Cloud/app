@@ -19,15 +19,15 @@ export default function CommentView({
   return (
     <S.Comment>
       <Image
-        src={artwork.writer.writerProfile}
-        alt={artwork.writer.writerName}
+        src={artwork.writer.picture}
+        alt={artwork.writer.nickname}
         width={48}
         height={48}
         onClick={moveToProfile}
       />
       <div>
         <S.CommentWriter onClick={moveToProfile}>
-          {artwork.writer.writerName}
+          {artwork.writer.nickname}
         </S.CommentWriter>
         <S.CommentContent>{comment.content}</S.CommentContent>
         <S.CommentDate>2022. 2. 3.</S.CommentDate>
