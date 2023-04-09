@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import Button from "../atoms/Button";
 import Input from "../atoms/Input";
 import * as S from "./ArtworkCommentList.style";
+import Avatar from "../atoms/Avatar";
 
 export default function ArtworkCommentList({ artwork }: { artwork: Artwork }) {
   const router = useRouter();
@@ -14,7 +15,7 @@ export default function ArtworkCommentList({ artwork }: { artwork: Artwork }) {
     <S.CommentWrapper>
       <S.CommentTitle>댓글</S.CommentTitle>
       <S.CommentInputWrapper>
-        <Image
+        <Avatar
           src={artwork.writer.picture}
           alt={artwork.writer.nickname}
           width={52}

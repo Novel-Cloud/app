@@ -6,6 +6,7 @@ import EyeIcon from "../icons/artwork/EyeIcon";
 import LikeIcon from "../icons/artwork/LikeIcon";
 import ShareIcon from "../icons/artwork/ShareIcon";
 import * as S from "./ArtworkDetail.style";
+import Avatar from "../atoms/Avatar";
 
 export default function ArtworkDetail({ artwork }: { artwork: Artwork }) {
   const router = useRouter();
@@ -18,7 +19,7 @@ export default function ArtworkDetail({ artwork }: { artwork: Artwork }) {
             <S.ArtworkOnClickWrapper
               onClick={() => router.push(`/profile/${artwork.writer.memberId}`)}
             >
-              <Image
+              <Avatar
                 src={artwork.writer.picture}
                 alt={artwork.writer.nickname}
                 width={48}
