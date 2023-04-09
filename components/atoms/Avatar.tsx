@@ -7,8 +7,8 @@ interface AvatarProps extends ImageProps {
 
 export default function Avatar({ src, ...props }: AvatarProps) {
   return (
-    <S.AvartarWrapper>
+    <S.AvatarWrapper>
       <Image src={src} {...props} />
-    </S.AvartarWrapper>
+    </S.AvatarWrapper>
   );
 }

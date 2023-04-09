@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import FilledLikeIcon from "../icons/artwork/FilledLikeIcon";
 import LikeIcon from "../icons/artwork/LikeIcon";
 import * as S from "./Artwork.style";
+import Avatar from "./Avatar";
 
 export default function ArtworkView({
   thumbnail,
@@ -34,7 +35,7 @@ export default function ArtworkView({
       </S.ArtworkTitle>
       <S.ArtworkInfoWrapper>
         <S.WriterWrapper onClick={() => router.push(`/profile/${writer}`)}>
-          <Image
+          <Avatar
             src={writer.picture}
             alt={writer.nickname}
             width={32}
