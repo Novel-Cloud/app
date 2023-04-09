@@ -10,6 +10,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import config from "@/config";
 import Modal from "@/components/common/Modal";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const client = new QueryClient({
   defaultOptions: {
@@ -29,6 +31,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <UserStyle />
           <Modal />
           <Component {...pageProps} />
+          <ToastContainer />
         </QueryClientProvider>
       </ThemeProvider>
     </RecoilRoot>
