@@ -62,6 +62,13 @@ export class HttpClient {
     });
   }
 
+  view(requestConfig?: AxiosRequestConfig) {
+    return this.api.get("/view", {
+      ...HttpClient.clientConfig,
+      ...requestConfig,
+    });
+  }
+
   sequence(data: unknown, requestConfig?: AxiosRequestConfig) {
     return this.api.put("/sequence", data, {
       ...HttpClient.clientConfig,
