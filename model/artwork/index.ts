@@ -1,14 +1,58 @@
 import httpClient from "@/apis";
 import fixture from "@/fixture";
 import KEY from "@/key";
-import { useQuery } from "@tanstack/react-query";
+import { Artwork } from "@/types/artwork.interface";
+import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 
 export const useTag = () => {
   return { data: fixture.tagList };
 };
 
-export const useArtworkList = () => {
-  return { data: fixture.artworkList };
+export interface PaginationRequest {
+  page?: number;
+  size?: number;
+}
+
+export interface PaginationResponse {
+  page: number;
+  size: number;
+  totalCount: number;
+  totalPages: number;
+}
+
+interface ArtworkList {
+  list: Artwork[];
+  pagination: PaginationResponse;
+}
+
+export const useArtworkList = (pagination?: PaginationRequest) => {
+  const { data, isFetchingNextPage, fetchNextPage } =
+    useInfiniteQuery<ArtworkList>(
+      [KEY.ARTWORKLIST],
+      ({ pageParam = 1 }) =>
+        httpClient.artwork
+          .view({
+            params: {
+              page: pageParam,
+              size: pagination?.size || 12,
+            },
+          })
+          .then((r) => r.data),
+      {
+        getNextPageParam: (lastPage) => lastPage.pagination.page + 1,
+      },
+    );
+
+  const customHasNextPage =
+    ((data?.pageParams[data.pageParams.length - 1] as number) || 1) <
+    (data?.pages[0].pagination.totalPages || 0);
+
+  return {
+    pages: data?.pages || [{ list: [] }],
+    isFetchingNextPage,
+    customHasNextPage,
+    fetchNextPage,
+  };
 };
 
 export const useArtwork = (artworkId: number) => {
