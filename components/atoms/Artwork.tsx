@@ -1,4 +1,5 @@
 import { Artwork } from "@/types/artwork.interface";
+import config from "@/config";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import FilledLikeIcon from "../icons/artwork/FilledLikeIcon";
@@ -18,7 +19,7 @@ export default function ArtworkView({
     <S.ArtworkWrapper>
       <S.ArtworkThumbnailWrapper>
         <Image
-          src={thumbnail}
+          src={`${config.baseURL}/api/file/artwork/${thumbnail}`}
           alt={title}
           fill
           onClick={() => router.push(`/artwork/${artworkId}`)}
@@ -43,8 +44,8 @@ export default function ArtworkView({
         </S.WriterWrapper>
 
         <S.ArtworkTagWrapper>
-          {tags.map((tag, idx) => (
-            <S.ArtworkTag key={idx}>#{tag.value}</S.ArtworkTag>
+          {tags.map(({ tagId, content }) => (
+            <S.ArtworkTag key={tagId}>#{content}</S.ArtworkTag>
           ))}
         </S.ArtworkTagWrapper>
       </S.ArtworkInfoWrapper>
