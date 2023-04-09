@@ -11,7 +11,7 @@ const shortCutList: ShortCut[] = [
 
 const tagList: Tag[] = new Array(20)
   .fill(null)
-  .map((_, idx) => ({ value: "십덕오타쿠", tagId: idx }));
+  .map((_, idx) => ({ content: "십덕오타쿠", tagId: idx }));
 
 const artwork: Artwork = {
   artworkId: 1,

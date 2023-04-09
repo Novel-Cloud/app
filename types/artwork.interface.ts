@@ -37,8 +37,8 @@ export interface ArtworkForm {
 }
 
 export interface Tag {
-  value: string;
   tagId: number;
+  content: string;
 }
 
 export interface CommentWriter {
