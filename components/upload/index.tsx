@@ -5,6 +5,8 @@ import { SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
 import useFileDrop from "@/hooks/useFileDrop";
 import FormData from "form-data";
 import httpClient from "@/apis";
+import { toast } from "react-toastify";
+import { useRouter } from "next/router";
 import FileUploader from "../atoms/FileUploader";
 import * as S from "./index.style";
 import ArtworkFormView from "./ArtworkForm";
@@ -12,6 +14,7 @@ import ArtworkTypeRadio from "./ArtworkTypeRadio";
 import { LoginButton } from "../login/LoginButton.style";
 
 export default function Upload() {
+  const router = useRouter();
   const { register, handleSubmit } = useForm<ArtworkForm>();
   const [artworkImageSrc, setArtworkImageSrc] = useState<string>("");
 
@@ -60,11 +63,16 @@ export default function Upload() {
       artworkFormData.append("files", artworkFile),
     );
 
-    httpClient.artwork.post(artworkFormData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    });
+    httpClient.artwork
+      .post(artworkFormData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then(() => {
+        toast("업로드에 성공했습니다.");
+        router.push("/");
+      });
   };
 
   const onInValid: SubmitErrorHandler<ArtworkForm> = (inValidData) => {
