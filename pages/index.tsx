@@ -6,11 +6,11 @@ import React from "react";
 
 export default function Main() {
   const { data: tagList } = useTag();
-  const { data: artworkList } = useArtworkList();
+  const { pages: artworkPages } = useArtworkList();
   return (
     <MainLayout
       tags={<TagList tagList={tagList} />}
-      app={<ArtworkList artworkList={artworkList} isButtonList />}
+      app={<ArtworkList artworkPages={artworkPages} isButtonList />}
     />
   );
 }

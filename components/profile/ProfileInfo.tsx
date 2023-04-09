@@ -12,7 +12,7 @@ interface ProfileInfoProps {
 }
 
 export default function ProfileInfo({ userInfo, isMypage }: ProfileInfoProps) {
-  const { data: artworkList } = useArtworkList();
+  const { pages: artworkPages } = useArtworkList();
 
   return (
     <S.ProfileInfoWrapper>
@@ -43,7 +43,7 @@ export default function ProfileInfo({ userInfo, isMypage }: ProfileInfoProps) {
       </S.ProfileAvatarWrapper>
 
       <S.ProfileInfoTitle>Recent Artwork</S.ProfileInfoTitle>
-      <ArtworkList artworkList={artworkList} />
+      <ArtworkList artworkPages={artworkPages} />
     </S.ProfileInfoWrapper>
   );
 }
