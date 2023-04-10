@@ -20,15 +20,16 @@ export default function FileUploader({
   labelRef,
   inputRef,
   isDragActive,
+  style,
 }: FileUploaderProps) {
   return (
     <S.FileUploaderWrapper
       ref={labelRef}
       htmlFor={id}
       isDragActive={isDragActive}
+      style={style}
     >
       {src !== "" && <Image src={src} alt={src} fill />}
-
       <S.FileUploadButton>{label}</S.FileUploadButton>
       <input ref={inputRef} type="file" id={id} hidden onChange={onChange} />
     </S.FileUploaderWrapper>
