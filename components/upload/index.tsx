@@ -15,7 +15,7 @@ import { LoginButton } from "../login/LoginButton.style";
 
 export default function Upload() {
   const router = useRouter();
-  const { register, handleSubmit } = useForm<ArtworkForm>();
+  const { register, handleSubmit, setValue } = useForm<ArtworkForm>();
   const [artworkImageSrc, setArtworkImageSrc] = useState<string>("");
 
   const {
@@ -38,6 +38,12 @@ export default function Upload() {
     if (artworkFiles.length)
       setArtworkImageSrc(URL.createObjectURL(artworkFiles[0]));
   }, [artworkFiles]);
+
+  useEffect(() => {
+    httpClient.artworkSave.get().then((r) => {
+      setValue("artworkDescription", r.data.content);
+    });
+  }, [setValue]);
 
   const onValid: SubmitHandler<ArtworkForm> = (validData) => {
     const artworkFormData = new FormData();
