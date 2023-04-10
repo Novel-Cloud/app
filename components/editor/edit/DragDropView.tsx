@@ -26,16 +26,10 @@ export default function DragDropView({
   const [isEnabled, setIsEnabled] = useState(false);
 
   const removeShortCut = (shortcutId: number) => {
-    httpClient.shortcut
-      .delete({
-        data: {
-          shortcutId,
-        },
-      })
-      .then(() => {
-        toast("삭제가 완료되었습니다.");
-        queryClient.invalidateQueries([KEY.SHORTCUTLIST]);
-      });
+    httpClient.shortcut.delete({ data: { shortcutId } }).then(() => {
+      toast("삭제가 완료되었습니다.");
+      queryClient.invalidateQueries([KEY.SHORTCUTLIST]);
+    });
   };
 
   const onDragEnd = ({ source, destination }: DropResult) => {
@@ -90,4 +84,8 @@ export default function DragDropView({
 const XIconWrapper = styled.div`
   z-index: 999;
   cursor: pointer;
+  svg {
+    width: 12px;
+    height: 12px;
+  }
 `;

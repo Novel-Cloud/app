@@ -21,4 +21,6 @@ export default function EditorEditLayout({
   );
 }
 
-const EditorEditLayoutWrapper = styled.div``;
+const EditorEditLayoutWrapper = styled.div`
+  padding: 12px;
+`;
