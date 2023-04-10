@@ -15,7 +15,7 @@ interface ProfileForm {
 }
 
 export default function ProfileEdit() {
-  const { user: userInfo } = useAuthUser();
+  const { user: userInfo } = useAuthUser({ authorizedPage: true });
   const { register, reset, handleSubmit } = useForm<ProfileForm>();
   const [profileImageSrc, setProfileImageSrc] = useState("");
   const [profileFileList, setProfileFileList] = useState<FileList | File[]>();
