@@ -85,8 +85,8 @@ export default function ProfileEdit() {
           marginTop: "12px",
         }}
       />
-      <Button onClick={handleChangeProfile}>프사변경</Button>
-      <Button type="submit">고고</Button>
+      <Button onClick={handleChangeProfile}>프로필 변경</Button>
+      <Button type="submit">닉네임 변경</Button>
     </form>
   );
 }
