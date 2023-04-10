@@ -11,12 +11,13 @@ interface ShortCutForm {
 }
 
 export default function CreateShortCut() {
-  const { register, handleSubmit } = useForm<ShortCutForm>();
+  const { register, handleSubmit, reset } = useForm<ShortCutForm>();
   const queryClient = useQueryClient();
   const onValid: SubmitHandler<ShortCutForm> = ({ content }) => {
     httpClient.shortcut.post({ content }).then(() => {
       toast("추가가 완료되었습니다.");
       queryClient.invalidateQueries([KEY.SHORTCUTLIST]);
+      reset();
     });
   };
 

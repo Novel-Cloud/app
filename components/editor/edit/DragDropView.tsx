@@ -52,10 +52,6 @@ export default function DragDropView({
                 key={idx}
                 idx={idx}
                 id={shortcutId?.toString() || ""}
-                onMouseDown={(event) => {
-                  event.preventDefault();
-                  document.execCommand("insertText", false, content);
-                }}
               >
                 {content}
               </ShortCutButton>

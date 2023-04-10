@@ -7,6 +7,7 @@ export const Toolbar = styled.div`
   overflow: auto;
   gap: 0.5rem;
   width: 100%;
+  padding: 12px 0;
   &::-webkit-scrollbar {
     width: 0.75rem;
   }
@@ -40,5 +41,5 @@ export const ShortCutIconWrapper = styled.div`
 
 export const DragDropViewWrapper = styled.div`
   display: flex;
-  gap: 10px;
+  gap: 0.625rem;
 `;

@@ -72,7 +72,7 @@ const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 24px;
-  gap: 10px;
+  gap: 0.625rem;
   padding: 0 40px;
   box-sizing: border-box;
 `;
