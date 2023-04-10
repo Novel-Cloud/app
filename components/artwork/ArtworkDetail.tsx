@@ -12,6 +12,7 @@ import LikeIcon from "../icons/artwork/LikeIcon";
 import ShareIcon from "../icons/artwork/ShareIcon";
 import * as S from "./ArtworkDetail.style";
 import Avatar from "../atoms/Avatar";
+import FilledLikeIcon from "../icons/artwork/FilledLikeIcon";
 
 export default function ArtworkDetail({ artwork }: { artwork: Artwork }) {
   const router = useRouter();
@@ -20,7 +21,7 @@ export default function ArtworkDetail({ artwork }: { artwork: Artwork }) {
   }`;
   const queryClient = useQueryClient();
   const {
-    data: { likes, view },
+    data: { likes, view, likeYn },
   } = useArtwork(artwork.artworkId);
 
   const handleLike = () => {
@@ -59,7 +60,7 @@ export default function ArtworkDetail({ artwork }: { artwork: Artwork }) {
             <EyeIcon /> {view}
           </S.ArtworkDate>
           <S.ArtworkDate onClick={handleLike} style={{ cursor: "pointer" }}>
-            <LikeIcon />
+            {likeYn ? <FilledLikeIcon /> : <LikeIcon />}
             {likes}
           </S.ArtworkDate>
 
