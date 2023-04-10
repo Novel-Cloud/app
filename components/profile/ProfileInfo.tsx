@@ -22,9 +22,7 @@ export default function ProfileInfo({ userInfo, isMypage }: ProfileInfoProps) {
   } = useArtworkList();
 
   const dummyFn = () => 1;
-  const goToEditPage = () => {
-    router.push("/profile/edit");
-  };
+  const goToProfileEditPage = () => router.push("/profile/edit");
 
   return (
     <S.ProfileInfoWrapper>
@@ -43,7 +41,7 @@ export default function ProfileInfo({ userInfo, isMypage }: ProfileInfoProps) {
           <Button
             id="large"
             rounded
-            onClick={isMypage ? goToEditPage : dummyFn}
+            onClick={isMypage ? goToProfileEditPage : dummyFn}
           >
             {isMypage ? "내 정보 관리" : "팔로우"}
           </Button>
