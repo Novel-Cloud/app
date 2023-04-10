@@ -12,7 +12,12 @@ interface ProfileInfoProps {
 }
 
 export default function ProfileInfo({ userInfo, isMypage }: ProfileInfoProps) {
-  const { pages: artworkPages } = useArtworkList();
+  const {
+    pages: artworkPages,
+    customHasNextPage,
+    fetchNextPage,
+    isFetchingNextPage,
+  } = useArtworkList();
 
   return (
     <S.ProfileInfoWrapper>
@@ -43,7 +48,12 @@ export default function ProfileInfo({ userInfo, isMypage }: ProfileInfoProps) {
       </S.ProfileAvatarWrapper>
 
       <S.ProfileInfoTitle>Recent Artwork</S.ProfileInfoTitle>
-      <ArtworkList artworkPages={artworkPages} />
+      <ArtworkList
+        artworkPages={artworkPages}
+        customHasNextPage={customHasNextPage}
+        fetchNextPage={fetchNextPage}
+        isFetchingNextPage={isFetchingNextPage}
+      />
     </S.ProfileInfoWrapper>
   );
 }

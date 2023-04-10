@@ -8,7 +8,12 @@ import { useEffect, useState } from "react";
 export default function SearchPage() {
   const router = useRouter();
   const [keyword, setKeyword] = useState<string>("");
-  const { pages: artworkPages } = useArtworkList();
+  const {
+    pages: artworkPages,
+    customHasNextPage,
+    fetchNextPage,
+    isFetchingNextPage,
+  } = useArtworkList();
 
   useEffect(() => {
     setKeyword(router.query.keyword as string);
@@ -16,7 +21,15 @@ export default function SearchPage() {
 
   return (
     <SearchLayout
-      app={<ArtworkList artworkPages={artworkPages} isButtonList />}
+      app={
+        <ArtworkList
+          artworkPages={artworkPages}
+          customHasNextPage={customHasNextPage}
+          fetchNextPage={fetchNextPage}
+          isFetchingNextPage={isFetchingNextPage}
+          isButtonList
+        />
+      }
       result={<SearchResult keyword={keyword} />}
     />
   );
