@@ -1,12 +1,8 @@
 import httpClient from "@/apis";
 import fixture from "@/fixture";
 import KEY from "@/key";
-import { Artwork } from "@/types/artwork.interface";
+import { Artwork, Tag } from "@/types/artwork.interface";
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
-
-export const useTag = () => {
-  return { data: fixture.tagList };
-};
 
 export interface PaginationRequest {
   page?: number;
@@ -24,6 +20,13 @@ interface ArtworkList {
   list: Artwork[];
   pagination: PaginationResponse;
 }
+
+export const useTag = () => {
+  const { data } = useQuery<{ list: Tag[] }>([KEY.TAG], () =>
+    httpClient.tag.get().then((r) => r.data),
+  );
+  return { data: data?.list || [] };
+};
 
 export const useArtworkList = (pagination?: PaginationRequest) => {
   const { data, isFetchingNextPage, fetchNextPage } =
