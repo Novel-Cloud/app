@@ -6,6 +6,7 @@ import ArtworkDetailLayout from "@/layout/ArtworkDetailLayout";
 import { Artwork } from "@/types/artwork.interface";
 import { deepcopy } from "@/utils/array";
 import { GetStaticProps } from "next";
+import Page404 from "../404";
 
 interface ArtworkDetailPageProps {
   artwork: Artwork;
@@ -17,7 +18,7 @@ export default function ArtworkDetailPage({
   is404,
 }: ArtworkDetailPageProps) {
   if (is404) {
-    return <div>404 ㅋㅋ</div>;
+    return <Page404 />;
   }
   return (
     <ArtworkDetailLayout

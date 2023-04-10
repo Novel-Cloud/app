@@ -111,4 +111,5 @@ export default {
   artworkSave: new HttpClient("/api/artwork/save", axiosConfig),
   artworkDetail: new HttpClient("/api/artwork/detail", axiosConfig),
   tag: new HttpClient("/api/tag", axiosConfig),
+  comment: new HttpClient("/api/comment", axiosConfig),
 };
