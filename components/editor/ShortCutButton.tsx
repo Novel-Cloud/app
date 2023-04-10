@@ -34,9 +34,12 @@ export default function ShortCutButton({
 }
 
 const ToolbarButton = styled.div`
+  white-space: nowrap;
   & > div {
+    display: flex;
+    gap: 6px;
     background-color: ${theme.secondary};
     padding: 6px 12px;
-    border-radius: 10px;
+    border-radius: 0.625rem;
   }
 `;

@@ -36,7 +36,7 @@ export const ArtworkWriterProfileWrapper = styled.div``;
 export const ArtworkOnClickWrapper = styled.div`
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0.625rem;
   cursor: pointer;
 `;
 export const ArtworkWriterWrapper = styled.div`

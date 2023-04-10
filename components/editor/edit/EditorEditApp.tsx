@@ -25,7 +25,7 @@ export default function EditorEditApp() {
         queryClient.invalidateQueries([KEY.SHORTCUTLIST]);
       });
     }
-  }, [isChanged, myShortCutList]);
+  }, [isChanged, myShortCutList, queryClient]);
 
   return (
     <DragDropView
