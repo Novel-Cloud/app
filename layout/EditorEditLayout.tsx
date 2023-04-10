@@ -4,13 +4,19 @@ import styled from "styled-components";
 
 interface EditorEditLayoutProps {
   app: ReactNode;
+  input: ReactNode;
 }
 
-export default function EditorEditLayout({ app }: EditorEditLayoutProps) {
+export default function EditorEditLayout({
+  app,
+  input,
+}: EditorEditLayoutProps) {
   return (
     <>
       <Header />
-      <EditorEditLayoutWrapper>{app}</EditorEditLayoutWrapper>
+      <EditorEditLayoutWrapper>
+        {app} {input}
+      </EditorEditLayoutWrapper>
     </>
   );
 }
