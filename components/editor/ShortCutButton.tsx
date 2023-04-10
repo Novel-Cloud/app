@@ -34,6 +34,7 @@ export default function ShortCutButton({
 }
 
 const ToolbarButton = styled.div`
+  white-space: nowrap;
   & > div {
     background-color: ${theme.secondary};
     padding: 6px 12px;
