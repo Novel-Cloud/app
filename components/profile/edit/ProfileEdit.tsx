@@ -8,6 +8,7 @@ import FormData from "form-data";
 import httpClient from "@/apis";
 import { toast } from "react-toastify";
 import Button from "@/components/atoms/Button";
+import styled from "styled-components";
 
 interface ProfileForm {
   nickname: string;
@@ -34,6 +35,7 @@ export default function ProfileEdit() {
       toast("닉네임 변경 성공 ww");
     });
   };
+
   const handleImageSrc = (fileList: FileList) => {
     if (fileList.length) {
       setProfileImageSrc(URL.createObjectURL(fileList[0]));
@@ -70,8 +72,9 @@ export default function ProfileEdit() {
   }, [userInfo, reset]);
 
   return (
-    <form onSubmit={handleSubmit(onValid)}>
+    <ProfileEditWrapper onSubmit={handleSubmit(onValid)}>
       <Input registerReturn={register("nickname")} />
+      <Button type="submit">닉네임 변경</Button>
       <FileUploader
         onChange={(event) => {
           handleImageSrc((event.target.files || []) as FileList);
@@ -90,7 +93,14 @@ export default function ProfileEdit() {
         }}
       />
       <Button onClick={handleChangeProfile}>프로필 변경</Button>
-      <Button type="submit">닉네임 변경</Button>
-    </form>
+    </ProfileEditWrapper>
   );
 }
+
+const ProfileEditWrapper = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 1rem;
+`;
