@@ -17,7 +17,7 @@ const Page404Wrapper = styled.div`
   align-items: center;
   gap: 24px;
   h1 {
-    font-size: 52px;
+    font-size: 48px;
     margin: 12px;
   }
 `;
