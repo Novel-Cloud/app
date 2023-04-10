@@ -2,6 +2,10 @@ import { Artwork } from "@/types/artwork.interface";
 import { toast } from "react-toastify";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { useRouter } from "next/router";
+import httpClient from "@/apis";
+import { useQueryClient } from "@tanstack/react-query";
+import KEY from "@/key";
+import { useArtwork } from "@/model/artwork";
 import Button from "../atoms/Button";
 import EyeIcon from "../icons/artwork/EyeIcon";
 import LikeIcon from "../icons/artwork/LikeIcon";
@@ -14,6 +18,16 @@ export default function ArtworkDetail({ artwork }: { artwork: Artwork }) {
   const url = `${typeof window !== "undefined" ? window.location.origin : ""}${
     router.asPath
   }`;
+  const queryClient = useQueryClient();
+  const {
+    data: { likes, view },
+  } = useArtwork(artwork.artworkId);
+
+  const handleLike = () => {
+    httpClient.like.post({ artworkId: artwork.artworkId }).then(() => {
+      queryClient.invalidateQueries([KEY.ARTWORK]);
+    });
+  };
   return (
     <S.ArtworkDetailWrapper>
       <S.ArtworkTitleWrapper>
@@ -42,11 +56,11 @@ export default function ArtworkDetail({ artwork }: { artwork: Artwork }) {
         <S.ArtworkDateWrapper>
           <S.ArtworkDate>{artwork.createDate}</S.ArtworkDate>
           <S.ArtworkDate>
-            <EyeIcon /> {artwork.view}
+            <EyeIcon /> {view}
           </S.ArtworkDate>
-          <S.ArtworkDate>
+          <S.ArtworkDate onClick={handleLike} style={{ cursor: "pointer" }}>
             <LikeIcon />
-            {artwork.likes}
+            {likes}
           </S.ArtworkDate>
 
           <CopyToClipboard text={url}>
