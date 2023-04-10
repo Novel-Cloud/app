@@ -29,7 +29,11 @@ export default function ProfileEdit() {
     isSingleFile: true,
   });
 
-  const onValid: SubmitHandler<ProfileForm> = () => {};
+  const onValid: SubmitHandler<ProfileForm> = ({ nickname }) => {
+    httpClient.memberSelf.nickname({ nickname }).then(() => {
+      toast("닉네임 변경 성공 ww");
+    });
+  };
   const handleImageSrc = (fileList: FileList) => {
     if (fileList.length) {
       setProfileImageSrc(URL.createObjectURL(fileList[0]));

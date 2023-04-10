@@ -55,6 +55,13 @@ export class HttpClient {
     });
   }
 
+  nickname(data: unknown, requestConfig?: AxiosRequestConfig) {
+    return this.api.put("/nickname", data, {
+      ...HttpClient.clientConfig,
+      ...requestConfig,
+    });
+  }
+
   delete(requestConfig?: AxiosRequestConfig) {
     return this.api.delete("", {
       ...HttpClient.clientConfig,
