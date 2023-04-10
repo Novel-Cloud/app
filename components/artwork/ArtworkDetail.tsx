@@ -1,5 +1,6 @@
 import { Artwork } from "@/types/artwork.interface";
-import Image from "next/image";
+import { toast } from "react-toastify";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 import { useRouter } from "next/router";
 import Button from "../atoms/Button";
 import EyeIcon from "../icons/artwork/EyeIcon";
@@ -10,6 +11,9 @@ import Avatar from "../atoms/Avatar";
 
 export default function ArtworkDetail({ artwork }: { artwork: Artwork }) {
   const router = useRouter();
+  const url = `${typeof window !== "undefined" ? window.location.origin : ""}${
+    router.asPath
+  }`;
   return (
     <S.ArtworkDetailWrapper>
       <S.ArtworkTitleWrapper>
@@ -36,17 +40,24 @@ export default function ArtworkDetail({ artwork }: { artwork: Artwork }) {
         </div>
 
         <S.ArtworkDateWrapper>
-          <S.ArtworkDate>2023. 3. 7.</S.ArtworkDate>
+          <S.ArtworkDate>{artwork.createDate}</S.ArtworkDate>
           <S.ArtworkDate>
-            <EyeIcon /> 14.8만
+            <EyeIcon /> {artwork.view}
           </S.ArtworkDate>
           <S.ArtworkDate>
             <LikeIcon />
-            6.6천
+            {artwork.likes}
           </S.ArtworkDate>
-          <S.ArtworkDate>
-            <ShareIcon />
-          </S.ArtworkDate>
+
+          <CopyToClipboard text={url}>
+            <S.ArtworkDate
+              onClick={() => {
+                toast("복사가 완료되었습니다.");
+              }}
+            >
+              <ShareIcon />
+            </S.ArtworkDate>
+          </CopyToClipboard>
         </S.ArtworkDateWrapper>
       </S.ArtworkTitleWrapper>
       <S.ArtworkContentWrapper>{artwork.content}</S.ArtworkContentWrapper>
