@@ -44,6 +44,7 @@ const userInfo: Member = {
   memberId: 0,
   nickname: "",
   picture: "",
+  artworks: [],
 };
 
 export default { tagList, artwork, artworkList, shortCutList, userInfo };
