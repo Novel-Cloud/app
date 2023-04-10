@@ -2,6 +2,12 @@ import { ShortCut } from "@/types/editor.interface";
 import { deepcopy, reorder } from "@/utils/array";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { DragDropContext, Droppable, DropResult } from "react-beautiful-dnd";
+import XIcon from "@/components/icons/common/XIcon";
+import styled from "styled-components";
+import httpClient from "@/apis";
+import { toast } from "react-toastify";
+import { useQueryClient } from "@tanstack/react-query";
+import KEY from "@/key";
 import ShortCutButton from "../ShortCutButton";
 import * as S from "../Toolbar.style";
 
@@ -16,7 +22,21 @@ export default function DragDropView({
   setShortCutList,
   setIsChanged,
 }: ToolbarViewProps) {
+  const queryClient = useQueryClient();
   const [isEnabled, setIsEnabled] = useState(false);
+
+  const removeShortCut = (shortcutId: number) => {
+    httpClient.shortcut
+      .delete({
+        data: {
+          shortcutId,
+        },
+      })
+      .then(() => {
+        toast("삭제가 완료되었습니다.");
+        queryClient.invalidateQueries([KEY.SHORTCUTLIST]);
+      });
+  };
 
   const onDragEnd = ({ source, destination }: DropResult) => {
     if (!destination) return;
@@ -54,6 +74,9 @@ export default function DragDropView({
                 id={shortcutId?.toString() || ""}
               >
                 {content}
+                <XIconWrapper onClick={() => removeShortCut(shortcutId)}>
+                  <XIcon />
+                </XIconWrapper>
               </ShortCutButton>
             ))}
             {droppableProvided.placeholder}
@@ -63,3 +86,8 @@ export default function DragDropView({
     </DragDropContext>
   );
 }
+
+const XIconWrapper = styled.div`
+  z-index: 999;
+  cursor: pointer;
+`;
