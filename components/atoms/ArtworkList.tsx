@@ -1,6 +1,7 @@
 import { useInView } from "react-intersection-observer";
 import styled from "styled-components";
 import { useEffect } from "react";
+import theme from "@/styles/theme";
 import { FetchNextPageType } from "@/types/common.interface";
 import { Artwork } from "@/types/artwork.interface";
 import ButtonList from "../app/ButtonList";
@@ -45,7 +46,7 @@ export default function ArtworkList({
         )}
       </S.ArtworkListWrapper>
       <InfiniteScrollDiv ref={ref}>
-        {isFetchingNextPage && <Loading />}
+        {isFetchingNextPage && <Loading color={theme.secondary} />}
       </InfiniteScrollDiv>
     </S.ArtworkFrameWrapper>
   );
@@ -53,4 +54,6 @@ export default function ArtworkList({
 
 const InfiniteScrollDiv = styled.div`
   height: 100px;
+  display: flex;
+  justify-content: center;
 `;
