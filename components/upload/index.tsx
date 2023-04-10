@@ -41,12 +41,13 @@ export default function Upload() {
 
   const onValid: SubmitHandler<ArtworkForm> = (validData) => {
     const artworkFormData = new FormData();
+    const tags = validData.tagList.split(",").map((tag) => tag.trim());
 
     const rq = {
       title: validData.artworkName,
       content: validData.artworkDescription,
       artworkType: validData.artworkType,
-      tags: validData.tagList.split(","),
+      tags,
     };
 
     artworkFormData.append(
