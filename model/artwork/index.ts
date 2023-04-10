@@ -59,7 +59,12 @@ export const useArtworkList = (pagination?: PaginationRequest) => {
 };
 
 export const useArtwork = (artworkId: number) => {
-  return { data: fixture.artwork };
+  const { data } = useQuery([KEY.ARTWORK], () =>
+    httpClient.artworkDetail
+      .getById({ params: { id: artworkId } })
+      .then((r) => r.data),
+  );
+  return { data: data || fixture.artwork };
 };
 
 interface SavedContent {
