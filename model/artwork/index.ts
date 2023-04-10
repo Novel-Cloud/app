@@ -21,7 +21,7 @@ interface ArtworkList {
   pagination: PaginationResponse;
 }
 
-export const useTag = () => {
+export const useTagList = () => {
   const { data } = useQuery<{ list: Tag[] }>([KEY.TAG], () =>
     httpClient.tag.get().then((r) => r.data),
   );
