@@ -48,6 +48,13 @@ export class HttpClient {
     });
   }
 
+  image(data: unknown, requestConfig?: AxiosRequestConfig) {
+    return this.api.put("/image", data, {
+      ...HttpClient.clientConfig,
+      ...requestConfig,
+    });
+  }
+
   delete(requestConfig?: AxiosRequestConfig) {
     return this.api.delete("", {
       ...HttpClient.clientConfig,
@@ -112,4 +119,5 @@ export default {
   artworkDetail: new HttpClient("/api/artwork/detail", axiosConfig),
   tag: new HttpClient("/api/tag", axiosConfig),
   comment: new HttpClient("/api/comment", axiosConfig),
+  memberSelf: new HttpClient("/api/member/self", axiosConfig),
 };

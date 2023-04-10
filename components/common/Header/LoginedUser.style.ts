@@ -11,4 +11,7 @@ export const UserInfoWrapper = styled.div`
   img {
     border-radius: 50%;
   }
+  span {
+    white-space: nowrap;
+  }
 `;

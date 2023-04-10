@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import config from "@/config";
 import { useArtworkList } from "@/model/artwork";
 import { Member } from "@/types/user.interface";
@@ -12,12 +13,16 @@ interface ProfileInfoProps {
 }
 
 export default function ProfileInfo({ userInfo, isMypage }: ProfileInfoProps) {
+  const router = useRouter();
   const {
     pages: artworkPages,
     customHasNextPage,
     fetchNextPage,
     isFetchingNextPage,
   } = useArtworkList();
+
+  const dummyFn = () => 1;
+  const goToProfileEditPage = () => router.push("/profile/edit");
 
   return (
     <S.ProfileInfoWrapper>
@@ -32,19 +37,15 @@ export default function ProfileInfo({ userInfo, isMypage }: ProfileInfoProps) {
           />
         </S.ProfileWrapper>
 
-        {isMypage ? (
-          <S.ProfileButtonWrapper>
-            <Button id="large" rounded>
-              나임
-            </Button>
-          </S.ProfileButtonWrapper>
-        ) : (
-          <S.ProfileButtonWrapper>
-            <Button id="large" rounded>
-              팔로우
-            </Button>
-          </S.ProfileButtonWrapper>
-        )}
+        <S.ProfileButtonWrapper>
+          <Button
+            id="large"
+            rounded
+            onClick={isMypage ? goToProfileEditPage : dummyFn}
+          >
+            {isMypage ? "내 정보 관리" : "팔로우"}
+          </Button>
+        </S.ProfileButtonWrapper>
       </S.ProfileAvatarWrapper>
 
       <S.ProfileInfoTitle>Recent Artwork</S.ProfileInfoTitle>
