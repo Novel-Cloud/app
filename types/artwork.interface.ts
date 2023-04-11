@@ -52,7 +52,7 @@ export interface Comment {
   writer: CommentWriter;
   commentId: number;
   content: string;
-  createdDate: Date;
+  createdDate: string;
   editable: boolean;
   deletable: boolean;
   bookmarks: number;
