@@ -97,7 +97,7 @@ export default function FilterView({ filter, setFilter }: FilterViewProps) {
       {isOpen && (
         <div>
           <FilterContentWrapper>
-            <div className="flex flex-col">
+            <div>
               <h2>업로드 날짜</h2>
               <FilterLine />
               {datePropertyList.map(({ id, label, value }) => (

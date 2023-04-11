@@ -1,5 +1,7 @@
 import { ChangeEvent, Dispatch, SetStateAction } from "react";
+import styled from "styled-components";
 import { Filter } from "@/model/artwork";
+import theme from "@/styles/theme";
 import XIcon from "../icons/common/XIcon";
 
 export type SearchFilterPropertyType =
@@ -47,10 +49,9 @@ export default function CheckBoxText({
   };
 
   return (
-    <div className="flex items-start select-none cursor-pointer">
-      <input
+    <CheckBoxTextWrapper>
+      <CheckBoxInput
         type="checkbox"
-        className="appearance-none"
         name={name}
         id={id}
         value={value}
@@ -58,15 +59,34 @@ export default function CheckBoxText({
         onChange={handleFilterChange}
         {...props}
       />
-      <label
-        htmlFor={id}
-        className="flex items-center text-white cursor-pointer mt-2.5"
-      >
+      <CheckBoxLabel htmlFor={id} isChecked={isChecked}>
         {label}
-        {isChecked && (
-          <XIcon className="[&>path]:fill-somago_yellow w-3 h-3 ml-2" />
-        )}
-      </label>
-    </div>
+        {isChecked && <XIcon />}
+      </CheckBoxLabel>
+    </CheckBoxTextWrapper>
   );
 }
+
+const CheckBoxTextWrapper = styled.div`
+  display: flex;
+  align-items: start;
+  user-select: none;
+  cursor: pointer;
+`;
+
+const CheckBoxInput = styled.input`
+  appearance: none;
+`;
+
+const CheckBoxLabel = styled.label<{ isChecked: boolean }>`
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-top: 0.625rem;
+  color: ${(props) => (props.isChecked ? theme.orange["500"] : theme.black)};
+  gap: 0.375rem;
+  svg {
+    width: 12px;
+    height: 12px;
+  }
+`;
