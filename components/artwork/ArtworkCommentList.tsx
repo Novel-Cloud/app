@@ -16,9 +16,6 @@ export default function ArtworkCommentList({ artwork }: { artwork: Artwork }) {
   const { data: commentList } = useCommentList(artwork.artworkId);
   const [content, setContent] = useState("");
 
-  const moveToProfile = () =>
-    router.push(`/profile/${artwork.writer.memberId}`);
-
   const handleWrite = () => {
     httpClient.comment
       .post({
@@ -45,14 +42,14 @@ export default function ArtworkCommentList({ artwork }: { artwork: Artwork }) {
             setContent(e.target.value);
           }}
         />
-        <Button rounded onClick={handleWrite}>
-          전송
-        </Button>
+        <Button onClick={handleWrite}>작성</Button>
       </S.CommentInputWrapper>
       {commentList.map((comment) => (
         <CommentView
           artwork={artwork}
-          moveToProfile={moveToProfile}
+          moveToProfile={() =>
+            router.push(`/profile/${comment.writer.memberId}`)
+          }
           comment={comment}
           key={comment.commentId}
         />
