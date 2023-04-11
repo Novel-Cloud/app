@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 import { ArtworkForm } from "@/types/artwork.interface";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
 import useFileDrop from "@/hooks/useFileDrop";
 import FormData from "form-data";
@@ -27,11 +26,8 @@ export default function Upload() {
     accept: "image/*",
   });
 
-  const handleImageSrc = (
-    fileList: FileList | File[],
-    setState: Dispatch<SetStateAction<string>>,
-  ) => {
-    if (fileList.length) setState(URL.createObjectURL(fileList[0]));
+  const handleImageSrc = (fileList: FileList | File[]) => {
+    if (fileList.length) setArtworkImageSrc(URL.createObjectURL(fileList[0]));
   };
 
   useEffect(() => {
@@ -93,9 +89,7 @@ export default function Upload() {
       <ArtworkTypeRadio register={register} />
 
       <FileUploader
-        onChange={(event) =>
-          handleImageSrc(event.target.files || [], setArtworkImageSrc)
-        }
+        onChange={(event) => handleImageSrc(event.target.files || [])}
         src={artworkImageSrc}
         inputRef={artworkInputRef}
         labelRef={artworkLabelRef}
