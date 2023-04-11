@@ -43,7 +43,7 @@ const userInfo: Member = {
   email: "",
   memberId: 0,
   nickname: "",
-  picture: "",
+  picture: "/assets/NoImageGirl.png",
   artworks: [],
 };
 
