@@ -60,6 +60,7 @@ export const ArtworkDate = styled.div`
   display: flex;
   align-items: center;
   gap: 0.25rem;
+  user-select: none;
 
   svg {
     width: 1.5rem;
