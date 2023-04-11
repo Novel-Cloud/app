@@ -29,10 +29,9 @@ export default function ArtworkList({
   isButtonList = false,
 }: ArtworkListProps) {
   const { ref, inView } = useInView();
+
   useEffect(() => {
-    if (inView && customHasNextPage) {
-      fetchNextPage();
-    }
+    if (inView && customHasNextPage) fetchNextPage();
   }, [inView, fetchNextPage, customHasNextPage]);
 
   return (

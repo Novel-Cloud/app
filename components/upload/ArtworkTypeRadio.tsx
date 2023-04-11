@@ -19,7 +19,7 @@ export default function ArtworkTypeRadio({
       <Radio
         id="artwork"
         label="Artwork"
-        value="ARTWORK"
+        value="ILLUSTRATION"
         registerReturn={register("artworkType")}
         description="A picture you drew [not ai picture]"
       />

@@ -1,26 +1,31 @@
 import ArtworkList from "@/components/atoms/ArtworkList";
+import FilterView from "@/components/search/Filter";
 import SearchResult from "@/components/search/SearchResult";
 import SearchLayout from "@/layout/SearchLayout";
-import { useArtworkList } from "@/model/artwork";
+import { Filter, useSearch } from "@/model/artwork";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 export default function SearchPage() {
   const router = useRouter();
-  const [keyword, setKeyword] = useState<string>("");
+  const [filter, setFilter] = useState<Filter>({
+    search: "",
+  });
+
   const {
     pages: artworkPages,
     customHasNextPage,
     fetchNextPage,
     isFetchingNextPage,
-  } = useArtworkList();
+  } = useSearch({}, filter);
 
   useEffect(() => {
-    setKeyword(router.query.keyword as string);
+    setFilter((prev) => ({ ...prev, search: router.query.keyword as string }));
   }, [router]);
 
   return (
     <SearchLayout
+      filter={<FilterView filter={filter} setFilter={setFilter} />}
       app={
         <ArtworkList
           artworkPages={artworkPages}
@@ -30,7 +35,7 @@ export default function SearchPage() {
           isButtonList
         />
       }
-      result={<SearchResult keyword={keyword} />}
+      result={<SearchResult keyword={filter.search || ""} />}
     />
   );
 }
