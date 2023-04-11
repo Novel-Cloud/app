@@ -1,7 +1,7 @@
 import httpClient from "@/apis";
 import fixture from "@/fixture";
 import KEY from "@/key";
-import { Artwork, Tag } from "@/types/artwork.interface";
+import { Artwork, ArtworkType, Tag } from "@/types/artwork.interface";
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 
 export interface PaginationRequest {
@@ -43,6 +43,56 @@ export const useArtworkList = (pagination?: PaginationRequest) => {
           .then((r) => r.data),
       {
         getNextPageParam: (lastPage) => lastPage.pagination.page + 1,
+      },
+    );
+
+  const customHasNextPage =
+    ((data?.pageParams[data.pageParams.length - 1] as number) || 1) <
+    (data?.pages[0].pagination.totalPages || 0);
+
+  return {
+    pages: data?.pages || [{ list: [] }],
+    isFetchingNextPage,
+    customHasNextPage,
+    fetchNextPage,
+  };
+};
+
+export type UploadDateType =
+  | "AN_HOUR_AGO"
+  | "TODAY"
+  | "THIS_WEEK"
+  | "THIS_MONTH"
+  | "THIS_YEAR";
+export type SortType =
+  | "UPLOAD_DATE"
+  | "BOOKMARKS"
+  | "COMMENTS"
+  | "RANK"
+  | "VIEWS"
+  | "ALL";
+
+export interface Filter {
+  search?: string;
+  uploadDateType?: UploadDateType;
+  artworkType?: ArtworkType;
+  sortType?: SortType;
+}
+
+export const useSearch = (pagination?: PaginationRequest, filter?: Filter) => {
+  const { data, isFetchingNextPage, fetchNextPage } =
+    useInfiniteQuery<ArtworkList>(
+      [KEY.ARTWORKLIST, filter],
+      ({ pageParam = 1 }) =>
+        httpClient.search
+          .post({
+            pagination: { page: pageParam, size: pagination?.size || 12 },
+            filter,
+          })
+          .then((r) => r.data),
+      {
+        getNextPageParam: (lastPage) => lastPage.pagination.page + 1,
+        enabled: !!filter?.search && !!filter.search,
       },
     );
 
