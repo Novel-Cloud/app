@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import httpClient from "@/apis";
 import ArtworkComment from "@/components/artwork/ArtworkCommentList";
 import ArtworkDetail from "@/components/artwork/ArtworkDetail";
@@ -17,9 +18,16 @@ export default function ArtworkDetailPage({
   artwork,
   is404,
 }: ArtworkDetailPageProps) {
-  if (is404) {
-    return <Page404 />;
-  }
+  useEffect(() => {
+    if (!is404) {
+      httpClient.artworkView
+        .post({ artworkId: artwork.artworkId })
+        .then((r) => r.data);
+    }
+  }, [artwork, is404]);
+
+  if (is404) return <Page404 />;
+
   return (
     <ArtworkDetailLayout
       app={<ArtworkPlayer artwork={artwork} />}
