@@ -1,7 +1,7 @@
 import httpClient from "@/apis";
 import fixture from "@/fixture";
 import KEY from "@/key";
-import { Artwork, ArtworkType, Tag } from "@/types/artwork.interface";
+import { Artwork, ArtworkType, Comment, Tag } from "@/types/artwork.interface";
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 
 export interface PaginationRequest {
@@ -128,4 +128,17 @@ export const useContent = () => {
     httpClient.artworkSave.get().then((r) => r.data),
   );
   return { data: data?.content || "" };
+};
+
+interface UseCommentList {
+  list: Comment[];
+}
+
+export const useCommentList = (artworkId: number) => {
+  const { data } = useQuery<UseCommentList>([KEY.COMMENT, artworkId], () =>
+    httpClient.comment
+      .getById({ params: { id: artworkId } })
+      .then((r) => r.data),
+  );
+  return { data: data?.list || [] };
 };
