@@ -3,6 +3,8 @@ import { useRouter } from "next/router";
 import { Artwork } from "@/types/artwork.interface";
 import httpClient from "@/apis";
 import useAuthUser from "@/hooks/useAuthUser";
+import { useQueryClient } from "@tanstack/react-query";
+import KEY from "@/key";
 import { useCommentList } from "@/model/artwork";
 import Button from "../atoms/Button";
 import Input from "../atoms/Input";
@@ -12,17 +14,21 @@ import CommentView from "./Comment";
 
 export default function ArtworkCommentList({ artwork }: { artwork: Artwork }) {
   const router = useRouter();
+  const queryClient = useQueryClient();
   const { user: userInfo } = useAuthUser();
   const { data: commentList } = useCommentList(artwork.artworkId);
   const [content, setContent] = useState("");
 
-  const handleWrite = () => {
+  const handleWrite = (parentId?: number) => {
     httpClient.comment
       .post({
         artworkId: artwork.artworkId,
         content,
+        parentId,
       })
-      .then(() => {});
+      .then(() => {
+        queryClient.invalidateQueries([KEY.COMMENT]);
+      });
   };
 
   return (
@@ -42,7 +48,7 @@ export default function ArtworkCommentList({ artwork }: { artwork: Artwork }) {
             setContent(e.target.value);
           }}
         />
-        <Button onClick={handleWrite}>작성</Button>
+        <Button onClick={() => handleWrite()}>작성</Button>
       </S.CommentInputWrapper>
       {commentList.map((comment) => (
         <CommentView
