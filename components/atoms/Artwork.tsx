@@ -1,5 +1,8 @@
+import { useQueryClient } from "@tanstack/react-query";
 import { Artwork } from "@/types/artwork.interface";
 import config from "@/config";
+import KEY from "@/key";
+import httpClient from "@/apis";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import FilledLikeIcon from "../icons/artwork/FilledLikeIcon";
@@ -16,6 +19,12 @@ export default function ArtworkView({
   tags,
 }: Artwork) {
   const router = useRouter();
+  const queryClient = useQueryClient();
+  const handleLike = () => {
+    httpClient.like.post({ artworkId }).then(() => {
+      queryClient.invalidateQueries([KEY.ARTWORKLIST]);
+    });
+  };
   return (
     <S.ArtworkWrapper>
       <S.ArtworkThumbnailWrapper>
@@ -25,7 +34,7 @@ export default function ArtworkView({
           fill
           onClick={() => router.push(`/artwork/${artworkId}`)}
         />
-        <S.ArtworkLikeIconWrapper onClick={() => console.log("조아용")}>
+        <S.ArtworkLikeIconWrapper onClick={handleLike}>
           {likeYn ? <FilledLikeIcon /> : <LikeIcon />}
         </S.ArtworkLikeIconWrapper>
       </S.ArtworkThumbnailWrapper>

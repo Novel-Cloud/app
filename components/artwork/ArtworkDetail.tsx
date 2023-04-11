@@ -29,6 +29,7 @@ export default function ArtworkDetail({ artwork }: { artwork: Artwork }) {
       queryClient.invalidateQueries([KEY.ARTWORK]);
     });
   };
+
   return (
     <S.ArtworkDetailWrapper>
       <S.ArtworkTitleWrapper>
