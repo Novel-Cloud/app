@@ -43,9 +43,9 @@ export interface Tag {
 
 export interface CommentWriter {
   memberId: number;
-  name: string;
-  profileImageUrl: string;
+  nickname: string;
   email: string;
+  picture: string;
 }
 
 export interface Comment {
