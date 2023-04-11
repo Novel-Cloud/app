@@ -88,11 +88,11 @@ export default function FilterView({ filter, setFilter }: FilterViewProps) {
   ];
 
   return (
-    <>
-      <FilterWrapper onClick={toggleOpen}>
+    <FilterWrapper>
+      <FilterButtonWrapper onClick={toggleOpen}>
         <FilterIcon />
-        필터
-      </FilterWrapper>
+        <span>필터</span>
+      </FilterButtonWrapper>
 
       {isOpen && (
         <div>
@@ -151,17 +151,30 @@ export default function FilterView({ filter, setFilter }: FilterViewProps) {
           </FilterContentWrapper>
         </div>
       )}
-    </>
+    </FilterWrapper>
   );
 }
 
-const FilterWrapper = styled.div``;
+const FilterWrapper = styled.div`
+  margin-left: 7rem;
+  margin-top: 3rem;
+`;
+
+const FilterButtonWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  user-select: none;
+  cursor: pointer;
+`;
+
 const FilterContentWrapper = styled.div`
   display: flex;
   gap: 128px;
   margin: 32px 0;
 `;
-// my-2.5 text-white w-40
+
 const FilterLine = styled.hr`
   margin: 10px 0;
   color: white;
