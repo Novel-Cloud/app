@@ -96,10 +96,10 @@ export default function FilterView({ filter, setFilter }: FilterViewProps) {
 
       {isOpen && (
         <div>
-          <div className="flex gap-32 my-8">
+          <FilterContentWrapper>
             <div className="flex flex-col">
-              <h2 className="font-semibold">업로드 날짜</h2>
-              <hr className="my-2.5 text-white w-40" />
+              <h2>업로드 날짜</h2>
+              <FilterLine />
               {datePropertyList.map(({ id, label, value }) => (
                 <CheckBoxText
                   name="uploadDateType"
@@ -115,8 +115,8 @@ export default function FilterView({ filter, setFilter }: FilterViewProps) {
               ))}
             </div>
             <div>
-              <h2 className="font-semibold">정렬기준</h2>
-              <hr className="my-2.5 text-white w-40" />
+              <h2>정렬기준</h2>
+              <FilterLine />
               {sortTypePropertyList.map(({ id, label, value }) => (
                 <CheckBoxText
                   name="sortType"
@@ -132,8 +132,8 @@ export default function FilterView({ filter, setFilter }: FilterViewProps) {
               ))}
             </div>
             <div>
-              <h2 className="font-semibold">장르</h2>
-              <hr className="my-2.5 text-white w-40" />
+              <h2>장르</h2>
+              <FilterLine />
               {themeList.map(({ id, label, value }) => (
                 <CheckBoxText
                   name="artworkType"
@@ -148,7 +148,7 @@ export default function FilterView({ filter, setFilter }: FilterViewProps) {
                 />
               ))}
             </div>
-          </div>
+          </FilterContentWrapper>
         </div>
       )}
     </>
@@ -156,3 +156,14 @@ export default function FilterView({ filter, setFilter }: FilterViewProps) {
 }
 
 const FilterWrapper = styled.div``;
+const FilterContentWrapper = styled.div`
+  display: flex;
+  gap: 128px;
+  margin: 32px 0;
+`;
+// my-2.5 text-white w-40
+const FilterLine = styled.hr`
+  margin: 10px 0;
+  color: white;
+  width: 200px;
+`;
