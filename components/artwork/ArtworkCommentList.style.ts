@@ -20,7 +20,6 @@ export const CommentWrapper = styled.div`
 export const Comment = styled.div`
   display: flex;
   gap: 0.875rem;
-  margin-top: 1rem;
   img {
     cursor: pointer;
   }
