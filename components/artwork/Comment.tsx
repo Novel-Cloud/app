@@ -49,10 +49,36 @@ export default function CommentView({
           {comment.writer.nickname}
         </S.CommentWriter>
         <S.CommentContent>{comment.content}</S.CommentContent>
-        <S.CommentDate>{comment.createdDate}</S.CommentDate>
-        <span onClick={toggleInputOpen}>답글 열기</span>
+        <S.CommentDate
+          style={{
+            marginBottom: "4px",
+          }}
+        >
+          {comment.createdDate}
+        </S.CommentDate>
+        <Button
+          rounded
+          style={{
+            marginRight: "12px",
+            marginBottom: "12px",
+            fontSize: "12px",
+            padding: "4px 8px",
+          }}
+          onClick={toggleInputOpen}
+        >
+          답글 쓰기
+        </Button>
         {comment.replyList.length !== 0 && (
-          <span onClick={toggleReplyOpen}>열기</span>
+          <Button
+            rounded
+            style={{
+              fontSize: "12px",
+              padding: "4px 8px",
+            }}
+            onClick={toggleReplyOpen}
+          >
+            답글 열기
+          </Button>
         )}
 
         {isReplyOpen && (

@@ -25,6 +25,13 @@ export default function Avatar({ userInfo, isLogined }: AvatarProps) {
             height={40}
           />
           <span>{userInfo.nickname}</span>
+          <Button
+            onClick={() => router.push("/upload")}
+            rounded
+            style={{ fontSize: "12px", padding: "6px 12px" }}
+          >
+            업로드
+          </Button>
         </S.UserInfoWrapper>
       ) : (
         <Button onClick={() => router.push("/login")}>로그인</Button>
