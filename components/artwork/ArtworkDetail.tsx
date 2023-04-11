@@ -6,7 +6,6 @@ import httpClient from "@/apis";
 import { useQueryClient } from "@tanstack/react-query";
 import KEY from "@/key";
 import { useArtwork } from "@/model/artwork";
-import Button from "../atoms/Button";
 import EyeIcon from "../icons/artwork/EyeIcon";
 import LikeIcon from "../icons/artwork/LikeIcon";
 import ShareIcon from "../icons/artwork/ShareIcon";
@@ -49,9 +48,9 @@ export default function ArtworkDetail({ artwork }: { artwork: Artwork }) {
                 {artwork.writer.nickname}
               </S.ArtworkWriterName>
             </S.ArtworkOnClickWrapper>
-            <Button varient="secondary" rounded>
+            {/* <Button varient="secondary" rounded>
               팔로우
-            </Button>
+            </Button> */}
           </S.ArtworkWriterWrapper>
         </div>
 
