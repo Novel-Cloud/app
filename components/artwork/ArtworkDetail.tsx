@@ -76,7 +76,9 @@ export default function ArtworkDetail({ artwork }: { artwork: Artwork }) {
           </CopyToClipboard>
         </S.ArtworkDateWrapper>
       </S.ArtworkTitleWrapper>
-      <S.ArtworkContentWrapper>{artwork.content}</S.ArtworkContentWrapper>
+      <S.ArtworkContentWrapper
+        dangerouslySetInnerHTML={{ __html: artwork.content }}
+      />
     </S.ArtworkDetailWrapper>
   );
 }
