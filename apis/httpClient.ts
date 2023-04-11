@@ -127,5 +127,6 @@ export default {
   tag: new HttpClient("/api/tag", axiosConfig),
   like: new HttpClient("/api/like", axiosConfig),
   comment: new HttpClient("/api/comment", axiosConfig),
+  search: new HttpClient("/api/search", axiosConfig),
   memberSelf: new HttpClient("/api/member/self", axiosConfig),
 };
