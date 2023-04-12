@@ -70,11 +70,30 @@ export default function CommentView({
         height={48}
         onClick={moveToProfile}
       />
-      <div>
+      <div style={{ width: "100%" }}>
         <S.CommentWriter onClick={moveToProfile}>
           {comment.writer.nickname}
         </S.CommentWriter>
-        <S.CommentContent>{comment.content}</S.CommentContent>
+
+        {isEdit ? (
+          <>
+            <Input
+              defaultValue={comment.content}
+              isFull
+              varient="secondary"
+              onChange={(e) => {
+                setEditContent(e.target.value);
+              }}
+            />
+            <Button onClick={handleEditCancel}>취소</Button>
+            <Button onClick={() => handleEditComplete(comment.commentId)}>
+              입력
+            </Button>
+          </>
+        ) : (
+          <S.CommentContent>{comment.content}</S.CommentContent>
+        )}
+
         <S.CommentDate
           style={{
             marginBottom: "4px",
