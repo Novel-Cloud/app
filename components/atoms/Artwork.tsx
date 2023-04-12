@@ -26,6 +26,18 @@ export default function ArtworkView({
       queryClient.invalidateQueries([KEY.MEMBER]);
     });
   };
+  const handleTagClick = (content: string) => {
+    const prevTags =
+      (typeof router.query.tags === "string"
+        ? [router.query.tags]
+        : router.query.tags) || [];
+    const newTags = [...prevTags, content];
+
+    router.push({
+      pathname: "/search",
+      query: { tags: Array.from(new Set(newTags)) },
+    });
+  };
   return (
     <S.ArtworkWrapper>
       <S.ArtworkThumbnailWrapper>
@@ -58,7 +70,9 @@ export default function ArtworkView({
 
         <S.ArtworkTagWrapper>
           {tags.map(({ tagId, content }) => (
-            <S.ArtworkTag key={tagId}>#{content}</S.ArtworkTag>
+            <S.ArtworkTag key={tagId} onClick={() => handleTagClick(content)}>
+              #{content}
+            </S.ArtworkTag>
           ))}
         </S.ArtworkTagWrapper>
       </S.ArtworkInfoWrapper>
