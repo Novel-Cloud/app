@@ -24,9 +24,13 @@ const ProviderWrapper = styled.div`
   cursor: pointer;
   user-select: none;
   color: ${theme.primary};
+
   svg {
     &:hover {
       opacity: 0.5;
+    }
+    circle {
+      fill: ${theme.secondary};
     }
   }
 `;

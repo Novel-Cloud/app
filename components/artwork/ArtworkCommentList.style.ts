@@ -30,6 +30,7 @@ export const Comment = styled.div`
 `;
 export const CommentWriter = styled.div`
   font-weight: 900;
+  display: inline;
   color: white;
   cursor: pointer;
 `;
