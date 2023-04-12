@@ -38,7 +38,7 @@ function Menu({ children }: HTMLProps<HTMLUListElement>) {
 const MenuWrapper = styled.ul`
   position: absolute;
   top: 0px;
-  left: 8px;
+  left: 12px;
   margin: 0;
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   z-index: 50;
@@ -57,9 +57,7 @@ const MenuWrapper = styled.ul`
 function Item({ children, onClick }: HTMLProps<HTMLLIElement>) {
   return (
     <ItemWrapper>
-      <span className="" onClick={onClick}>
-        {children}
-      </span>
+      <span onClick={onClick}>{children}</span>
     </ItemWrapper>
   );
 }
@@ -67,7 +65,7 @@ function Item({ children, onClick }: HTMLProps<HTMLLIElement>) {
 const ItemWrapper = styled.li`
   cursor: pointer;
   background-color: white;
-  padding: 10px 0.3125rem;
+  padding: 10px 10px;
   list-style: none;
   &:hover {
     background-color: ${theme.secondary};
@@ -76,6 +74,7 @@ const ItemWrapper = styled.li`
   & > span {
     display: flex;
     align-items: center;
+    justify-content: space-around;
     white-space: nowrap;
   }
 `;

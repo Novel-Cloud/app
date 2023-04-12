@@ -22,6 +22,7 @@ export const CommentViewWrapper = styled.div`
 
 export const Comment = styled.div`
   display: flex;
+  position: relative;
   gap: 0.875rem;
   img {
     cursor: pointer;

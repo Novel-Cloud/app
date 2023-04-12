@@ -132,36 +132,36 @@ export default function CommentView({
           </CommentInputWrapper>
         )}
       </div>
-      {comment.deletable && !isEdit && (
-        <Kebab.Provider>
-          <Kebab.Menu className="rounded">
-            {comment.editable && (
-              <Kebab.Item onClick={() => setIsEdit(true)}>
-                <EditIcon
+      <KebabWrapper>
+        {comment.deletable && !isEdit && (
+          <Kebab.Provider>
+            <Kebab.Menu className="rounded">
+              {comment.editable && (
+                <Kebab.Item onClick={() => setIsEdit(true)}>
+                  <EditIcon
+                    style={{
+                      width: "16px",
+                      height: "16px",
+                      marginRight: "4px",
+                    }}
+                  />
+                  <span>수정</span>
+                </Kebab.Item>
+              )}
+              <Kebab.Item onClick={() => handleDelete(comment.commentId)}>
+                <TrashCanIcon
                   style={{
                     width: "16px",
                     height: "16px",
-                    marginRight: "8px",
-                    paddingLeft: "4px",
+                    marginRight: "4px",
                   }}
                 />
-                <span>수정</span>
+                <span>삭제</span>
               </Kebab.Item>
-            )}
-            <Kebab.Item onClick={() => handleDelete(comment.commentId)}>
-              <TrashCanIcon
-                style={{
-                  width: "16px",
-                  height: "16px",
-                  marginRight: "8px",
-                  paddingLeft: "4px",
-                }}
-              />
-              <span>삭제</span>
-            </Kebab.Item>
-          </Kebab.Menu>
-        </Kebab.Provider>
-      )}
+            </Kebab.Menu>
+          </Kebab.Provider>
+        )}
+      </KebabWrapper>
     </S.Comment>
   );
 }
@@ -170,4 +170,10 @@ const CommentInputWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
+`;
+
+const KebabWrapper = styled.div`
+  position: absolute;
+  right: 0;
+  top: 0;
 `;
