@@ -1,12 +1,10 @@
-import { useRouter } from "next/router";
 import Button from "./Button";
 
 interface TagViewProps {
   tagName: string;
-  url: string;
+  onClick: () => void;
 }
 
-export default function TagView({ tagName, url }: TagViewProps) {
-  const router = useRouter();
-  return <Button onClick={() => router.push(url)}>#{tagName}</Button>;
+export default function TagView({ tagName, onClick }: TagViewProps) {
+  return <Button onClick={onClick}>#{tagName}</Button>;
 }

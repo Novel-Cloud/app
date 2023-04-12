@@ -61,6 +61,7 @@ export default function ToolbarView({
 }
 
 const ToolbarButton = styled.div`
+  white-space: nowrap;
   background-color: ${theme.secondary};
   padding: 6px 12px;
   border-radius: 0.625rem;

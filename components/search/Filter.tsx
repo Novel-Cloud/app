@@ -3,6 +3,7 @@ import { Dispatch, SetStateAction, useReducer, useState } from "react";
 import { Filter } from "@/model/artwork";
 import FilterIcon from "../icons/common/FilterIcon";
 import CheckBoxText from "../atoms/CheckBoxText";
+import TagListView from "./TagListView";
 
 interface FilterViewProps {
   filter: Filter;
@@ -102,6 +103,7 @@ export default function FilterView({ filter, setFilter }: FilterViewProps) {
 
       {isOpen && (
         <div>
+          <TagListView filter={filter} setFilter={setFilter} />
           <FilterContentWrapper>
             <div>
               <h2>업로드 날짜</h2>
@@ -177,8 +179,8 @@ const FilterButtonWrapper = styled.div`
 
 const FilterContentWrapper = styled.div`
   display: flex;
-  gap: 128px;
   margin: 32px 0;
+  gap: 48px;
 `;
 
 const FilterLine = styled.hr`
