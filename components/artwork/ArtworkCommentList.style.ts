@@ -5,9 +5,10 @@ export const CommentWrapper = styled.div`
   margin-top: 1.875rem;
   background-color: ${theme.primary};
   color: ${theme.secondary};
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
+`;
+
+export const CommentViewWrapper = styled.div`
+  box-sizing: border-box;
   padding: 1.25rem 6.25rem;
   @media screen and (max-width: 1024px) {
     padding: 1.25rem 3.75rem;
@@ -15,6 +16,8 @@ export const CommentWrapper = styled.div`
   @media screen and (max-width: 768px) {
     padding: 1.25rem 1.25rem;
   }
+  max-width: 1024px;
+  margin: 0 auto;
 `;
 
 export const Comment = styled.div`
@@ -42,5 +45,5 @@ export const CommentInputWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 1.875rem;
+  margin: 1rem 0;
 `;

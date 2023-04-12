@@ -3,8 +3,10 @@ import styled from "styled-components";
 export const ArtworkDetailWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 1.875rem;
   padding: 0 6.25rem;
+  max-width: 1024px;
+  margin: 1.875rem auto;
+  box-sizing: border-box;
   @media screen and (max-width: 1024px) {
     padding: 0 3.75rem;
   }
