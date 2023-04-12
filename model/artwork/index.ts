@@ -73,7 +73,8 @@ export type SortType =
   | "ALL";
 
 export interface Filter {
-  search?: string;
+  search: string;
+  tags: string[];
   uploadDateType?: UploadDateType;
   artworkType?: ArtworkType;
   sortType?: SortType;
@@ -92,7 +93,6 @@ export const useSearch = (pagination?: PaginationRequest, filter?: Filter) => {
           .then((r) => r.data),
       {
         getNextPageParam: (lastPage) => lastPage.pagination.page + 1,
-        enabled: !!filter?.search && !!filter.search,
       },
     );
 

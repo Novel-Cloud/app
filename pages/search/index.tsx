@@ -4,12 +4,14 @@ import SearchResult from "@/components/search/SearchResult";
 import SearchLayout from "@/layout/SearchLayout";
 import { Filter, useSearch } from "@/model/artwork";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 export default function SearchPage() {
   const router = useRouter();
+
   const [filter, setFilter] = useState<Filter>({
     search: "",
+    tags: [],
   });
 
   const {
@@ -19,9 +21,22 @@ export default function SearchPage() {
     isFetchingNextPage,
   } = useSearch({}, filter);
 
+  const keyword = (router.query.keyword as string) || "";
+  const tags = useMemo(
+    () =>
+      (typeof router.query.tags === "string"
+        ? [router.query.tags]
+        : router.query.tags) || [],
+    [router.query.tags],
+  );
+
   useEffect(() => {
-    setFilter((prev) => ({ ...prev, search: router.query.keyword as string }));
-  }, [router]);
+    setFilter((prev) => ({
+      ...prev,
+      search: keyword,
+      tags,
+    }));
+  }, [keyword, tags]);
 
   return (
     <SearchLayout
@@ -34,7 +49,7 @@ export default function SearchPage() {
           isFetchingNextPage={isFetchingNextPage}
         />
       }
-      result={<SearchResult keyword={filter.search || ""} />}
+      result={<SearchResult keyword={filter.search} />}
     />
   );
 }
