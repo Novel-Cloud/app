@@ -51,6 +51,7 @@ export const ArtworkWriterWrapper = styled.div`
 
 export const ArtworkContentWrapper = styled.div`
   margin-top: 1.25rem;
+  word-break: break-all;
 `;
 export const ArtworkDateWrapper = styled.div`
   display: flex;
