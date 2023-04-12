@@ -15,6 +15,9 @@ export default function TagListView({ filter, setFilter }: TagListViewProps) {
       (selectedTag) => tag !== selectedTag,
     );
     setFilter((prev) => ({ ...prev, tags: filteredTags }));
+    if (filter.search === "" && filteredTags.length === 0) {
+      return router.push("/");
+    }
     router.push({
       pathname: "/search",
       query: {
