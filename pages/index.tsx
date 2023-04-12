@@ -21,7 +21,6 @@ export default function Main() {
           customHasNextPage={customHasNextPage}
           fetchNextPage={fetchNextPage}
           isFetchingNextPage={isFetchingNextPage}
-          isButtonList
         />
       }
     />

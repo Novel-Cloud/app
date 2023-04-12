@@ -32,7 +32,6 @@ export default function SearchPage() {
           customHasNextPage={customHasNextPage}
           fetchNextPage={fetchNextPage}
           isFetchingNextPage={isFetchingNextPage}
-          isButtonList
         />
       }
       result={<SearchResult keyword={filter.search || ""} />}
