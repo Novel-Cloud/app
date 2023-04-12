@@ -43,7 +43,9 @@ export default function ArtworkView({
         {title}
       </S.ArtworkTitle>
       <S.ArtworkInfoWrapper>
-        <S.WriterWrapper onClick={() => router.push(`/profile/${writer}`)}>
+        <S.WriterWrapper
+          onClick={() => router.push(`/profile/${writer.memberId}`)}
+        >
           <Avatar
             src={writer.picture}
             alt={writer.nickname}
