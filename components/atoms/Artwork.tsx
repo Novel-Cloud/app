@@ -23,6 +23,7 @@ export default function ArtworkView({
   const handleLike = () => {
     httpClient.like.post({ artworkId }).then(() => {
       queryClient.invalidateQueries([KEY.ARTWORKLIST]);
+      queryClient.invalidateQueries([KEY.MEMBER]);
     });
   };
   return (
