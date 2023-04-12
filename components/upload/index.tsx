@@ -16,6 +16,7 @@ export default function Upload() {
   const router = useRouter();
   const { register, handleSubmit, setValue } = useForm<ArtworkForm>();
   const [artworkImageSrc, setArtworkImageSrc] = useState<string>("");
+  const [artworkFileList, setArtworkFileList] = useState<File[]>([]);
 
   const {
     files: artworkFiles,
@@ -26,13 +27,18 @@ export default function Upload() {
     accept: "image/*",
   });
 
-  const handleImageSrc = (fileList: FileList | File[]) => {
-    if (fileList.length) setArtworkImageSrc(URL.createObjectURL(fileList[0]));
+  const handleImageSrc = (fileList: FileList) => {
+    if (fileList.length) {
+      setArtworkImageSrc(URL.createObjectURL(fileList[0]));
+      setArtworkFileList((prev) => [...prev, fileList[0]]);
+    }
   };
 
   useEffect(() => {
-    if (artworkFiles.length)
+    if (artworkFiles.length) {
       setArtworkImageSrc(URL.createObjectURL(artworkFiles[0]));
+      setArtworkFileList(artworkFiles);
+    }
   }, [artworkFiles]);
 
   useEffect(() => {
@@ -60,9 +66,9 @@ export default function Upload() {
       { contentType: "application/json" },
     );
 
-    artworkFormData.append("thumbnail", artworkFiles[0]);
+    artworkFormData.append("thumbnail", artworkFileList[0]);
 
-    artworkFiles.forEach((artworkFile) =>
+    artworkFileList.forEach((artworkFile) =>
       artworkFormData.append("files", artworkFile),
     );
 
@@ -89,7 +95,7 @@ export default function Upload() {
       <ArtworkTypeRadio register={register} />
 
       <FileUploader
-        onChange={(event) => handleImageSrc(event.target.files || [])}
+        onChange={(event) => handleImageSrc(event.target.files as FileList)}
         src={artworkImageSrc}
         inputRef={artworkInputRef}
         labelRef={artworkLabelRef}
@@ -97,7 +103,7 @@ export default function Upload() {
         label="드래그해서 작품 업로드"
       />
 
-      {artworkFiles.map((artworkFile) => (
+      {artworkFileList.map((artworkFile) => (
         <div>{artworkFile.name}</div>
       ))}
 
