@@ -10,6 +10,7 @@ export const UserInfoWrapper = styled.div`
   color: ${theme.secondary};
   img {
     border-radius: 50%;
+    object-fit: cover;
   }
   span {
     white-space: nowrap;
