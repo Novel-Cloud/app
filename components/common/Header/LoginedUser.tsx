@@ -32,6 +32,13 @@ export default function Avatar({ userInfo, isLogined }: AvatarProps) {
           >
             업로드
           </Button>
+          <Button
+            onClick={() => router.push("/editor")}
+            rounded
+            style={{ fontSize: "12px", padding: "6px 12px" }}
+          >
+            에디터
+          </Button>
         </S.UserInfoWrapper>
       ) : (
         <Button onClick={() => router.push("/login")}>로그인</Button>
