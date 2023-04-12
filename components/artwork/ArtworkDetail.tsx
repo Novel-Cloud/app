@@ -26,6 +26,7 @@ export default function ArtworkDetail({ artwork }: { artwork: Artwork }) {
   const handleLike = () => {
     httpClient.like.post({ artworkId: artwork.artworkId }).then(() => {
       queryClient.invalidateQueries([KEY.ARTWORK]);
+      toast.success("좋아요 눌럿데수 ww");
     });
   };
 
@@ -66,9 +67,7 @@ export default function ArtworkDetail({ artwork }: { artwork: Artwork }) {
 
           <CopyToClipboard text={url}>
             <S.ArtworkDate
-              onClick={() => {
-                toast("복사가 완료되었습니다.");
-              }}
+              onClick={() => toast.success("복사가 완료되었습니다.")}
             >
               <ShareIcon />
             </S.ArtworkDate>

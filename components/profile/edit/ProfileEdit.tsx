@@ -32,7 +32,7 @@ export default function ProfileEdit() {
 
   const onValid: SubmitHandler<ProfileForm> = ({ nickname }) => {
     httpClient.memberSelf.nickname({ nickname }).then(() => {
-      toast("닉네임 변경 성공 ww");
+      toast.success("닉네임 변경 성공 ww");
     });
   };
 
@@ -54,7 +54,7 @@ export default function ProfileEdit() {
           },
         })
         .then(() => {
-          toast("업로드에 성공했습니다.");
+          toast.success("업로드에 성공했습니다.");
         });
     }
   };

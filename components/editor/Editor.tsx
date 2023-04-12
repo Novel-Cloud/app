@@ -2,6 +2,7 @@ import ContentEditable, { ContentEditableEvent } from "react-contenteditable";
 import useDebounce from "@/hooks/useDebounce";
 import React, { KeyboardEventHandler, useEffect, useState } from "react";
 import httpClient from "@/apis";
+import { toast } from "react-toastify";
 import { useContent } from "@/model/artwork";
 import * as S from "./Editor.style";
 import PDFService from "../pdf/PdfService";
@@ -25,9 +26,9 @@ export default function EditorView({ getCommand }: EditorViewProps) {
 
   useEffect(() => {
     if (debouncedContent !== "")
-      httpClient.artworkSave
-        .post({ content: debouncedContent })
-        .then((r) => r.data);
+      httpClient.artworkSave.post({ content: debouncedContent }).then((r) => {
+        toast.success(r.data);
+      });
   }, [debouncedContent]);
 
   useEffect(() => {
