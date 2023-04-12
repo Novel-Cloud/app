@@ -13,6 +13,8 @@ export const TagWrapper = styled.article`
   align-items: center;
   overflow: auto;
   padding-bottom: 0.75rem;
+  margin-bottom: 2rem;
+
   &::-webkit-scrollbar {
     width: 0.75rem;
   }
