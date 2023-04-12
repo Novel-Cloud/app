@@ -23,6 +23,13 @@ export default function ArtworkTypeRadio({
         registerReturn={register("artworkType")}
         description="A picture you drew [not ai picture]"
       />
+      <Radio
+        id="artwork"
+        label="Manga"
+        value="MANGA"
+        registerReturn={register("artworkType")}
+        description="R-18 manga"
+      />
     </>
   );
 }

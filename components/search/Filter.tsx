@@ -17,6 +17,7 @@ const enum PropertyEnum {
   DATE_THIS_YEAR = "THIS_YEAR",
   ARTWORK_NOVEL = "NOVEL",
   ARTWORK_ILLUSTRATION = "ILLUSTRATION",
+  ARTWORK_MANGA = "MANGA",
   SORT_UPLOAD_DATE = "UPLOAD_DATE",
   SORT_VIEWS = "VIEWS",
   SORT_LIKES = "LIKES",
@@ -84,6 +85,11 @@ export default function FilterView({ filter, setFilter }: FilterViewProps) {
       id: PropertyEnum.ARTWORK_NOVEL,
       label: "소설",
       value: PropertyEnum.ARTWORK_NOVEL,
+    },
+    {
+      id: PropertyEnum.ARTWORK_MANGA,
+      label: "만화",
+      value: PropertyEnum.ARTWORK_MANGA,
     },
   ];
 
