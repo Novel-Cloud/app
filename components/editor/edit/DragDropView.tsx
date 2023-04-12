@@ -27,7 +27,7 @@ export default function DragDropView({
 
   const removeShortCut = (shortcutId: number) => {
     httpClient.shortcut.delete({ data: { shortcutId } }).then(() => {
-      toast("삭제가 완료되었습니다.");
+      toast.success("삭제가 완료되었습니다.");
       queryClient.invalidateQueries([KEY.SHORTCUTLIST]);
     });
   };
