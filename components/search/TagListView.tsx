@@ -18,13 +18,11 @@ export default function TagListView({ filter, setFilter }: TagListViewProps) {
     if (filter.search === "" && filteredTags.length === 0) {
       return router.push("/");
     }
-    router.push({
-      pathname: "/search",
-      query: {
-        keyword: filter.search,
-        tags: filteredTags,
-      },
-    });
+    const query = {
+      ...(filter.search && { keyword: filter.search }),
+      tags: filteredTags,
+    };
+    router.push({ pathname: "/search", query });
   };
 
   return (
