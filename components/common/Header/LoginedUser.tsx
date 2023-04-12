@@ -15,16 +15,19 @@ export default function Avatar({ userInfo, isLogined }: AvatarProps) {
   return (
     <S.AvatarWrapper>
       {isLogined ? (
-        <S.UserInfoWrapper
-          onClick={() => router.push(`/profile/${userInfo.memberId}`)}
-        >
-          <Image
-            src={userInfo.picture}
-            alt={userInfo.nickname}
-            width={40}
-            height={40}
-          />
-          <span>{userInfo.nickname}</span>
+        <S.UserInfoWrapper>
+          <S.UserInfoWrapper
+            onClick={() => router.push(`/profile/${userInfo.memberId}`)}
+          >
+            <Image
+              src={userInfo.picture}
+              alt={userInfo.nickname}
+              width={40}
+              height={40}
+            />
+            <span>{userInfo.nickname}</span>
+          </S.UserInfoWrapper>
+
           <Button
             onClick={() => router.push("/upload")}
             rounded

@@ -74,6 +74,7 @@ export const ArtworkInfoWrapper = styled.div`
 `;
 
 export const WriterWrapper = styled.div`
+  white-space: nowrap;
   font-size: 0.875rem;
   font-weight: 900;
   display: flex;
