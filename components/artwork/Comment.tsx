@@ -1,6 +1,6 @@
 import { Artwork, Comment } from "@/types/artwork.interface";
 import styled from "styled-components";
-import { useReducer, useState } from "react";
+import { useReducer, useRef, useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import KEY from "@/key";
 import httpClient from "@/apis";
@@ -8,6 +8,9 @@ import Input from "../atoms/Input";
 import * as S from "./ArtworkCommentList.style";
 import Button from "../atoms/Button";
 import Avatar from "../atoms/Avatar";
+import Kebab from "../atoms/Kebab";
+import EditIcon from "../icons/EditIcon";
+import TrashCanIcon from "../icons/TrashCanIcon";
 
 export default function CommentView({
   artwork,
@@ -22,6 +25,29 @@ export default function CommentView({
   const [isReplyOpen, toggleReplyOpen] = useReducer((state) => !state, false);
   const [isInputOpen, toggleInputOpen] = useReducer((state) => !state, false);
   const [content, setContent] = useState("");
+  const originalContent = useRef(comment.content);
+  const [editContent, setEditContent] = useState(comment.content);
+  const [isEdit, setIsEdit] = useState(false);
+
+  const handleEditComplete = async (commentId: number) => {
+    await httpClient.comment.put({
+      commentId,
+      content: editContent,
+    });
+    setIsEdit(false);
+    queryClient.invalidateQueries([KEY.COMMENT]);
+  };
+
+  const handleEditCancel = () => {
+    setEditContent(originalContent.current);
+    setIsEdit(false);
+  };
+
+  const handleDelete = async (commentId: number) => {
+    await httpClient.comment.delete({ data: { commentId } });
+    setIsEdit(false);
+    queryClient.invalidateQueries([KEY.COMMENT]);
+  };
 
   const handleWrite = (parentId?: number) => {
     httpClient.comment
@@ -106,6 +132,36 @@ export default function CommentView({
           </CommentInputWrapper>
         )}
       </div>
+      {comment.deletable && !isEdit && (
+        <Kebab.Provider>
+          <Kebab.Menu className="rounded">
+            {comment.editable && (
+              <Kebab.Item onClick={() => setIsEdit(true)}>
+                <EditIcon
+                  style={{
+                    width: "16px",
+                    height: "16px",
+                    marginRight: "8px",
+                    paddingLeft: "4px",
+                  }}
+                />
+                <span>수정</span>
+              </Kebab.Item>
+            )}
+            <Kebab.Item onClick={() => handleDelete(comment.commentId)}>
+              <TrashCanIcon
+                style={{
+                  width: "16px",
+                  height: "16px",
+                  marginRight: "8px",
+                  paddingLeft: "4px",
+                }}
+              />
+              <span>삭제</span>
+            </Kebab.Item>
+          </Kebab.Menu>
+        </Kebab.Provider>
+      )}
     </S.Comment>
   );
 }
