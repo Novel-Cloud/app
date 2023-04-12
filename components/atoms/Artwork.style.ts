@@ -20,7 +20,6 @@ export const ArtworkListWrapper = styled.div`
 export const ArtworkFrameWrapper = styled.div`
   position: relative;
   background-color: ${theme.primary};
-  margin-top: 5.625rem;
 `;
 
 export const ArtworkWrapper = styled.div`

@@ -101,9 +101,13 @@ export default function FilterView({ filter, setFilter }: FilterViewProps) {
         <span>필터</span>
       </FilterButtonWrapper>
 
+      <TagListWrapper>
+        <h2>Tag List</h2>
+        <TagListView filter={filter} setFilter={setFilter} />
+      </TagListWrapper>
+
       {isOpen && (
         <div>
-          <TagListView filter={filter} setFilter={setFilter} />
           <FilterContentWrapper>
             <div>
               <h2>업로드 날짜</h2>
@@ -187,4 +191,11 @@ const FilterLine = styled.hr`
   margin: 10px 0;
   color: white;
   width: 200px;
+`;
+
+const TagListWrapper = styled.div`
+  margin: 24px 0;
+  h2 {
+    font-family: "CookieRun-Regular";
+  }
 `;
