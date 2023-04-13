@@ -16,14 +16,14 @@ export default function CreateShortCutView() {
   const queryClient = useQueryClient();
   const onValid: SubmitHandler<ShortCutForm> = ({ content }) => {
     httpClient.shortcut.post({ content }).then(() => {
-      toast("추가가 완료되었습니다.");
       queryClient.invalidateQueries([KEY.SHORTCUTLIST]);
+      toast.success("추가가 완료되었습니다.");
       reset();
     });
   };
 
   const onInValid: SubmitErrorHandler<ShortCutForm> = ({ content }) => {
-    toast(content?.message || "빈 문자열일 수 없습니다.");
+    toast.success(content?.message || "빈 문자열일 수 없습니다.");
   };
 
   return (

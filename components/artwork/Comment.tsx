@@ -4,6 +4,7 @@ import { useReducer, useRef, useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import KEY from "@/key";
 import httpClient from "@/apis";
+import { toast } from "react-toastify";
 import Input from "../atoms/Input";
 import * as S from "./ArtworkCommentList.style";
 import Button from "../atoms/Button";
@@ -36,6 +37,7 @@ export default function CommentView({
     });
     setIsEdit(false);
     queryClient.invalidateQueries([KEY.COMMENT]);
+    toast.success("수정 완료되엇데수 ww");
   };
 
   const handleEditCancel = () => {
@@ -47,6 +49,7 @@ export default function CommentView({
     await httpClient.comment.delete({ data: { commentId } });
     setIsEdit(false);
     queryClient.invalidateQueries([KEY.COMMENT]);
+    toast.success("삭제 완료용");
   };
 
   const handleWrite = (parentId?: number) => {
@@ -58,6 +61,7 @@ export default function CommentView({
       })
       .then(() => {
         queryClient.invalidateQueries([KEY.COMMENT]);
+        toast.success("댓글 작성 완료용");
       });
   };
 

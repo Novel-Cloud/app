@@ -79,7 +79,7 @@ export default function Upload() {
         },
       })
       .then(() => {
-        toast("업로드에 성공했습니다.");
+        toast.success("업로드에 성공했습니다.");
         router.push("/");
       });
   };

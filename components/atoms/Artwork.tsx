@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { useQueryClient } from "@tanstack/react-query";
 import { Artwork } from "@/types/artwork.interface";
 import config from "@/config";
@@ -24,6 +25,7 @@ export default function ArtworkView({
     httpClient.like.post({ artworkId }).then(() => {
       queryClient.invalidateQueries([KEY.ARTWORKLIST]);
       queryClient.invalidateQueries([KEY.MEMBER]);
+      toast.success("좋아요 완료용");
     });
   };
   const handleTagClick = (content: string) => {

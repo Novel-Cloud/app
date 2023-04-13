@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
 import { useShortCutList } from "@/model/editor";
 import { useQueryClient } from "@tanstack/react-query";
@@ -23,6 +24,7 @@ export default function EditorEditApp() {
       );
       httpClient.shortcut.sequence({ shortcutIdList }).then(() => {
         queryClient.invalidateQueries([KEY.SHORTCUTLIST]);
+        toast.success("순서 저장 성공용");
       });
     }
   }, [isChanged, myShortCutList, queryClient]);
