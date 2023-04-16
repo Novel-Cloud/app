@@ -30,14 +30,17 @@ export default function CommentView({
   const [editContent, setEditContent] = useState(comment.content);
   const [isEdit, setIsEdit] = useState(false);
 
-  const handleEditComplete = async (commentId: number) => {
-    await httpClient.comment.put({
-      commentId,
-      content: editContent,
-    });
-    setIsEdit(false);
-    queryClient.invalidateQueries([KEY.COMMENT]);
-    toast.success("수정 완료되엇데수 ww");
+  const handleEditComplete = (commentId: number) => {
+    httpClient.comment
+      .put({
+        commentId,
+        content: editContent,
+      })
+      .then(() => {
+        setIsEdit(false);
+        queryClient.invalidateQueries([KEY.COMMENT]);
+        toast.success("수정 완료되엇데수 ww");
+      });
   };
 
   const handleEditCancel = () => {
@@ -45,11 +48,12 @@ export default function CommentView({
     setIsEdit(false);
   };
 
-  const handleDelete = async (commentId: number) => {
-    await httpClient.comment.delete({ data: { commentId } });
-    setIsEdit(false);
-    queryClient.invalidateQueries([KEY.COMMENT]);
-    toast.success("삭제 완료용");
+  const handleDelete = (commentId: number) => {
+    httpClient.comment.delete({ data: { commentId } }).then(() => {
+      setIsEdit(false);
+      queryClient.invalidateQueries([KEY.COMMENT]);
+      toast.success("삭제 완료용");
+    });
   };
 
   const handleWrite = (parentId?: number) => {
