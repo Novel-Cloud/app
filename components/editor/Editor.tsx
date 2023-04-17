@@ -26,9 +26,12 @@ export default function EditorView({ getCommand }: EditorViewProps) {
 
   useEffect(() => {
     if (debouncedContent !== "")
-      httpClient.artworkSave.post({ content: debouncedContent }).then((r) => {
-        toast.success(r.data);
-      });
+      httpClient.artworkSave
+        .post({ content: debouncedContent })
+        .then((r) => {
+          toast.success(r.data);
+        })
+        .catch((e) => toast.error(e.response.data.message));
   }, [debouncedContent]);
 
   useEffect(() => {

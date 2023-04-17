@@ -42,9 +42,12 @@ export default function Upload() {
   }, [artworkFiles]);
 
   useEffect(() => {
-    httpClient.artworkSave.get().then((r) => {
-      setValue("artworkDescription", r.data.content);
-    });
+    httpClient.artworkSave
+      .get()
+      .then((r) => {
+        setValue("artworkDescription", r.data.content);
+      })
+      .catch((e) => toast.error(e.response.data.message));
   }, [setValue]);
 
   const onValid: SubmitHandler<ArtworkForm> = (validData) => {
@@ -81,7 +84,8 @@ export default function Upload() {
       .then(() => {
         toast.success("업로드에 성공했습니다.");
         router.push("/");
-      });
+      })
+      .catch((e) => toast.error(e.response.data.message));
   };
 
   const onInValid: SubmitErrorHandler<ArtworkForm> = (inValidData) => {

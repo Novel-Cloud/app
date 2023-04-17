@@ -15,11 +15,14 @@ export default function CreateShortCutView() {
   const { register, handleSubmit, reset } = useForm<ShortCutForm>();
   const queryClient = useQueryClient();
   const onValid: SubmitHandler<ShortCutForm> = ({ content }) => {
-    httpClient.shortcut.post({ content }).then(() => {
-      queryClient.invalidateQueries([KEY.SHORTCUTLIST]);
-      toast.success("추가가 완료되었습니다.");
-      reset();
-    });
+    httpClient.shortcut
+      .post({ content })
+      .then(() => {
+        queryClient.invalidateQueries([KEY.SHORTCUTLIST]);
+        toast.success("추가가 완료되었습니다.");
+        reset();
+      })
+      .catch((e) => toast.error(e.response.data.message));
   };
 
   const onInValid: SubmitErrorHandler<ShortCutForm> = ({ content }) => {

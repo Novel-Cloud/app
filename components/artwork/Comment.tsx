@@ -42,7 +42,8 @@ export default function CommentView({
         queryClient.invalidateQueries([KEY.COMMENT]);
         setIsEdit(false);
         toast.success("수정 완료되엇데수 ww");
-      });
+      })
+      .catch((e) => toast.error(e.response.data.message));
   };
 
   const handleEditCancel = () => {
@@ -51,11 +52,14 @@ export default function CommentView({
   };
 
   const handleDelete = (commentId: number) => {
-    httpClient.comment.delete({ data: { commentId } }).then(() => {
-      queryClient.invalidateQueries([KEY.COMMENT]);
-      setIsEdit(false);
-      toast.success("삭제 완료용");
-    });
+    httpClient.comment
+      .delete({ data: { commentId } })
+      .then(() => {
+        queryClient.invalidateQueries([KEY.COMMENT]);
+        setIsEdit(false);
+        toast.success("삭제 완료용");
+      })
+      .catch((e) => toast.error(e.response.data.message));
   };
 
   const handleWrite = (parentId?: number) => {
@@ -68,7 +72,8 @@ export default function CommentView({
       .then(() => {
         queryClient.invalidateQueries([KEY.COMMENT]);
         toast.success("댓글 작성 완료용");
-      });
+      })
+      .catch((e) => toast.error(e.response.data.message));
   };
 
   return (

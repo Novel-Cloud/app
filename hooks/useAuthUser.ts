@@ -5,6 +5,7 @@ import Storage from "@/storage";
 import { Member } from "@/types/user.interface";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
+import { toast } from "react-toastify";
 
 interface UseAuthUserOptions {
   authorizedPage: boolean;
@@ -13,7 +14,11 @@ interface UseAuthUserOptions {
 const useAuthUser = (options?: UseAuthUserOptions) => {
   const { data, remove, isLoading } = useQuery<Member>(
     [KEY.USER],
-    () => httpClient.member.self().then((r) => r.data),
+    () =>
+      httpClient.member
+        .self()
+        .then((r) => r.data)
+        .catch((e) => toast.error(e.response.data.message)),
     { enabled: !!Storage.getItem("ACCESS_TOKEN") },
   );
 

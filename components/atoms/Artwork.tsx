@@ -22,11 +22,14 @@ export default function ArtworkView({
   const router = useRouter();
   const queryClient = useQueryClient();
   const handleLike = () => {
-    httpClient.like.post({ artworkId }).then(() => {
-      queryClient.invalidateQueries([KEY.ARTWORKLIST]);
-      queryClient.invalidateQueries([KEY.MEMBER]);
-      toast.success("좋아요 완료용");
-    });
+    httpClient.like
+      .post({ artworkId })
+      .then(() => {
+        queryClient.invalidateQueries([KEY.ARTWORKLIST]);
+        queryClient.invalidateQueries([KEY.MEMBER]);
+        toast.success("좋아요 완료용");
+      })
+      .catch((e) => toast.error(e.response.data.message));
   };
   const handleTagClick = (content: string) => {
     const prevTags =
