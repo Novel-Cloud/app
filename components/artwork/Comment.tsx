@@ -13,15 +13,17 @@ import Kebab from "../atoms/Kebab";
 import EditIcon from "../icons/EditIcon";
 import TrashCanIcon from "../icons/TrashCanIcon";
 
+interface CommentViewProps {
+  artwork: Artwork;
+  comment: Comment;
+  moveToProfile: () => void;
+}
+
 export default function CommentView({
   artwork,
   comment,
   moveToProfile,
-}: {
-  artwork: Artwork;
-  comment: Comment;
-  moveToProfile: () => void;
-}) {
+}: CommentViewProps) {
   const queryClient = useQueryClient();
   const [isReplyOpen, toggleReplyOpen] = useReducer((state) => !state, false);
   const [isInputOpen, toggleInputOpen] = useReducer((state) => !state, false);
@@ -37,8 +39,8 @@ export default function CommentView({
         content: editContent,
       })
       .then(() => {
-        setIsEdit(false);
         queryClient.invalidateQueries([KEY.COMMENT]);
+        setIsEdit(false);
         toast.success("수정 완료되엇데수 ww");
       });
   };
@@ -50,8 +52,8 @@ export default function CommentView({
 
   const handleDelete = (commentId: number) => {
     httpClient.comment.delete({ data: { commentId } }).then(() => {
-      setIsEdit(false);
       queryClient.invalidateQueries([KEY.COMMENT]);
+      setIsEdit(false);
       toast.success("삭제 완료용");
     });
   };

@@ -11,7 +11,7 @@ const useOauth = (authCode: string) => {
       enabled: !!authCode,
     },
   );
-  return data || { token: "", validity: "" };
+  return data || { accessToken: "", validity: "", refreshToken: "" };
 };
 
 export default useOauth;
