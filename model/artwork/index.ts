@@ -1,5 +1,6 @@
 import httpClient from "@/apis";
 import fixture from "@/fixture";
+import useBrowserWidth from "@/hooks/useBrowserWidth";
 import KEY from "@/key";
 import { Artwork, ArtworkType, Comment, Tag } from "@/types/artwork.interface";
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
@@ -33,6 +34,9 @@ export const useTagList = () => {
 };
 
 export const useArtworkList = (pagination?: PaginationRequest) => {
+  const { browserWidth } = useBrowserWidth();
+  console.log(browserWidth);
+
   const { data, isFetchingNextPage, fetchNextPage } =
     useInfiniteQuery<ArtworkList>(
       [KEY.ARTWORKLIST],
