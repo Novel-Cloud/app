@@ -102,7 +102,7 @@ export default function FilterView({ filter, setFilter }: FilterViewProps) {
       </FilterButtonWrapper>
 
       <TagListWrapper>
-        <h2>Tag List</h2>
+        {filter.tags.length > 0 && <h2>Tag List</h2>}
         <TagListView filter={filter} setFilter={setFilter} />
       </TagListWrapper>
 
