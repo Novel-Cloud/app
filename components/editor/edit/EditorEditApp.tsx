@@ -22,10 +22,13 @@ export default function EditorEditApp() {
       const shortcutIdList = myShortCutList.map(
         (myShortCut) => myShortCut.shortcutId,
       );
-      httpClient.shortcut.sequence({ shortcutIdList }).then(() => {
-        queryClient.invalidateQueries([KEY.SHORTCUTLIST]);
-        toast.success("순서 저장 성공용");
-      });
+      httpClient.shortcut
+        .sequence({ shortcutIdList })
+        .then(() => {
+          queryClient.invalidateQueries([KEY.SHORTCUTLIST]);
+          toast.success("순서 저장 성공용");
+        })
+        .catch((e) => toast.error(e.response.data.message));
     }
   }, [isChanged, myShortCutList, queryClient]);
 

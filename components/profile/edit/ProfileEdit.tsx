@@ -31,9 +31,12 @@ export default function ProfileEdit() {
   });
 
   const onValid: SubmitHandler<ProfileForm> = ({ nickname }) => {
-    httpClient.memberSelf.nickname({ nickname }).then(() => {
-      toast.success("닉네임 변경 성공 ww");
-    });
+    httpClient.memberSelf
+      .nickname({ nickname })
+      .then(() => {
+        toast.success("닉네임 변경 성공 ww");
+      })
+      .catch((e) => toast.error(e.response.data.message));
   };
 
   const handleImageSrc = (fileList: FileList) => {
@@ -55,7 +58,8 @@ export default function ProfileEdit() {
         })
         .then(() => {
           toast.success("업로드에 성공했습니다.");
-        });
+        })
+        .catch((e) => toast.error(e.response.data.message));
     }
   };
 

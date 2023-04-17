@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { toast } from "react-toastify";
+import { useQueryClient } from "@tanstack/react-query";
 import { Artwork } from "@/types/artwork.interface";
 import httpClient from "@/apis";
 import useAuthUser from "@/hooks/useAuthUser";
-import { useQueryClient } from "@tanstack/react-query";
 import KEY from "@/key";
 import { useCommentList } from "@/model/artwork";
 import Button from "../atoms/Button";
@@ -28,7 +29,8 @@ export default function ArtworkCommentList({ artwork }: { artwork: Artwork }) {
       })
       .then(() => {
         queryClient.invalidateQueries([KEY.COMMENT]);
-      });
+      })
+      .catch((e) => toast.error(e.response.data.message));
   };
 
   return (

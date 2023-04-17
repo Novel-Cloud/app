@@ -26,10 +26,13 @@ export default function DragDropView({
   const [isEnabled, setIsEnabled] = useState(false);
 
   const removeShortCut = (shortcutId: number) => {
-    httpClient.shortcut.delete({ data: { shortcutId } }).then(() => {
-      toast.success("삭제가 완료되었습니다.");
-      queryClient.invalidateQueries([KEY.SHORTCUTLIST]);
-    });
+    httpClient.shortcut
+      .delete({ data: { shortcutId } })
+      .then(() => {
+        toast.success("삭제가 완료되었습니다.");
+        queryClient.invalidateQueries([KEY.SHORTCUTLIST]);
+      })
+      .catch((e) => toast.error(e.response.data.message));
   };
 
   const onDragEnd = ({ source, destination }: DropResult) => {

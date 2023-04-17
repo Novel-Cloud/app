@@ -3,6 +3,7 @@ import fixture from "@/fixture";
 import KEY from "@/key";
 import { Artwork, ArtworkType, Comment, Tag } from "@/types/artwork.interface";
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
+import { toast } from "react-toastify";
 
 export interface PaginationRequest {
   page?: number;
@@ -23,7 +24,10 @@ interface ArtworkList {
 
 export const useTagList = () => {
   const { data } = useQuery<{ list: Tag[] }>([KEY.TAG], () =>
-    httpClient.tag.get().then((r) => r.data),
+    httpClient.tag
+      .get()
+      .then((r) => r.data)
+      .catch((e) => toast.error(e.response.data.message)),
   );
   return { data: data?.list || [] };
 };
@@ -40,7 +44,8 @@ export const useArtworkList = (pagination?: PaginationRequest) => {
               size: pagination?.size || 12,
             },
           })
-          .then((r) => r.data),
+          .then((r) => r.data)
+          .catch((e) => toast.error(e.response.data.message)),
       {
         getNextPageParam: (lastPage) => lastPage.pagination.page + 1,
       },
@@ -90,7 +95,8 @@ export const useSearch = (pagination?: PaginationRequest, filter?: Filter) => {
             pagination: { page: pageParam, size: pagination?.size || 12 },
             filter,
           })
-          .then((r) => r.data),
+          .then((r) => r.data)
+          .catch((e) => toast.error(e.response.data.message)),
       {
         getNextPageParam: (lastPage) => lastPage.pagination.page + 1,
       },
@@ -112,7 +118,8 @@ export const useArtwork = (artworkId: number) => {
   const { data } = useQuery([KEY.ARTWORK], () =>
     httpClient.artworkDetail
       .getById({ params: { id: artworkId } })
-      .then((r) => r.data),
+      .then((r) => r.data)
+      .catch((e) => toast.error(e.response.data.message)),
   );
   return { data: data || fixture.artwork };
 };
@@ -125,8 +132,12 @@ interface SavedContent {
 
 export const useContent = () => {
   const { data } = useQuery<SavedContent>([KEY.CONTENT], () =>
-    httpClient.artworkSave.get().then((r) => r.data),
+    httpClient.artworkSave
+      .get()
+      .then((r) => r.data)
+      .catch((e) => toast.error(e.response.data.message)),
   );
+
   return { data: data?.content || "" };
 };
 
@@ -138,7 +149,8 @@ export const useCommentList = (artworkId: number) => {
   const { data } = useQuery<UseCommentList>([KEY.COMMENT, artworkId], () =>
     httpClient.comment
       .getById({ params: { id: artworkId } })
-      .then((r) => r.data),
+      .then((r) => r.data)
+      .catch((e) => toast.error(e.response.data.message)),
   );
   return { data: data?.list || [] };
 };

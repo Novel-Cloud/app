@@ -1,7 +1,8 @@
 import { Artwork } from "./artwork.interface";
 
 export interface Token {
-  token: string;
+  accessToken: string;
+  refreshToken: string;
   validity: string;
 }
 

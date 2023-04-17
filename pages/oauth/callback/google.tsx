@@ -6,18 +6,18 @@ import { useEffect, useState } from "react";
 export default function Google() {
   const router = useRouter();
   const [authCode, setAuthCode] = useState("");
-  const { token } = useOauth(authCode);
+  const { accessToken } = useOauth(authCode);
 
   useEffect(() => {
     setAuthCode(router.query.code as string);
   }, [router.query]);
 
   useEffect(() => {
-    if (token !== "") {
-      Storage.setItem("ACCESS_TOKEN", token);
+    if (accessToken !== "") {
+      Storage.setItem("ACCESS_TOKEN", accessToken);
       router.push("/");
     }
-  }, [token, router]);
+  }, [accessToken, router]);
 
   return <div />;
 }

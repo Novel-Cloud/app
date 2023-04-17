@@ -24,10 +24,13 @@ export default function ArtworkDetail({ artwork }: { artwork: Artwork }) {
   } = useArtwork(artwork.artworkId);
 
   const handleLike = () => {
-    httpClient.like.post({ artworkId: artwork.artworkId }).then(() => {
-      queryClient.invalidateQueries([KEY.ARTWORK]);
-      toast.success("좋아요 눌럿데수 ww");
-    });
+    httpClient.like
+      .post({ artworkId: artwork.artworkId })
+      .then(() => {
+        queryClient.invalidateQueries([KEY.ARTWORK]);
+        toast.success("좋아요 눌럿데수 ww");
+      })
+      .catch((e) => toast.error(e.response.data.message));
   };
 
   return (
