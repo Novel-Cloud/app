@@ -20,7 +20,19 @@ const useAuthUser = (options?: UseAuthUserOptions) => {
       httpClient.member
         .self()
         .then((r) => r.data)
-        .catch((e) => toast.error(e.response.data.message)),
+        .catch((e) => {
+          if (e.response.data.message === "유효기간이 만료된 토큰입니다.")
+            httpClient.oauth
+              .refresh({
+                refreshToken: Storage.getItem("REFRESH_TOKEN") || "",
+              })
+              .then((r) => {
+                const { accessToken } = r.data;
+                Storage.setItem("ACCESS_TOKEN", accessToken);
+                HttpClient.setAccessToken();
+                router.reload();
+              });
+        }),
     { enabled: !!Storage.getItem("ACCESS_TOKEN") },
   );
 
@@ -31,7 +43,7 @@ const useAuthUser = (options?: UseAuthUserOptions) => {
 
   useEffect(() => {
     if (options?.authorizedPage && !data && !isLoading) {
-      alert("로그인좀 해라");
+      toast.error("로그인이 필요한 페이지입니다.");
       router.push("/");
     }
   }, [options?.authorizedPage, data, isLoading, router]);

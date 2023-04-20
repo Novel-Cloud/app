@@ -48,6 +48,13 @@ export class HttpClient {
     });
   }
 
+  refresh(data: unknown, requestConfig?: AxiosRequestConfig) {
+    return this.api.post("/refresh", data, {
+      ...HttpClient.clientConfig,
+      ...requestConfig,
+    });
+  }
+
   put(data: unknown, requestConfig?: AxiosRequestConfig) {
     return this.api.put("", data, {
       ...HttpClient.clientConfig,
