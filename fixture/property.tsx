@@ -26,12 +26,6 @@ export const editButtonArgumentList: EditButtonArgument[] = [
   { id: 6, cmd: "insertHorizontalRule", icon: <HrIcon /> },
   { id: 7, cmd: "italic", arg: "i", icon: <ItalicIcon /> },
   { id: 8, cmd: "bold", arg: "b", icon: <BoldIcon /> },
-  {
-    id: 9,
-    cmd: "insertImage",
-    arg: "https://placekitten.com/200/300",
-    icon: <ImageIcon />,
-  },
   { id: 10, cmd: "fontSize", arg: "7", icon: <H1Icon /> },
   { id: 11, cmd: "fontSize", arg: "6", icon: <H2Icon /> },
   { id: 12, cmd: "fontSize", arg: "5", icon: <H3Icon /> },

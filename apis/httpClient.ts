@@ -41,6 +41,13 @@ export class HttpClient {
     });
   }
 
+  upload(data: unknown, requestConfig?: AxiosRequestConfig) {
+    return this.api.post("/upload", data, {
+      ...HttpClient.clientConfig,
+      ...requestConfig,
+    });
+  }
+
   put(data: unknown, requestConfig?: AxiosRequestConfig) {
     return this.api.put("", data, {
       ...HttpClient.clientConfig,
@@ -126,6 +133,7 @@ export default {
   artworkDetail: new HttpClient("/api/artwork/detail", axiosConfig),
   tag: new HttpClient("/api/tag", axiosConfig),
   like: new HttpClient("/api/like", axiosConfig),
+  file: new HttpClient("/api/file", axiosConfig),
   comment: new HttpClient("/api/comment", axiosConfig),
   search: new HttpClient("/api/search", axiosConfig),
   memberSelf: new HttpClient("/api/member/self", axiosConfig),
