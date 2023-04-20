@@ -41,21 +41,22 @@ export default function ToolbarView({
     return null;
   }
 
-  const handleImageUpload = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleFileUploadPromise = (editorUploadFormData: FormData) => {
+    return httpClient.file.upload(editorUploadFormData).then((r) => {
+      document.getElementById("editor")?.focus();
+      document.execCommand("insertImage", false, r.data);
+    });
+  };
+
+  const handleFileUpload = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     const editorUploadFormData = new FormData();
     if (event.target.files) {
-      toast.promise(
-        httpClient.file.upload(editorUploadFormData).then((r) => {
-          document.getElementById("editor")?.focus();
-          document.execCommand("insertImage", false, r.data);
-        }),
-        {
-          pending: "이미지 업로드 중..",
-          success: "이미지 업로드 완료",
-          error: "이미지 업로드 실패",
-        },
-      );
+      toast.promise(handleFileUploadPromise(editorUploadFormData), {
+        pending: "이미지 업로드 중..",
+        success: "이미지 업로드 완료",
+        error: "이미지 업로드 실패",
+      });
       editorUploadFormData.append("image", event.target.files[0]);
     }
   };
@@ -69,7 +70,7 @@ export default function ToolbarView({
         <ToolbarInput
           type="file"
           id="editor-image-upload"
-          onChange={handleImageUpload}
+          onChange={handleFileUpload}
         />
         <ToolbarLabel htmlFor="editor-image-upload">
           <ImageIcon />
