@@ -47,6 +47,7 @@ export default function ToolbarView({
     if (event.target.files) {
       toast.promise(
         httpClient.file.upload(editorUploadFormData).then((r) => {
+          document.getElementById("editor")?.focus();
           document.execCommand("insertImage", false, r.data);
         }),
         {
@@ -106,4 +107,9 @@ const ToolbarButton = styled.div`
 const ToolbarInput = styled.input`
   display: none;
 `;
-const ToolbarLabel = styled.label``;
+const ToolbarLabel = styled.label`
+  svg {
+    width: 32px;
+    height: 32px;
+  }
+`;
