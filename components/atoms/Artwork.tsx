@@ -1,7 +1,6 @@
 import { toast } from "react-toastify";
 import { useQueryClient } from "@tanstack/react-query";
 import { Artwork } from "@/types/artwork.interface";
-import config from "@/config";
 import KEY from "@/key";
 import httpClient from "@/apis";
 import Image from "next/image";
@@ -47,7 +46,7 @@ export default function ArtworkView({
     <S.ArtworkWrapper>
       <S.ArtworkThumbnailWrapper>
         <Image
-          src={`${config.baseURL}/api/file/artwork/${thumbnail}`}
+          src={thumbnail}
           alt={title}
           fill
           onClick={() => router.push(`/artwork/${artworkId}`)}
