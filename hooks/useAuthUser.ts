@@ -14,25 +14,26 @@ interface UseAuthUserOptions {
 
 const useAuthUser = (options?: UseAuthUserOptions) => {
   const router = useRouter();
+
+  const getUserData = async () => {
+    try {
+      const { data } = await httpClient.member.self();
+      return data;
+    } catch {
+      const {
+        data: { accessToken },
+      } = await httpClient.oauth.refresh({
+        refreshToken: Storage.getItem("REFRESH_TOKEN"),
+      });
+      Storage.setItem("ACCESS_TOKEN", accessToken);
+      HttpClient.setAccessToken();
+      getUserData();
+    }
+  };
+
   const { data, remove, isLoading } = useQuery<Member>(
     [KEY.USER],
-    () =>
-      httpClient.member
-        .self()
-        .then((r) => r.data)
-        .catch((e) => {
-          if (e.response.data.message === "유효기간이 만료된 토큰입니다.")
-            httpClient.oauth
-              .refresh({
-                refreshToken: Storage.getItem("REFRESH_TOKEN") || "",
-              })
-              .then((r) => {
-                const { accessToken } = r.data;
-                Storage.setItem("ACCESS_TOKEN", accessToken);
-                HttpClient.setAccessToken();
-                router.reload();
-              });
-        }),
+    getUserData,
     { enabled: !!Storage.getItem("ACCESS_TOKEN") },
   );
 
