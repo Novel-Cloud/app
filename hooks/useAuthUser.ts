@@ -4,6 +4,7 @@ import KEY from "@/key";
 import Storage from "@/storage";
 import { Member } from "@/types/user.interface";
 import { useQuery } from "@tanstack/react-query";
+import { AxiosError } from "axios";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
@@ -19,15 +20,27 @@ const useAuthUser = (options?: UseAuthUserOptions) => {
     try {
       const { data } = await httpClient.member.self();
       return data;
-    } catch {
-      const {
-        data: { accessToken },
-      } = await httpClient.oauth.refresh({
-        refreshToken: Storage.getItem("REFRESH_TOKEN"),
-      });
-      Storage.setItem("ACCESS_TOKEN", accessToken);
-      HttpClient.setAccessToken();
-      getUserData();
+    } catch (e) {
+      const statusCode = (e as AxiosError).response?.status;
+
+      switch (statusCode) {
+        case 401: {
+          const {
+            data: { accessToken },
+          } = await httpClient.oauth.refresh({
+            refreshToken: Storage.getItem("REFRESH_TOKEN"),
+          });
+          Storage.setItem("ACCESS_TOKEN", accessToken);
+          HttpClient.setAccessToken();
+          await getUserData();
+          break;
+        }
+        default: {
+          toast.error("로그인이 필요한 페이지입니다");
+          router.push("/login");
+          break;
+        }
+      }
     }
   };
 
