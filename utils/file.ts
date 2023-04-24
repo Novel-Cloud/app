@@ -9,3 +9,9 @@ export const getFormData = (file: File) => {
   formData.append("file", file);
   return formData;
 };
+
+export const checkSize = (fileSize: number, maxSize?: number) => {
+  const checkFileSize = maxSize || 1 * 1024 * 1024;
+  if (fileSize > checkFileSize) return false;
+  return true;
+};

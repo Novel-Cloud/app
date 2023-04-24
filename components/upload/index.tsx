@@ -5,6 +5,7 @@ import useFileDrop from "@/hooks/useFileDrop";
 import FormData from "form-data";
 import httpClient from "@/apis";
 import { toast } from "react-toastify";
+import { checkSize } from "@/utils/file";
 import { useRouter } from "next/router";
 import FileUploader from "../atoms/FileUploader";
 import * as S from "./index.style";
@@ -27,34 +28,23 @@ export default function Upload() {
     accept: "image/*",
   });
 
-  const maxSize = 1 * 1024 * 1024;
-
   const handleImageSrc = (fileList: FileList) => {
-    const fileSize = fileList[0].size;
-    const ok = fileSize < maxSize;
-    if (fileList.length) {
-      if (ok) {
-        setArtworkImageSrc(URL.createObjectURL(fileList[0]));
-        setArtworkFileList((prev) => [...prev, fileList[0]]);
-      } else {
-        alert("파일 사이즈가 너무 큽니다.");
-      }
+    if (fileList.length && checkSize(fileList[0].size)) {
+      setArtworkImageSrc(URL.createObjectURL(fileList[0]));
+      setArtworkFileList((prev) => [...prev, fileList[0]]);
+    } else {
+      toast.error("파일 사이즈가 너무 큽니다.");
     }
   };
 
   useEffect(() => {
-    if (artworkFiles.length) {
-      const fileSize = artworkFiles[0].size;
-      const ok = fileSize < maxSize;
-      console.log(fileSize, maxSize);
-      if (ok) {
-        setArtworkImageSrc(URL.createObjectURL(artworkFiles[0]));
-        setArtworkFileList(artworkFiles);
-      } else {
-        alert("파일 사이즈가 너무 큽니다.");
-      }
+    if (artworkFiles.length && checkSize(artworkFiles[0].size)) {
+      setArtworkImageSrc(URL.createObjectURL(artworkFiles[0]));
+      setArtworkFileList(artworkFiles);
+    } else {
+      toast.error("파일 사이즈가 너무 큽니다.");
     }
-  }, [artworkFiles, maxSize]);
+  }, [artworkFiles]);
 
   useEffect(() => {
     httpClient.artworkSave
