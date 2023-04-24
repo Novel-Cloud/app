@@ -36,8 +36,6 @@ const useAuthUser = (options?: UseAuthUserOptions) => {
           break;
         }
         default: {
-          toast.error("로그인이 필요한 페이지입니다");
-          router.push("/login");
           break;
         }
       }
@@ -58,7 +56,7 @@ const useAuthUser = (options?: UseAuthUserOptions) => {
   useEffect(() => {
     if (options?.authorizedPage && !data && !isLoading) {
       toast.error("로그인이 필요한 페이지입니다.");
-      router.push("/");
+      router.push("/login");
     }
   }, [options?.authorizedPage, data, isLoading, router]);
 
