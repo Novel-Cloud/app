@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 import { useQueryClient } from "@tanstack/react-query";
-import { Artwork } from "@/types/artwork.interface";
+import type { Artwork } from "@/types/artwork.interface";
 import config from "@/config";
 import { useState } from "react";
 import KEY from "@/key";

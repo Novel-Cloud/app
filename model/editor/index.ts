@@ -1,6 +1,6 @@
 import httpClient from "@/apis";
 import KEY from "@/key";
-import { ShortCut } from "@/types/editor.interface";
+import type { ShortCut } from "@/types/editor.interface";
 import { useQuery } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 

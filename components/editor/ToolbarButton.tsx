@@ -1,4 +1,4 @@
-import { EditButtonArgument } from "@/types/editor.interface";
+import type { EditButtonArgument } from "@/types/editor.interface";
 import * as S from "./ToolbarButton.style";
 
 export default function ToolbarButtonView({

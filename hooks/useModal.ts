@@ -1,5 +1,5 @@
 import modalState from "@/context/modal";
-import { ModalState } from "@/types/modal.interface";
+import type { ModalState } from "@/types/modal.interface";
 import { useCallback } from "react";
 import { useRecoilState } from "recoil";
 

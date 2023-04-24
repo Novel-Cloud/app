@@ -1,4 +1,4 @@
-import { Artwork } from "@/types/artwork.interface";
+import type { Artwork } from "@/types/artwork.interface";
 import { toast } from "react-toastify";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { useRouter } from "next/router";

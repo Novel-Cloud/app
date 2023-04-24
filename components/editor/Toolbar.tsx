@@ -1,4 +1,4 @@
-import { EditButtonArgument, ShortCut } from "@/types/editor.interface";
+import type { EditButtonArgument, ShortCut } from "@/types/editor.interface";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 import {

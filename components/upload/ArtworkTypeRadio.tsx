@@ -1,4 +1,4 @@
-import { ArtworkForm } from "@/types/artwork.interface";
+import type { ArtworkForm } from "@/types/artwork.interface";
 import { UseFormRegister } from "react-hook-form";
 import Radio from "../atoms/Radio";
 

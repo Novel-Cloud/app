@@ -1,4 +1,4 @@
-import { Artwork } from "./artwork.interface";
+import type { Artwork } from "./artwork.interface";
 
 export interface Token {
   accessToken: string;

@@ -1,5 +1,5 @@
 import theme from "@/styles/theme";
-import { Varient } from "@/types/atoms.interface";
+import type { Varient } from "@/types/atoms.interface";
 import styled from "styled-components";
 
 interface StyledButtonProps {

@@ -1,5 +1,5 @@
 import Button from "@/components/atoms/Button";
-import { Member } from "@/types/user.interface";
+import type { Member } from "@/types/user.interface";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import * as S from "./LoginedUser.style";

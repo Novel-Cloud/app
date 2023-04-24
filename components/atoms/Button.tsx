@@ -1,4 +1,4 @@
-import { Varient } from "@/types/atoms.interface";
+import type { Varient } from "@/types/atoms.interface";
 import { ButtonHTMLAttributes, MouseEventHandler, ReactNode } from "react";
 import * as S from "./Button.style";
 

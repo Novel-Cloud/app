@@ -2,7 +2,7 @@ import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
 import { useShortCutList } from "@/model/editor";
 import { useQueryClient } from "@tanstack/react-query";
-import { ShortCut } from "@/types/editor.interface";
+import type { ShortCut } from "@/types/editor.interface";
 import httpClient from "@/apis";
 import KEY from "@/key";
 import DragDropView from "./DragDropView";

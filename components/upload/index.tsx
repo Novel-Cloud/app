@@ -1,4 +1,4 @@
-import { ArtworkForm } from "@/types/artwork.interface";
+import type { ArtworkForm } from "@/types/artwork.interface";
 import { useEffect, useState } from "react";
 import { SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
 import useFileDrop from "@/hooks/useFileDrop";

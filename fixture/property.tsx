@@ -9,12 +9,11 @@ import H4Icon from "@/components/icons/editor/H4Icon";
 import H5Icon from "@/components/icons/editor/H5Icon";
 import H6Icon from "@/components/icons/editor/H6Icon";
 import HrIcon from "@/components/icons/editor/HrIcon";
-import ImageIcon from "@/components/icons/editor/ImageIcon";
 import ItalicIcon from "@/components/icons/editor/ItalicIcon";
 import OrderedListIcon from "@/components/icons/editor/OrderedListIcon";
 import ParagraphIcon from "@/components/icons/editor/ParagraphIcon";
 import UnOrderedListIcon from "@/components/icons/editor/UnOrderedListIcon";
-import { EditButtonArgument } from "@/types/editor.interface";
+import type { EditButtonArgument } from "@/types/editor.interface";
 
 export const editButtonArgumentList: EditButtonArgument[] = [
   { id: 0, cmd: "justifyCenter", icon: <AlignCenterIcon /> },

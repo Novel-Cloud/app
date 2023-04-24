@@ -4,7 +4,7 @@ import ArtworkComment from "@/components/artwork/ArtworkCommentList";
 import ArtworkDetail from "@/components/artwork/ArtworkDetail";
 import ArtworkPlayer from "@/components/artwork/ArtworkPlayer";
 import ArtworkDetailLayout from "@/layout/ArtworkDetailLayout";
-import { Artwork } from "@/types/artwork.interface";
+import type { Artwork } from "@/types/artwork.interface";
 import { deepcopy } from "@/utils/array";
 import { GetStaticProps } from "next";
 import Page404 from "../404";

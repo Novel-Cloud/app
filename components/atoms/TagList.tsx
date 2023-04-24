@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { Tag } from "@/types/artwork.interface";
+import type { Tag } from "@/types/artwork.interface";
 import TagView from "./Tag";
 import * as S from "./TagList.style";
 

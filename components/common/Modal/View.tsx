@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ModalState } from "@/types/modal.interface";
+import type { ModalState } from "@/types/modal.interface";
 import XIcon from "@/components/icons/common/XIcon";
 
 interface ModalViewProps extends ModalState {

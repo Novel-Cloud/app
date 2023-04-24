@@ -1,6 +1,6 @@
-import { Artwork, Tag } from "@/types/artwork.interface";
-import { ShortCut } from "@/types/editor.interface";
-import { Member } from "@/types/user.interface";
+import type { Artwork, Tag } from "@/types/artwork.interface";
+import type { ShortCut } from "@/types/editor.interface";
+import type { Member } from "@/types/user.interface";
 
 const shortCutList: ShortCut[] = [
   { shortcutId: 0, content: "미카모" },

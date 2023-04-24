@@ -4,7 +4,7 @@ import { editButtonArgumentList } from "@/fixture/property";
 import { editorHotkeyRange } from "@/key/editor.index";
 import EditorLayout from "@/layout/EditorLayout";
 import { useShortCutList } from "@/model/editor";
-import { ShortCut } from "@/types/editor.interface";
+import type { ShortCut } from "@/types/editor.interface";
 import { useEffect, useMemo, useState } from "react";
 import { HotkeysProvider, useHotkeys } from "react-hotkeys-hook";
 

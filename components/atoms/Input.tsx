@@ -1,4 +1,4 @@
-import { Varient } from "@/types/atoms.interface";
+import type { Varient } from "@/types/atoms.interface";
 import { InputHTMLAttributes } from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
 import * as S from "./Input.style";

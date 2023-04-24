@@ -1,4 +1,4 @@
-import { Artwork } from "@/types/artwork.interface";
+import type { Artwork } from "@/types/artwork.interface";
 import Image from "next/image";
 import * as S from "./ArtworkPlayer.style";
 

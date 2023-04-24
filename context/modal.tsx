@@ -1,4 +1,4 @@
-import { ModalState } from "@/types/modal.interface";
+import type { ModalState } from "@/types/modal.interface";
 import { atom } from "recoil";
 
 const modalState = atom<ModalState>({

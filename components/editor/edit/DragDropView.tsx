@@ -1,4 +1,4 @@
-import { ShortCut } from "@/types/editor.interface";
+import type { ShortCut } from "@/types/editor.interface";
 import { deepcopy, reorder } from "@/utils/array";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { DragDropContext, Droppable, DropResult } from "react-beautiful-dnd";

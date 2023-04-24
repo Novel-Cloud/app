@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import config from "@/config";
-import { Member } from "@/types/user.interface";
+import type { Member } from "@/types/user.interface";
 import Avatar from "../atoms/Avatar";
 import Button from "../atoms/Button";
 import * as S from "./ProfileInfo.style";

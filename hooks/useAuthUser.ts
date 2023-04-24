@@ -2,7 +2,7 @@ import httpClient, { HttpClient } from "@/apis/httpClient";
 import fixture from "@/fixture";
 import KEY from "@/key";
 import Storage from "@/storage";
-import { Member } from "@/types/user.interface";
+import type { Member } from "@/types/user.interface";
 import { useQuery } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { useRouter } from "next/router";

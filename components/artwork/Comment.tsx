@@ -1,4 +1,4 @@
-import { Artwork, Comment } from "@/types/artwork.interface";
+import type { Artwork, Comment } from "@/types/artwork.interface";
 import styled from "styled-components";
 import { useReducer, useRef, useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";

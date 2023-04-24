@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 import { useQueryClient } from "@tanstack/react-query";
-import { Artwork } from "@/types/artwork.interface";
+import type { Artwork } from "@/types/artwork.interface";
 import httpClient from "@/apis";
 import useAuthUser from "@/hooks/useAuthUser";
 import KEY from "@/key";
