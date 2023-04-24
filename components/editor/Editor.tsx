@@ -1,6 +1,6 @@
 import ContentEditable, { ContentEditableEvent } from "react-contenteditable";
 import useDebounce from "@/hooks/useDebounce";
-import React, { KeyboardEventHandler, useEffect, useState } from "react";
+import { KeyboardEventHandler, useEffect, useState } from "react";
 import httpClient from "@/apis";
 import { toast } from "react-toastify";
 import { xssFilter } from "@/utils/editor";
