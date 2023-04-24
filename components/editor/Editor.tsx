@@ -3,6 +3,7 @@ import useDebounce from "@/hooks/useDebounce";
 import React, { KeyboardEventHandler, useEffect, useState } from "react";
 import httpClient from "@/apis";
 import { toast } from "react-toastify";
+import { xssFilter } from "@/utils/editor";
 import { useContent } from "@/model/artwork";
 import * as S from "./Editor.style";
 import PDFService from "../pdf/PdfService";
@@ -27,10 +28,8 @@ export default function EditorView({ getCommand }: EditorViewProps) {
   useEffect(() => {
     if (debouncedContent !== "")
       httpClient.artworkSave
-        .post({ content: debouncedContent })
-        .then((r) => {
-          toast.success(r.data);
-        })
+        .post({ content: xssFilter(debouncedContent) })
+        .then((r) => toast.success(r.data))
         .catch((e) => toast.error(e.response.data.message));
   }, [debouncedContent]);
 
