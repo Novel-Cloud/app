@@ -27,19 +27,34 @@ export default function Upload() {
     accept: "image/*",
   });
 
+  const maxSize = 1 * 1024 * 1024;
+
   const handleImageSrc = (fileList: FileList) => {
+    const fileSize = fileList[0].size;
+    const ok = fileSize < maxSize;
     if (fileList.length) {
-      setArtworkImageSrc(URL.createObjectURL(fileList[0]));
-      setArtworkFileList((prev) => [...prev, fileList[0]]);
+      if (ok) {
+        setArtworkImageSrc(URL.createObjectURL(fileList[0]));
+        setArtworkFileList((prev) => [...prev, fileList[0]]);
+      } else {
+        alert("파일 사이즈가 너무 큽니다.");
+      }
     }
   };
 
   useEffect(() => {
     if (artworkFiles.length) {
-      setArtworkImageSrc(URL.createObjectURL(artworkFiles[0]));
-      setArtworkFileList(artworkFiles);
+      const fileSize = artworkFiles[0].size;
+      const ok = fileSize < maxSize;
+      console.log(fileSize, maxSize);
+      if (ok) {
+        setArtworkImageSrc(URL.createObjectURL(artworkFiles[0]));
+        setArtworkFileList(artworkFiles);
+      } else {
+        alert("파일 사이즈가 너무 큽니다.");
+      }
     }
-  }, [artworkFiles]);
+  }, [artworkFiles, maxSize]);
 
   useEffect(() => {
     httpClient.artworkSave
