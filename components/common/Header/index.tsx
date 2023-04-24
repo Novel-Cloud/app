@@ -5,8 +5,8 @@ import AlignCenterIcon from "@/components/icons/editor/AlignCenterIcon";
 import useAuthUser from "@/hooks/useAuthUser";
 import * as S from "./index.style";
 import SearchBar from "./SearchBar";
-import Avartar from "./LoginedUser";
 import Logo from "./Logo";
+import LoginedUser from "./LoginedUser";
 
 export default function Header() {
   const router = useRouter();
@@ -30,7 +30,7 @@ export default function Header() {
           registerReturn={register("keyword")}
           onSearch={handleSubmit(({ keyword }) => onVaild(keyword))}
         />
-        <Avartar userInfo={userInfo} isLogined={isLogined} />
+        <LoginedUser userInfo={userInfo} isLogined={isLogined} />
       </S.HeaderMenuWrapper>
       <AlignCenterIcon id="toggle_button" onClick={() => toggle()} />
     </S.HeaderWrapper>

@@ -9,7 +9,7 @@ interface AvatarProps {
   isLogined: boolean;
 }
 
-export default function Avatar({ userInfo, isLogined }: AvatarProps) {
+export default function LoginedUser({ userInfo, isLogined }: AvatarProps) {
   const router = useRouter();
 
   return (
