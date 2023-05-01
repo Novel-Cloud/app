@@ -9,10 +9,10 @@ import ArtworkView from "../atoms/Artwork";
 
 interface ProfileInfoProps {
   userInfo: Member;
-  isMypage: boolean;
+  isMyPage: boolean;
 }
 
-export default function ProfileInfo({ userInfo, isMypage }: ProfileInfoProps) {
+export default function ProfileInfo({ userInfo, isMyPage }: ProfileInfoProps) {
   const router = useRouter();
   const dummyFn = () => 1;
   const goToProfileEditPage = () => router.push("/profile/edit");
@@ -34,9 +34,9 @@ export default function ProfileInfo({ userInfo, isMypage }: ProfileInfoProps) {
           <Button
             id="large"
             rounded
-            onClick={isMypage ? goToProfileEditPage : dummyFn}
+            onClick={isMyPage ? goToProfileEditPage : dummyFn}
           >
-            {isMypage ? "내 정보 관리" : "팔로우"}
+            {isMyPage ? "내 정보 관리" : "팔로우"}
           </Button>
         </S.ProfileButtonWrapper>
       </S.ProfileAvatarWrapper>

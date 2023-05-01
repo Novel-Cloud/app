@@ -18,7 +18,7 @@ export default function ArtworkDetailPage() {
       <Header />
       <ProfileLayout
         background={<ProfileBackground length={userInfo.artworks.length} />}
-        app={<ProfileInfo userInfo={userInfo} isMypage={isMypage} />}
+        app={<ProfileInfo userInfo={userInfo} isMyPage={isMypage} />}
       />
     </>
   );
