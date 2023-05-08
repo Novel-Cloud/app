@@ -2,7 +2,6 @@ import { toast } from "react-toastify";
 import { useQueryClient } from "@tanstack/react-query";
 import type { Artwork } from "@/types/artwork.interface";
 import config from "@/config";
-import { useState } from "react";
 import KEY from "@/key";
 import httpClient from "@/apis";
 import Image from "next/image";
@@ -22,7 +21,7 @@ export default function ArtworkView({
 }: Artwork) {
   const router = useRouter();
   const queryClient = useQueryClient();
-  const [imageSrc, setImageSrc] = useState(thumbnail);
+
   const handleLike = () => {
     httpClient.like
       .post({ artworkId })
@@ -45,17 +44,15 @@ export default function ArtworkView({
       query: { tags: Array.from(new Set(newTags)) },
     });
   };
+
   return (
     <S.ArtworkWrapper>
       <S.ArtworkThumbnailWrapper>
         <Image
-          src={imageSrc}
+          src={thumbnail ?? config.defaultProfile}
           alt={title}
           fill
           onClick={() => router.push(`/artwork/${artworkId}`)}
-          onError={() => {
-            setImageSrc(config.defaultProfile);
-          }}
         />
         <S.ArtworkLikeIconWrapper onClick={handleLike}>
           {likeYn ? <FilledLikeIcon /> : <LikeIcon />}

@@ -11,7 +11,7 @@ const createConfig: () => Config = () => {
   return {
     baseURL: process.env.NEXT_PUBLIC_SERVER_URL,
     nodeEnv: process.env.NODE_ENV,
-    defaultProfile: "/public/assets/NoImageGirl.png",
+    defaultProfile: "/assets/NoImageGirl.png",
   };
 };
 

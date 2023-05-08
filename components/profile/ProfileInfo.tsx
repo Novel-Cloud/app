@@ -1,5 +1,4 @@
 import { useRouter } from "next/router";
-import config from "@/config";
 import type { Member } from "@/types/user.interface";
 import Avatar from "../atoms/Avatar";
 import Button from "../atoms/Button";
@@ -23,7 +22,7 @@ export default function ProfileInfo({ userInfo, isMyPage }: ProfileInfoProps) {
         <S.ProfileWrapper>
           <span>{userInfo.nickname}</span>
           <Avatar
-            src={userInfo.picture || config.defaultProfile}
+            src={userInfo.picture}
             alt="프로필사진"
             width={192}
             height={192}
