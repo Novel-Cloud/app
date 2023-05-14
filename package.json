@@ -27,6 +27,7 @@
     "react-component-export-image": "^1.0.6",
     "react-contenteditable": "^3.3.7",
     "react-copy-to-clipboard": "^5.1.0",
+    "react-cropper": "^2.3.3",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.41.5",
     "react-hotkeys-hook": "^4.3.7",
