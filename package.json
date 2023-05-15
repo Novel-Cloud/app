@@ -19,6 +19,7 @@
     "@types/react-copy-to-clipboard": "^5.0.4",
     "@types/styled-components": "^5.1.26",
     "axios": "^1.2.2",
+    "cropperjs": "^1.5.13",
     "form-data": "^4.0.0",
     "javascript-time-ago": "^2.5.9",
     "next": "13.0.0",
