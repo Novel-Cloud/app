@@ -9,16 +9,20 @@ import httpClient from "@/apis";
 import { toast } from "react-toastify";
 import Button from "@/components/atoms/Button";
 import styled from "styled-components";
+import useModal from "@/hooks/useModal";
+import CropModal from "../CropModal";
 
 interface ProfileForm {
   nickname: string;
 }
 
 export default function ProfileEdit() {
+  const { openModal } = useModal();
   const { user: userInfo } = useAuthUser({ authorizedPage: true });
   const { register, reset, handleSubmit } = useForm<ProfileForm>();
   const [profileImageSrc, setProfileImageSrc] = useState("");
-  const [profileFileList, setProfileFileList] = useState<FileList | File[]>();
+  const [croppedProfileImageSrc, setCroppedProfileImageSrc] = useState("");
+  const [profileFileList, setProfileFileList] = useState<FileList | File[]>([]);
 
   const {
     files: profileFiles,
@@ -46,29 +50,55 @@ export default function ProfileEdit() {
     }
   };
 
+  function base64ToBlob(base64String: string, contentType?: string) {
+    const binaryString = window.atob(base64String);
+    const bytes = new Uint8Array(binaryString.length);
+    for (let i = 0; i < binaryString.length; i += 1) {
+      bytes[i] = binaryString.charCodeAt(i);
+    }
+
+    return new Blob([bytes], { type: contentType || "image/jpeg" });
+  }
+
   const handleChangeProfile = () => {
     if (profileFileList) {
       const profileFormData = new FormData();
-      profileFormData.append("profile", profileFileList[0]);
+      console.log(
+        "croppedProfileImageSrccroppedProfileImageSrccroppedProfileImageSrccroppedProfileImageSrc",
+        croppedProfileImageSrc,
+      );
+
+      console.error(base64ToBlob(croppedProfileImageSrc));
+      profileFormData.append("profile", base64ToBlob(croppedProfileImageSrc));
       httpClient.memberSelf
         .image(profileFormData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
+          headers: { "Content-Type": "multipart/form-data" },
         })
-        .then(() => {
-          toast.success("업로드에 성공했습니다.");
-        })
+        .then(() => toast.success("업로드에 성공했습니다."))
         .catch((e) => toast.error(e.response.data.message));
     }
   };
 
   useEffect(() => {
-    if (profileFiles.length) {
-      setProfileImageSrc(URL.createObjectURL(profileFiles[0]));
-      setProfileFileList(profileFiles);
+    if (profileFiles.length || profileFileList.length) {
+      setProfileFileList(profileFiles.length ? profileFiles : profileFileList);
+      setProfileImageSrc(
+        URL.createObjectURL(
+          profileFiles.length ? profileFiles[0] : profileFileList[0],
+        ),
+      );
+      openModal({
+        title: "프로필 자르기",
+        content: (
+          <CropModal
+            profileImageSrc={profileImageSrc}
+            setCroppedProfileImageSrc={setCroppedProfileImageSrc}
+          />
+        ),
+      });
     }
-  }, [profileFiles]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [profileFiles, profileFileList, openModal]);
 
   useEffect(() => {
     reset(userInfo);
@@ -84,7 +114,7 @@ export default function ProfileEdit() {
           handleImageSrc((event.target.files || []) as FileList);
           setProfileFileList((event.target.files || []) as FileList);
         }}
-        src={profileImageSrc}
+        src={croppedProfileImageSrc || profileImageSrc}
         inputRef={profileInputRef}
         labelRef={profileLabelRef}
         isDragActive={profileIsDragActive}
