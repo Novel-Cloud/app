@@ -47,6 +47,7 @@ const ModalWrapper = styled.div<{ visible?: boolean }>`
   display: flex;
   flex-direction: column;
   background-color: white;
+  overflow: auto;
   ${(props) => !props.visible && "display: none"};
   border-radius: 2rem;
   z-index: 20;

@@ -1,10 +1,10 @@
-import { useState, useRef } from "react";
+import { useState, useRef, ChangeEvent } from "react";
 import Cropper, { ReactCropperElement } from "react-cropper";
-import Image from "next/image";
 import "cropperjs/dist/cropper.css";
 import useDebounce from "@/hooks/useDebounce";
+import Image from "next/image";
 
-function Example() {
+export default function useCrop() {
   const cropperRef = useRef<ReactCropperElement>(null);
   const [inputImage, setInputImage] = useState<string>("");
   const [croppedImage, setCroppedImage] = useState<string>("");
@@ -20,17 +20,15 @@ function Example() {
     setCroppedImage(cropper?.getCroppedCanvas().toDataURL() || "");
   };
 
+  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      setInputImage(URL.createObjectURL(e.target.files[0] as Blob));
+    }
+  };
+
   return (
     <div>
-      <input
-        type="file"
-        accept="image/*"
-        onChange={(e) => {
-          if (e.target.files) {
-            setInputImage(URL.createObjectURL(e.target.files[0] as Blob));
-          }
-        }}
-      />
+      <input type="file" accept="image/*" onChange={onChange} />
       <Cropper src={inputImage} crop={onCrop} ref={cropperRef} />
       {debouncedCroppedImage && (
         <Image
@@ -43,5 +41,3 @@ function Example() {
     </div>
   );
 }
-
-export default Example;
