@@ -50,26 +50,19 @@ export default function ProfileEdit() {
     }
   };
 
-  function base64ToBlob(base64String: string, contentType?: string) {
-    const binaryString = window.atob(base64String);
-    const bytes = new Uint8Array(binaryString.length);
-    for (let i = 0; i < binaryString.length; i += 1) {
-      bytes[i] = binaryString.charCodeAt(i);
-    }
+  const base64ToBlob = async (base64String: string) => {
+    const base64Response = await fetch(base64String);
+    const blob = await base64Response.blob();
+    return blob;
+  };
 
-    return new Blob([bytes], { type: contentType || "image/jpeg" });
-  }
-
-  const handleChangeProfile = () => {
+  const handleChangeProfile = async () => {
     if (profileFileList) {
       const profileFormData = new FormData();
-      console.log(
-        "croppedProfileImageSrccroppedProfileImageSrccroppedProfileImageSrccroppedProfileImageSrc",
-        croppedProfileImageSrc,
+      profileFormData.append(
+        "profile",
+        await base64ToBlob(croppedProfileImageSrc),
       );
-
-      console.error(base64ToBlob(croppedProfileImageSrc));
-      profileFormData.append("profile", base64ToBlob(croppedProfileImageSrc));
       httpClient.memberSelf
         .image(profileFormData, {
           headers: { "Content-Type": "multipart/form-data" },
