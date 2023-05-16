@@ -15,3 +15,9 @@ export const checkSize = (fileSize: number, maxSize?: number) => {
   if (fileSize > checkFileSize) return false;
   return true;
 };
+
+export const base64ToBlob = async (base64String: string) => {
+  const base64Response = await fetch(base64String);
+  const blob = await base64Response.blob();
+  return blob;
+};

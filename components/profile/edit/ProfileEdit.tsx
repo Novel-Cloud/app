@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 import Button from "@/components/atoms/Button";
 import styled from "styled-components";
 import useModal from "@/hooks/useModal";
+import { base64ToBlob } from "@/utils/file";
 import CropModal from "../CropModal";
 
 interface ProfileForm {
@@ -48,12 +49,6 @@ export default function ProfileEdit() {
       setProfileImageSrc(URL.createObjectURL(fileList[0]));
       setProfileFileList(fileList);
     }
-  };
-
-  const base64ToBlob = async (base64String: string) => {
-    const base64Response = await fetch(base64String);
-    const blob = await base64Response.blob();
-    return blob;
   };
 
   const handleChangeProfile = async () => {
