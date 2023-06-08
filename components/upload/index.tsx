@@ -47,6 +47,7 @@ export default function Upload() {
     if (artworkFiles.length && checkSize(artworkFiles[0].size)) {
       setArtworkImageSrc(URL.createObjectURL(artworkFiles[0]));
       setArtworkFileList(artworkFiles);
+      return;
     }
     toast.error("파일 사이즈가 너무 큽니다.");
   }, [artworkFiles]);
