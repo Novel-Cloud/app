@@ -21,7 +21,7 @@ export default function ArtworkDetailPage({
   useEffect(() => {
     if (!is404) {
       httpClient.artworkView
-        .post({ artworkId: artwork.artworkId })
+        .put({ artworkId: artwork.artworkId })
         .then((r) => r.data);
     }
   }, [artwork, is404]);
