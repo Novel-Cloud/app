@@ -29,21 +29,26 @@ export default function Upload() {
   });
 
   const handleImageSrc = (fileList: FileList) => {
+    if (fileList.length === 0) {
+      return;
+    }
     if (fileList.length && checkSize(fileList[0].size)) {
       setArtworkImageSrc(URL.createObjectURL(fileList[0]));
       setArtworkFileList((prev) => [...prev, fileList[0]]);
-    } else {
-      toast.error("파일 사이즈가 너무 큽니다.");
+      return;
     }
+    toast.error("파일 사이즈가 너무 큽니다.");
   };
 
   useEffect(() => {
+    if (artworkFiles.length === 0) {
+      return;
+    }
     if (artworkFiles.length && checkSize(artworkFiles[0].size)) {
       setArtworkImageSrc(URL.createObjectURL(artworkFiles[0]));
       setArtworkFileList(artworkFiles);
-    } else {
-      toast.error("파일 사이즈가 너무 큽니다.");
     }
+    toast.error("파일 사이즈가 너무 큽니다.");
   }, [artworkFiles]);
 
   useEffect(() => {
