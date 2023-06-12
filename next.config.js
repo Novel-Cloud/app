@@ -14,6 +14,8 @@ const nextConfig = {
       },
       { protocol: "https", hostname: "replicate.delivery" },
       { protocol: "https", hostname: "dla8whnq5d71w.cloudfront.net" },
+      { protocol: "http", hostname: "leehj050211.kro.kr" },
+      { protocol: "http", hostname: "localhost" },
     ],
   },
 };
