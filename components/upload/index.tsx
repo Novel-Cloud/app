@@ -1,7 +1,9 @@
 import type { ArtworkForm } from "@/types/artwork.interface";
 import { useEffect, useState } from "react";
 import { SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
+import axios from "axios";
 import useFileDrop from "@/hooks/useFileDrop";
+import Image from "next/image";
 import FormData from "form-data";
 import httpClient from "@/apis";
 import { toast } from "react-toastify";
@@ -12,12 +14,14 @@ import * as S from "./index.style";
 import ArtworkFormView from "./ArtworkForm";
 import ArtworkTypeRadio from "./ArtworkTypeRadio";
 import { LoginButton } from "../login/LoginButton.style";
+import Button from "../atoms/Button";
 
 export default function Upload() {
   const router = useRouter();
   const { register, handleSubmit, setValue } = useForm<ArtworkForm>();
   const [artworkImageSrc, setArtworkImageSrc] = useState<string>("");
   const [artworkFileList, setArtworkFileList] = useState<File[]>([]);
+  const [tagString, setTagString] = useState<string>("");
 
   const {
     files: artworkFiles,
@@ -122,7 +126,11 @@ export default function Upload() {
         <div>{artworkFile.name}</div>
       ))}
 
-      <ArtworkFormView register={register} />
+      <ArtworkFormView
+        register={register}
+        setTagString={setTagString}
+        tagString={tagString}
+      />
       <LoginButton type="submit" isFull>
         제출
       </LoginButton>

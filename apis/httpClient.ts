@@ -128,7 +128,7 @@ export class HttpClient {
 
 const axiosConfig: HttpClientConfig = {
   baseURL: config.baseURL,
-  timeout: 10000,
+  timeout: 100000,
 };
 
 export default {
