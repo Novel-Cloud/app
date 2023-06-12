@@ -28,7 +28,7 @@ export default function ArtworkTypeRadio({
         label="Manga"
         value="MANGA"
         registerReturn={register("artworkType")}
-        description="R-18 manga"
+        description="any comic"
       />
     </>
   );
